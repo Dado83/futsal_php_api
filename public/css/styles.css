@@ -10,6 +10,7 @@ body {
         'Lucida Sans', Arial, sans-serif;
 }
 
+/* header */
 .hidden {
     display: none;
 }
@@ -17,12 +18,14 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 header img {
     width: 70px;
     height: 100%;
     margin: auto;
+    transform: translate(25%);
 }
 
 .login {
@@ -50,4 +53,30 @@ li {
     display: none;
 }
 
-.nav-year {}
+/* footer */
+footer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+footer img {
+    width: 15px;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+footer a {
+    padding: 5px;
+    text-decoration: none;
+}
+
+footer p {
+    text-align: center;
+}
+
+/* frontpage */
+.front-page {
+    display: grid;
+    grid-template-areas: 'a b c';
+    text-align: center;
+}

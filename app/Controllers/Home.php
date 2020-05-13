@@ -5,8 +5,10 @@ class Home extends BaseController
 
     public function index()
     {
+        $data['teams'] = $this->model->getTeams();
+
         echo view('header');
-        echo view('home');
+        echo view('front-page', $data);
         echo view('footer');
     }
 
