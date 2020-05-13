@@ -14,13 +14,38 @@
 </head>
 <body>
     <header>
-        <img src="/public/images/grb.png" alt="grb"><button>login</button>
-        <ul>
-            <li>rezultati</li>
-            <li>tabela</li>
-            <li>raspored</li>
-            <li>turnir mejk</li>
-            <li>o nama</li>
-            <li>admin</li>
-        </ul>
+        <span class="nav-toggle">&#9776</span>
+        <nav>
+            <ul class="nav-bar">
+                <li>rezultati</li>
+                <li>tabela</li>
+                <li>raspored</li>
+                <li>turnir mejk</li>
+                <li>o nama</li>
+                <li>admin</li>
+            </ul>
+        </nav>
+        <img src="/public/images/grb.png" alt="grb">
+        <button class="login">login</button>
     </header>
+    <script>
+    let toggle = document.querySelector('.nav-toggle')
+    toggle.addEventListener('mouseup', navToggle)
+
+    function navToggle(e) {
+        e.stopPropagation()
+        let navBar = document.querySelector('.nav-bar')
+        if (navBar.style.display == '') {
+            navBar.style.display = 'inline-block'
+        } else {
+            navBar.style.display = ''
+        }
+    }
+
+    document.addEventListener('mouseup', (e) => {
+        let navBar = document.querySelector('.nav-bar')
+        if (navBar.style.display == 'inline-block') {
+            navBar.style.display = ''
+        }
+    })
+    </script>

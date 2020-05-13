@@ -1,9 +1,11 @@
 <nav class="results-nav">
-    <li id="results6">2006</li>
-    <li id="results7">2007</li>
-    <li id="results8">2008</li>
-    <li id="results9">2009</li>
-    <li id="results10">2010</li>
+    <ul class="nav-year">
+        <li id="results6">2006</li>
+        <li id="results7">2007</li>
+        <li id="results8">2008</li>
+        <li id="results9">2009</li>
+        <li id="results10">2010</li>
+    </ul>
 </nav>
 <?php
 $k = 2006;
@@ -46,6 +48,7 @@ function navigation() {
     for (let i = 0; i < results.length; i++) {
         results[i].style.display = 'none'
     }
+
     document.querySelector('#res' + id).style.display = 'block'
 }
 </script>

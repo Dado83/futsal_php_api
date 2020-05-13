@@ -13,3 +13,41 @@ body {
 .hidden {
     display: none;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header img {
+    width: 70px;
+    height: 100%;
+    margin: auto;
+}
+
+.login {
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+li {
+    padding: 5px;
+}
+
+.nav-bar {
+    flex-direction: column;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    padding: 0;
+    background: var(--color5);
+    z-index: 1;
+    color: white;
+    display: none;
+}
+
+.nav-year {}

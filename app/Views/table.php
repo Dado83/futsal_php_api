@@ -1,14 +1,16 @@
 <nav class="table-nav">
-    <li id="table6">2006</li>
-    <li id="table7">2007</li>
-    <li id="table8">2008</li>
-    <li id="table9">2009</li>
-    <li id="table10">2010</li>
+    <ul>
+        <li id="table6">2006</li>
+        <li id="table7">2007</li>
+        <li id="table8">2008</li>
+        <li id="table9">2009</li>
+        <li id="table10">2010</li>
+    </ul>
 </nav>
 <?php
 $tables = [2006 => $table6, $table7, $table8, $table9, $table10];
 foreach ($tables as $k => $table): ?>
-<table class="table" id=<?="tab$k"?>>
+<table class="table hidden" id=<?="tab$k"?>>
     <thead>
         <tr>
             <th colspan="2"><?=$k?>. god</th>
