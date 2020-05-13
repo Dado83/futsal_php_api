@@ -9,7 +9,7 @@
 $k = 2006;
 $results = [$results6, $results7, $results8, $results9, $results10];
 for ($j = 0; $j <= 4; $j++): ?>
-<article class="results-article" id=<?="res$k"?>>
+<section class="results-section hidden" id=<?="res$k"?>>
     <p><?=$k?></p>
     <?php foreach ($results[$j] as $key => $result): ?>
     <table class="results">
@@ -28,7 +28,7 @@ for ($j = 0; $j <= 4; $j++): ?>
         </tbody>
     </table>
     <?php endforeach?>
-</article>
+</section>
 <?php
 $k++;
 endfor?>
@@ -42,7 +42,7 @@ for (let i = 0; i < nav.length; i++) {
 
 function navigation() {
     let id = this.textContent
-    let results = document.querySelectorAll('article')
+    let results = document.querySelectorAll('section')
     for (let i = 0; i < results.length; i++) {
         results[i].style.display = 'none'
     }

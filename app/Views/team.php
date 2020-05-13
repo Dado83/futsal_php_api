@@ -1,6 +1,6 @@
-<article>
+<section>
     <img src="/public/images/logos-big/<?=$team->id?>.png" alt="grb-klub">
-    <section>
+    <div>
         <h1>Klub</h1>
         <p><?=$team->team_name?></p>
         <h1>grad</h1>
@@ -11,9 +11,9 @@
         <p><?=$team->venue?></p>
         <h1>termin</h1>
         <p><?=$team->game_time?></p>
-    </section>
-</article>
-<article>
+    </div>
+</section>
+<section>
     <?php
 $results = [2006 => $results6, $results7, $results8, $results9, $results10];
 foreach ($results as $key => $result):
@@ -38,4 +38,4 @@ foreach ($results as $key => $result):
     <?php
 endif;
 endforeach?>
-</article>
+</section>

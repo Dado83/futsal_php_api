@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>TEST PLAY pretraga</title>
@@ -12,7 +11,6 @@
     <link rel="shortcut icon" href="/public/images/sk.ico" type="image/x-icon">
     <script src="/public/js/skgameindex.js?v=0.1" defer></script>
 </head>
-
 <body>
     <div class="loader"></div>
     <form action="#" method="GET">

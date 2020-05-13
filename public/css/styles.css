@@ -1,4 +1,15 @@
-.table,
-.results-article {
+:root {
+    --color1: #fcc914;
+    --color5: #3d3d3d;
+}
+
+body {
+    min-width: 340px;
+    max-width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+}
+
+.hidden {
     display: none;
 }
