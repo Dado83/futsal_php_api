@@ -75,7 +75,7 @@ class DBModel extends Model
     public function getMatchPairs($mday)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
-        home.team_name AS home_team, away.team_name AS away_team
+        home.team_name AS home_club, away.team_name AS away_club
         FROM matchpairs
         JOIN teams AS home ON matchpairs.home_team = home.id
         JOIN teams AS away ON matchpairs.away_team = away.id
