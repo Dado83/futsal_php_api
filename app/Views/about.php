@@ -1,12 +1,12 @@
-<article>
-    <img src="/public/images/grb.png">
+<article class="about">
     <section>
-        <h1>Fer plej</h1>
+        <h1>Fair Play Liga Budućih Šampiona</h1>
+        <img src="/public/images/grb.png">
         <p>Fair Play Liga je formirana sa osnovnim ciljem da podstakne najmlađe učesnike sportskih manfestacija – djecu,
             da se kroz igru i zabavu nauče fer-plej ponašanju.
             Osnovna ideja u osnivanju Fair Play lige je bila da se propišu jedinstveni standardi –
             propozicije i pravila koja su potpuno prilagođena djeci.</p>
-        <p>OSNOVNI PRINCIPI U ORGANIZACIJI FAIR PLAY LIGE</p>
+        <p><i>OSNOVNI PRINCIPI U ORGANIZACIJI FAIR PLAY LIGE</i></p>
         <p> Fair Play Liga se sprovodi na osnovu jedinstvenog sistema takmičenja, koji je potpuno prilagođen djeci,
             zavisno od njihovog uzrasta:<br>
             – ravnopravne takmičarske grupe, svako dijete se može radovati po nekoj pobjedi čak i početnici,

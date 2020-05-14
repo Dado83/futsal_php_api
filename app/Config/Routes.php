@@ -33,6 +33,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'sktestplay') !== false) {
     $routes->get('/', 'Sk::index');
 }
 $routes->get('/', 'Home::index');
+$routes->get('ekipa/(:num)', 'Home::team/$1');
 
 /**
  * --------------------------------------------------------------------

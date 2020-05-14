@@ -59,6 +59,7 @@ class Home extends BaseController
     public function results()
     {
         $maxMDay = $this->model->getMaxMday()->mDay;
+
         for ($i = 1; $i <= $maxMDay; $i++) {
             $data['results6'][$i] = $this->model->getResults('results6', $i);
             $data['results7'][$i] = $this->model->getResults('results7', $i);
@@ -66,8 +67,21 @@ class Home extends BaseController
             $data['results9'][$i] = $this->model->getResults('results9', $i);
             $data['results10'][$i] = $this->model->getResults('results10', $i);
         }
+
+        $maxMDay = $this->model->getMaxMday()->mDay;
+        for ($i = 1; $i <= $maxMDay; $i++) {
+            $data['dates'][$i] = $this->model->getMatchPairs($i);
+        }
+
         echo view('header');
         echo view('results', $data);
+        echo view('footer');
+    }
+
+    public function about()
+    {
+        echo view('header');
+        echo view('about');
         echo view('footer');
     }
 
