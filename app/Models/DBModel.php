@@ -16,6 +16,7 @@ class DBModel extends Model
     {
         if ($isShortName) {
             $sql = "SELECT teams.team_name AS team,
+            $table.id,
             $table.games_played,
             $table.games_won,
             $table.games_drew,
@@ -26,6 +27,7 @@ class DBModel extends Model
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team";
         } else {
             $sql = "SELECT CONCAT(teams.team_name, ' ', teams.team_city) AS team,
+            $table.id,
             $table.games_played,
             $table.games_won,
             $table.games_drew,
