@@ -1,5 +1,5 @@
 <article class="results">
-    <nav class="results-nav">
+    <nav>
         <ul>
             <li id="results6">2006</li>
             <li id="results7">2007</li>
@@ -17,21 +17,18 @@ for ($j = 0; $j <= 4; $j++): ?>
         <table>
             <thead>
                 <th><?="$key. kolo"?></th>
-                <th colspan="3"><?=$dates[$key][0]->game_date?></th>
+                <th colspan="6"><?=$dates[$key][0]->game_date?></th>
             </thead>
             <tbody>
                 <?php foreach ($result as $res): ?>
                 <tr>
-                    <td>
-                        <img src=<?="/public/images/logos/$res->home_teamid.png"?>>
-                        <br><?=$res->home_team?>
-                    </td>
+                    <td><?=$res->home_team?></td>
+                    <td> <img src=<?="/public/images/logos/$res->home_teamid.png"?>></td>
                     <td><?=$res->goals_home?></td>
+                    <td>:</td>
                     <td><?=$res->goals_away?></td>
-                    <td>
-                        <img src=<?="/public/images/logos/$res->away_teamid.png"?>>
-                        <br><?=$res->away_team?>
-                    </td>
+                    <td><img src=<?="/public/images/logos/$res->away_teamid.png"?>></td>
+                    <td><?=$res->away_team?></td>
                 </tr>
                 <?php endforeach?>
             </tbody>
@@ -43,7 +40,7 @@ for ($j = 0; $j <= 4; $j++): ?>
 $k++;
 endfor?>
 <script>
-let nav = document.querySelectorAll('.results-nav li')
+let nav = document.querySelectorAll('.results li')
 nav[0].style.fontWeight = 'bold'
 document.querySelector('#res2006').style.display = 'block'
 
