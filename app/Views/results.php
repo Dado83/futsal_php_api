@@ -23,11 +23,11 @@ for ($j = 0; $j <= 4; $j++): ?>
                 <?php foreach ($result as $res): ?>
                 <tr>
                     <td><?=$res->home_team?></td>
-                    <td> <img src=<?="/public/images/logos/$res->home_teamid.png"?>></td>
+                    <td> <img src=<?="/public/images/logos/$res->home_teamid.png"?> alt="grb"></td>
                     <td><?=$res->goals_home?></td>
                     <td>:</td>
                     <td><?=$res->goals_away?></td>
-                    <td><img src=<?="/public/images/logos/$res->away_teamid.png"?>></td>
+                    <td><img src=<?="/public/images/logos/$res->away_teamid.png"?> alt="grb"></td>
                     <td><?=$res->away_team?></td>
                 </tr>
                 <?php endforeach?>

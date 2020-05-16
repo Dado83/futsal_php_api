@@ -29,7 +29,7 @@ foreach ($tables as $k => $table): ?>
 foreach ($table as $i => $row): ?>
             <tr>
                 <td><?=++$i?></td>
-                <td><img src=<?="/public/images/logos/$row->id.png"?>><?=$row->team?></td>
+                <td><img src=<?="/public/images/logos/$row->id.png"?> alt="grb"><?=$row->team?></td>
                 <td><?=$row->games_played?></td>
                 <td><?=$row->games_won?></td>
                 <td><?=$row->games_drew?></td>
@@ -52,7 +52,8 @@ foreach ($table as $i => $row): ?>
 endforeach?>
 <script>
 let nav = document.querySelectorAll('.standings li')
-nav[0].style.fontWeight = 'bold'
+//nav[0].style.background = 'var(--color1)'
+nav[0].className = 'nav-select'
 document.querySelector('#tab2006').style.display = 'block'
 
 for (let i = 0; i < nav.length; i++) {
@@ -61,9 +62,9 @@ for (let i = 0; i < nav.length; i++) {
 
 function navigation() {
     for (n of nav) {
-        n.style.fontWeight = 'normal'
+        n.classList.remove('nav-select')
     }
-    this.style.fontWeight = 'bold'
+    this.className = 'nav-select'
     let id = this.textContent
     let tables = document.querySelectorAll('.standings-table')
     for (let i = 0; i < tables.length; i++) {
