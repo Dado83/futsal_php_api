@@ -11,7 +11,7 @@
     <?php
 $tables = [2006 => $table6, $table7, $table8, $table9, $table10];
 foreach ($tables as $k => $table): ?>
-    <table class="hidden" id=<?="tab$k"?>>
+    <table class="standings-table hidden" id=<?="tab$k"?>>
         <thead>
             <tr>
                 <th colspan="2"><?=$k?>. god</th>
@@ -65,7 +65,7 @@ function navigation() {
     }
     this.style.fontWeight = 'bold'
     let id = this.textContent
-    let tables = document.querySelectorAll('.table')
+    let tables = document.querySelectorAll('.standings-table')
     for (let i = 0; i < tables.length; i++) {
         tables[i].style.display = 'none'
     }

@@ -33,7 +33,13 @@ if (strpos($_SERVER['HTTP_HOST'], 'sktestplay') !== false) {
     $routes->get('/', 'Sk::index');
 }
 $routes->get('/', 'Home::index');
-$routes->get('ekipa/(:num)', 'Home::team/$1');
+$routes->get('/ekipa/(:num)', 'Home::team/$1');
+$routes->get('/tabela', 'Home::table');
+$routes->get('/rezultati', 'Home::results');
+$routes->get('/raspored', 'Home::fixtures');
+$routes->get('/o-nama', 'Home::about');
+$routes->get('/admin', 'Home::admin');
+$routes->get('/turnir', 'Home::createTournament');
 
 /**
  * --------------------------------------------------------------------

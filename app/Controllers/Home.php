@@ -85,6 +85,11 @@ class Home extends BaseController
         echo view('footer');
     }
 
+    public function createTournament()
+    {
+        echo view('fts.html');
+    }
+
     public function getLastResults($results)
     {
         $data = $this->model->getLastResults($results);

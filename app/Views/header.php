@@ -17,15 +17,15 @@
         <span class="nav-toggle">&#9776</span>
         <nav>
             <ul class="nav-bar">
-                <li>rezultati</li>
-                <li>tabela</li>
-                <li>raspored</li>
-                <li>turnir mejk</li>
-                <li>o nama</li>
-                <li>admin</li>
+                <li><a href="/rezultati">rezultati</a></li>
+                <li><a href="/tabela">tabela</a></li>
+                <li><a href="/raspored">raspored</a></li>
+                <li><a href="/turnir">turnir mejk</a></li>
+                <li><a href="/o-nama">o nama</a></li>
+                <li><a href="/admin">admin</a></li>
             </ul>
         </nav>
-        <img src="/public/images/grb.png" alt="grb">
+        <a class="home" href="/"></a>
         <button class="login">login</button>
     </header>
     <script>
