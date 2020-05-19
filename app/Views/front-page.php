@@ -3,8 +3,16 @@
 <article class="front-page">
     <?php foreach ($teams as $team): ?>
     <div>
-        <img src="/public/images/logos/<?=$team->id?>.png" alt="grb">
-        <p><a href=<?="ekipa/" . $team->id?>><?=$team->team_name?><br><?=$team->team_city?></a></p>
+        <a href=<?="ekipa/" . $team->id?>>
+            <img src="/public/images/logos/<?=$team->id?>.png" alt="grb">
+        </a>
+        <p>
+            <a href=<?="ekipa/" . $team->id?>>
+                <?=$team->team_name?>
+                <br>
+                <?=$team->team_city?>
+            </a>
+        </p>
     </div>
     <?php endforeach?>
 </article>

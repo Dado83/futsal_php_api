@@ -45,7 +45,7 @@ endforeach?>
 </article>
 <script>
 let nav = document.querySelectorAll('.team li')
-nav[0].style.fontWeight = 'bold'
+nav[0].className = 'nav-select'
 document.querySelector('#res2006').style.display = 'block'
 
 for (let i = 0; i < nav.length; i++) {
@@ -54,11 +54,11 @@ for (let i = 0; i < nav.length; i++) {
 
 function navigation() {
     for (n of nav) {
-        n.style.fontWeight = 'normal'
+        n.classList.remove('nav-select')
     }
 
     let id = this.textContent
-    this.style.fontWeight = 'bold'
+    this.className = 'nav-select'
     let results = document.querySelectorAll('table')
 
     for (let i = 0; i < results.length; i++) {
