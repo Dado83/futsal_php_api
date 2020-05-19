@@ -15,16 +15,21 @@ nav ul {
     justify-content: space-evenly;
     padding-left: 0;
     list-style: none;
+
 }
 
 nav li {
     cursor: pointer;
     padding: 2px 8px;
+    border-bottom: 1px solid var(--color2);
+    width: 100%;
 }
 
 .nav-select {
-    background: var(--color1);
-    border-bottom: 1px solid var(--color1);
+    border-top: 1px solid var(--color2);
+    border-left: 1px solid var(--color2);
+    border-right: 1px solid var(--color2);
+    border-bottom: none;
 }
 
 .hidden {
@@ -57,7 +62,7 @@ header a.home {
 }
 
 header a.home:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 .login {
@@ -124,6 +129,7 @@ footer img {
 footer a {
     padding: 15px;
     text-decoration: none;
+    font-size: 12px;
 }
 
 footer address {
@@ -142,13 +148,17 @@ footer address {
     color: black;
 }
 
-.front-page div {
+.front-page a {
     transition: transform 0.4s;
 }
 
-.front-page div:hover {
+.front-page a:hover {
     color: var(--color2);
     transform: scale(1.1)
+}
+
+h3 {
+    text-align: center;
 }
 
 /* fixtures */
@@ -278,6 +288,11 @@ footer address {
     width: 150px;
     float: left;
     margin-right: 5px;
+}
+
+.team td img {
+    width: 30px;
+    height: 30px;
 }
 
 .team nav {

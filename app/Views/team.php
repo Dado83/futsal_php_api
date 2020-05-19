@@ -32,7 +32,9 @@ foreach ($results as $key => $result):
                 <tr>
                     <td><?=$r->m_day?></td>
                     <td><?=$r->home_team?></td>
+                    <td><img src=<?="/public/images/logos/$r->home_teamid.png"?>></td>
                     <td><?=$r->goals_home?>:<?=$r->goals_away?></td>
+                    <td><img src=<?="/public/images/logos/$r->away_teamid.png"?>></td>
                     <td><?=$r->away_team?></td>
                 </tr>
                 <?php endforeach?>

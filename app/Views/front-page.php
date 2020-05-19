@@ -1,19 +1,16 @@
-<p>stranica u fazi nadogradnje &#9917 &#127942</p>
-
+<h3>Liga Budućih Šampiona 2019/2020</h3>
 <article class="front-page">
     <?php foreach ($teams as $team): ?>
-    <div>
-        <a href=<?="ekipa/" . $team->id?>>
+    <a href=<?="ekipa/" . $team->id?>>
+        <div>
             <img src="/public/images/logos/<?=$team->id?>.png" alt="grb">
-        </a>
-        <p>
-            <a href=<?="ekipa/" . $team->id?>>
+            <p>
                 <?=$team->team_name?>
                 <br>
                 <?=$team->team_city?>
-            </a>
-        </p>
-    </div>
+            </p>
+        </div>
+    </a>
     <?php endforeach?>
 </article>
 <?php if (false): ?>
