@@ -14,8 +14,12 @@
 </head>
 <body>
     <header>
-        <span class="nav-toggle">&#9776</span>
-        <nav>
+        <nav class="menu">
+            <div class="menu-container">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
             <ul class="nav-bar">
                 <li><a href="/rezultati">rezultati</a></li>
                 <li><a href="/tabela">tabela</a></li>
@@ -28,24 +32,3 @@
         <a class="home" href="/"></a>
         <button class="login">login</button>
     </header>
-    <script>
-    let toggle = document.querySelector('.nav-toggle')
-    toggle.addEventListener('mouseup', navToggle)
-
-    function navToggle(e) {
-        e.stopPropagation()
-        let navBar = document.querySelector('.nav-bar')
-        if (navBar.style.display == '') {
-            navBar.style.display = 'inline-block'
-        } else {
-            navBar.style.display = ''
-        }
-    }
-
-    document.addEventListener('mouseup', (e) => {
-        let navBar = document.querySelector('.nav-bar')
-        if (navBar.style.display == 'inline-block') {
-            navBar.style.display = ''
-        }
-    })
-    </script>
