@@ -120,9 +120,9 @@ class DBModel extends Model
     }
 
     //prepravit
-    public function getResultsByMday($results, $mday)
+    public function getResultsByMday($mday)
     {
-        $sql = "SELECT * FROM $results WHERE m_day = $mday";
+        $sql = "SELECT * FROM results WHERE m_day = $mday";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
@@ -178,7 +178,7 @@ class DBModel extends Model
     //nece trebat
     public function getGameFromResults($id)
     {
-        $sql = "SELECT * FROM results6 WHERE id = $id";
+        $sql = "SELECT * FROM results WHERE id = $id";
         $query = $this->db->query($sql);
         return ($query) ? $query->getRow() : array();
     }
@@ -335,26 +335,62 @@ class DBModel extends Model
         $this->db->query($sql_a2);
     }
 
-    public function deleteGame($results, $table, $id)
+    public function deleteGame($id)
     {
-        $sql_get = "SELECT * FROM $results WHERE id = $id";
+        $sql_get = "SELECT * FROM results WHERE id = $id";
         $query = $this->db->query($sql_get);
         $res = $query->getRow();
         $game = array(
-            'id' => $res->id, 'm_day' => $res->m_day, 'home' => $res->home_team,
-            'home_id' => $res->home_teamid, 'away' => $res->away_team, 'away_id' => $res->away_teamid,
-            'goals_h' => $res->goals_home, 'goals_a' => $res->goals_away,
+            'id' => $res->id, 'm_day' => $res->m_day, 'home' => $res->home_name,
+            'home_id' => $res->home_id, 'away' => $res->away_name, 'away_id' => $res->away_id,
+            'goals_h7' => $res->goals_home7, 'goals_a7' => $res->goals_away7,
+            'goals_h8' => $res->goals_home8, 'goals_a8' => $res->goals_away8,
+            'goals_h9' => $res->goals_home9, 'goals_a9' => $res->goals_away9,
+            'goals_h10' => $res->goals_home10, 'goals_a10' => $res->goals_away10,
+            'goals_h6' => $res->goals_home6, 'goals_a6' => $res->goals_away6,
         );
-
-        if ($game['goals_h'] > $game['goals_a']) {
-            $this->homeWinDel($table, $game['home_id'], $game['away_id'], $game['goals_h'], $game['goals_a']);
-        } elseif ($game['goals_a'] > $game['goals_h']) {
-            $this->awayWinDel($table, $game['home_id'], $game['away_id'], $game['goals_h'], $game['goals_a']);
-        } else {
-            $this->drawDel($table, $game['home_id'], $game['away_id'], $game['goals_h'], $game['goals_a']);
+        //7
+        if ($game['goals_h7'] > $game['goals_a7']) {
+            $this->homeWinDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7']);
+        } elseif ($game['goals_a7'] > $game['goals_h7']) {
+            $this->awayWinDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7']);
+        } elseif ($game['goals_a7'] == $game['goals_h7'] && $game['goals_h7'] != -1) {
+            $this->drawDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7']);
+        }
+        //8
+        if ($game['goals_h8'] > $game['goals_a8']) {
+            $this->homeWinDel('table8', $game['home_id'], $game['away_id'], $game['goals_h8'], $game['goals_a8']);
+        } elseif ($game['goals_a8'] > $game['goals_h8']) {
+            $this->awayWinDel('table8', $game['home_id'], $game['away_id'], $game['goals_h8'], $game['goals_a8']);
+        } elseif ($game['goals_a8'] == $game['goals_h8']) {
+            $this->drawDel('table8', $game['home_id'], $game['away_id'], $game['goals_h8'], $game['goals_a8']);
+        }
+        //9
+        if ($game['goals_h9'] > $game['goals_a9']) {
+            $this->homeWinDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9']);
+        } elseif ($game['goals_a9'] > $game['goals_h9']) {
+            $this->awayWinDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9']);
+        } elseif ($game['goals_a9'] == $game['goals_h9']) {
+            $this->drawDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9']);
+        }
+        //10
+        if ($game['goals_h10'] > $game['goals_a10']) {
+            $this->homeWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
+        } elseif ($game['goals_a10'] > $game['goals_h10']) {
+            $this->awayWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
+        } elseif ($game['goals_a10'] == $game['goals_h10'] && $game['goals_h10'] != -1) {
+            $this->drawDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
+        }
+        //6
+        if ($game['goals_h6'] > $game['goals_a6']) {
+            $this->homeWinDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
+        } elseif ($game['goals_a6'] > $game['goals_h6']) {
+            $this->awayWinDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
+        } elseif ($game['goals_a6'] == $game['goals_h6']) {
+            $this->drawDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
         }
 
-        $sql_del = "DELETE FROM $results WHERE id = $id";
+        $sql_del = "DELETE FROM results WHERE id = $id";
         $this->db->query($sql_del);
     }
 
@@ -454,6 +490,12 @@ class DBModel extends Model
     public function getMaxMday()
     {
         $sql = "SELECT MAX(m_day) as mDay FROM matchpairs";
+        $query = $this->db->query($sql);
+        return $query->getRow();
+    }
+    public function getNumberOfMdaysPlayed()
+    {
+        $sql = "SELECT MAX(m_day) as mDay FROM results";
         $query = $this->db->query($sql);
         return $query->getRow();
     }

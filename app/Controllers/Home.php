@@ -58,14 +58,10 @@ class Home extends BaseController
 
     public function results()
     {
-        $maxMDay = $this->model->getMaxMday()->mDay;
+        $maxMDay = $this->model->getNumberOfMdaysPlayed()->mDay;
 
         for ($i = 1; $i <= $maxMDay; $i++) {
-            $data['results6'][$i] = $this->model->getResults('results6', $i);
-            $data['results7'][$i] = $this->model->getResults('results7', $i);
-            $data['results8'][$i] = $this->model->getResults('results8', $i);
-            $data['results9'][$i] = $this->model->getResults('results9', $i);
-            $data['results10'][$i] = $this->model->getResults('results10', $i);
+            $data['results'][$i] = $this->model->getResultsByMday($i);
         }
 
         $maxMDay = $this->model->getMaxMday()->mDay;
@@ -144,36 +140,19 @@ class Home extends BaseController
 
         $this->model->setPlayed($id, true);
 
-        /* $data['results'] = $this->model->getResults();
-        $data['matchPairs'] = $this->model->getMatchPairsNotPlayed(); */
-        return redirect()->to('admin');
+        return redirect()->to('/admin');
     }
 
     public function brisanjeKola($id)
     {
 
-        $data['matchPairs'] = $this->model->getMatchPairsNotPlayed();
-        $data['results'] = $this->model->getAllResults('results6');
-
         $game = $this->model->getGameFromResults($id);
-        $game7 = $this->model->getGameBySel('results7', $game->home_teamid, $game->away_teamid);
-        $game10 = $this->model->getGameBySel('results10', $game->home_teamid, $game->away_teamid);
-
-        $matchPair = $this->model->getMatchPair($game->home_teamid, $game->away_teamid);
-
+        $matchPair = $this->model->getMatchPair($game->home_id, $game->away_id);
         $this->model->setPlayed($matchPair->id, 'FALSE');
 
-        $this->model->deleteGame('results6', 'table6', $id);
-        $this->model->deleteGame('results8', 'table8', $id);
-        $this->model->deleteGame('results9', 'table9', $id);
-        if ($game7 != 'NULL') {
-            $this->model->deleteGame('results7', 'table7', $game7->id);
-        }
-        if ($game10 != 'NULL') {
-            $this->model->deleteGame('results10', 'table10', $game10->id);
-        }
+        $this->model->deleteGame($id);
 
-        return redirect()->to('admin');
+        return redirect()->to('/admin');
     }
 
     public function newsLetter()
@@ -227,13 +206,16 @@ class Home extends BaseController
 
     public function test()
     {
-        $data = $this->model->getGameByID(20);
+        $maxMDay = $this->model->getNumberOfMdaysPlayed()->mDay;
 
-        $home = -1;
-        $away = 0;
+        for ($i = 1; $i <= $maxMDay; $i++) {
+            $data['results'][$i] = $this->model->getResultsByMday($i);
+        }
+        foreach ($data['results'] as $result) {
+            foreach ($result as $r) {
+                echo $r->home_name;
+            }
 
-        if (5 > 2 && 0 == 0 || 1 == 2) {
-            echo 'test';
         }
     }
 }
