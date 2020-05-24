@@ -1,47 +1,9 @@
-$(document).ready(function () {
-	//start of document.ready fn
 
+/*
+let graphs = fetch('/Home/getVisitorData')
+	.then(response => response.json())
+	.then(r => {
 
-	let url = window.location.pathname;
-	let backColor = '#fcc914';
-	let fontCol = '#3d3d3d';
-
-	switch (url) {
-		case '/':
-			$('#youthSel li:nth-of-type(1)').css('background', backColor);
-			break;
-		case '/liga/index/2006':
-			$('#youthSel li:nth-of-type(1)').css('background', backColor);
-			break;
-		case '/liga/index/2007':
-			$('#youthSel li:nth-of-type(2)').css('background', backColor);
-			break;
-		case '/liga/index/2008':
-			$('#youthSel li:nth-of-type(3)').css('background', backColor);
-			break;
-		case '/liga/index/2009':
-			$('#youthSel li:nth-of-type(4)').css('background', backColor);
-			break;
-		case '/liga/index/2010':
-			$('#youthSel li:nth-of-type(5)').css('background', backColor);
-			break;
-		case '/liga/rezultati':
-			$('#youthSel li:nth-of-type(6)').css('background', backColor);
-			break;
-		case '/liga/raspored':
-			$('#youthSel li:nth-of-type(7)').css('background', backColor);
-			break;
-		case '/liga/admin':
-			$('#youthSel li:nth-of-type(8)').css('background', backColor);
-			break;
-		case '/liga/metrics':
-			$('#youthSel li:nth-of-type(8)').css('background', backColor);
-			break;
-	}
-
-
-	let graphs = $.getJSON('getVisitorData');
-	graphs.done(function (r) {
 		let vis = r.visAll.vis;
 		let visUni = r.visUni.vis;
 		let visDesk = r.visDesk.vis;
@@ -54,9 +16,9 @@ $(document).ready(function () {
 		let visAll = parseInt(vis) + parseInt(visRob);
 		let visAllUni = parseInt(visUni) + parseInt(visRobUni);
 
-		let visitorPercentage = $('#visitorPercentage');
-		let visTimeline = $('#visitorTimeline');
-		let visPie = $('#visitorPie');
+		let visitorPercentage = document.querySelector('#visitorPercentage');
+		let visTimeline = document.querySelector('#visitorTimeline');
+		let visPie = document.querySelector('#visitorPie');
 
 		let color1 = '#4267b2';
 		let color2 = '#29487d';
@@ -193,71 +155,10 @@ $(document).ready(function () {
 			}
 		})
 
-	});
+
+	})
+
+ */
 
 
-	let teamResults = $('.teamResultsList li');
-	teamResults.on('click', ySelection);
 
-	function ySelection() {
-		let li = $(this).html();
-
-		switch (li) {
-			case '2010 god.':
-				yearSelector();
-				break;
-			case '2009 god.':
-				yearSelector();
-				break;
-			case '2008 god.':
-				yearSelector();
-				break;
-			case '2007 god.':
-				yearSelector();
-				break;
-			case '2006 god.':
-				yearSelector();
-				break;
-		}
-
-		function yearSelector() {
-			let el = $('.rSelector');
-			let src = event.target.id;
-			el.hide();
-			teamResults.css('background', 'var(--color5)');
-			teamResults.css('box-shadow', '0 1px 3px var(--color5)');
-			$('#' + src).css('background', 'var(--color1)');
-			$('#' + src).css('box-shadow', '0 0');
-			$('#y' + src).show();
-		}
-	}
-
-
-	$('#passwordChange').on('click', passwordChange);
-
-	let modalForm = $('#mForm');
-
-	function passwordChange() {
-		modalForm.show();
-	}
-
-	window.onclick = function (e) {
-		if (e.target.id == modalForm.attr('id')) {
-			modalForm.hide();
-		}
-	}
-
-
-	let oddResultsRow = $('.oddResRow');
-
-	for (odd of oddResultsRow) {
-		if (odd.innerText % 2 == 0) {
-			odd.parentNode.style.background = 'rgba(0, 0, 0, 0.2)';
-		}
-	}
-
-	$('.resultsPage summary').width($('.resultsPage table').width());
-
-
-	//end of document.ready fn	
-});

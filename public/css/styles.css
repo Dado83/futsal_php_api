@@ -57,7 +57,7 @@ header a.home {
     background-size: cover;
     margin: auto;
     position: relative;
-    left: 20px;
+    left: 10px;
     transition: transform 0.5s;
 }
 
