@@ -67,6 +67,7 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
+    //polemicno
     public function getResultsByID($results, $id)
     {
         $sql = "SELECT * FROM $results WHERE home_teamid = $id OR away_teamid = $id ORDER BY m_day";
@@ -110,20 +111,23 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getAllResults($results)
+    //prepravit
+    public function getResults()
     {
-        $sql = "SELECT * FROM $results ORDER BY m_day";
+        $sql = "SELECT * FROM results ORDER BY m_day";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getResults($results, $mday)
+    //prepravit
+    public function getResultsByMday($results, $mday)
     {
         $sql = "SELECT * FROM $results WHERE m_day = $mday";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
+    //da li ce trebat
     public function getLastResults($results)
     {
         $s = "SELECT MAX(m_day) AS mDay FROM $results";
@@ -171,6 +175,7 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
+    //nece trebat
     public function getGameFromResults($id)
     {
         $sql = "SELECT * FROM results6 WHERE id = $id";
@@ -178,6 +183,7 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
+    //nece trebat
     public function getGameBySel($results, $home_id, $away_id)
     {
         $sql = "SELECT * FROM $results WHERE home_teamid = $home_id AND away_teamid = $away_id";
@@ -218,20 +224,69 @@ class DBModel extends Model
         $this->db->query($sqlPlayed);
     }
 
-    public function insertGame($results, $table, $mday, $home, $home_id, $away, $away_id, $goals_h, $goals_a)
-    {
-        if ($goals_h == null) {} else {
-            $sql = "INSERT INTO $results (m_day, home_team, home_teamid, away_team, away_teamid, goals_home, goals_away)
-        VALUES ($mday , '$home', $home_id, '$away', $away_id, $goals_h, $goals_a)";
-            $this->db->query($sql);
+    //prepravit
+    public function insertGame($mday, $home, $home_id, $away, $away_id,
+        $goals_h7, $goals_a7,
+        $goals_h8, $goals_a8,
+        $goals_h9, $goals_a9,
+        $goals_h10, $goals_a10,
+        $goals_h6, $goals_a6) {
 
-            if ($goals_h > $goals_a) {
-                $this->homeWin($table, $home_id, $away_id, $goals_h, $goals_a);
-            } elseif ($goals_a > $goals_h) {
-                $this->awayWin($table, $home_id, $away_id, $goals_h, $goals_a);
-            } else {
-                $this->gameDraw($table, $home_id, $away_id, $goals_h, $goals_a);
-            }
+        $sql = "INSERT INTO results
+        (m_day, home_name, home_id, away_name, away_id,
+        goals_home7, goals_away7,
+        goals_home8, goals_away8,
+        goals_home9, goals_away9,
+        goals_home10, goals_away10,
+        goals_home6, goals_away6) VALUES
+        ($mday, '$home', $home_id, '$away', $away_id,
+        $goals_h7, $goals_a7,
+        $goals_h8, $goals_a8,
+        $goals_h9, $goals_a9,
+        $goals_h10, $goals_a10,
+        $goals_h6, $goals_a6)";
+
+        $this->db->query($sql);
+
+        //7
+        if ($goals_h7 > $goals_a7) {
+            $this->homeWin('table7', $home_id, $away_id, $goals_h7, $goals_a7);
+        } elseif ($goals_a7 > $goals_h7) {
+            $this->awayWin('table7', $home_id, $away_id, $goals_h7, $goals_a7);
+        } elseif ($goals_a7 == $goals_h7 && $goals_a7 != -1) {
+            $this->gameDraw('table7', $home_id, $away_id, $goals_h7, $goals_a7);
+        }
+        //8
+        if ($goals_h8 > $goals_a8) {
+            $this->homeWin('table8', $home_id, $away_id, $goals_h8, $goals_a8);
+        } elseif ($goals_a8 > $goals_h8) {
+            $this->awayWin('table8', $home_id, $away_id, $goals_h8, $goals_a8);
+        } elseif ($goals_a8 == $goals_h8) {
+            $this->gameDraw('table8', $home_id, $away_id, $goals_h8, $goals_a8);
+        }
+        //9
+        if ($goals_h9 > $goals_a9) {
+            $this->homeWin('table9', $home_id, $away_id, $goals_h9, $goals_a9);
+        } elseif ($goals_a9 > $goals_h9) {
+            $this->awayWin('table9', $home_id, $away_id, $goals_h9, $goals_a9);
+        } elseif ($goals_a9 == $goals_h9) {
+            $this->gameDraw('table9', $home_id, $away_id, $goals_h9, $goals_a9);
+        }
+        //10
+        if ($goals_h10 > $goals_a10) {
+            $this->homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
+        } elseif ($goals_a10 > $goals_h10) {
+            $this->awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
+        } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
+            $this->gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10);
+        }
+        //6
+        if ($goals_h6 > $goals_a6) {
+            $this->homeWin('table6', $home_id, $away_id, $goals_h6, $goals_a6);
+        } elseif ($goals_a6 > $goals_h6) {
+            $this->awayWin('table6', $home_id, $away_id, $goals_h6, $goals_a6);
+        } elseif ($goals_a6 == $goals_h6) {
+            $this->gameDraw('table6', $home_id, $away_id, $goals_h6, $goals_a6);
         }
     }
 
