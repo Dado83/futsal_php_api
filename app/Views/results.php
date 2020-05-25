@@ -8,7 +8,7 @@
             <li id="results10">2010</li>
         </ul>
     </nav>
-    <section class="hidden" id="res2006">
+    <section class="results-section hidden" id="res2006">
         <?php foreach ($results as $result): ?>
         <table>
             <thead>
@@ -32,7 +32,7 @@
         </table>
         <?php endforeach?>
     </section>
-    <section class="hidden" id="res2007">
+    <section class="results-section hidden" id="res2007">
         <?php foreach ($results as $result): ?>
         <table>
             <thead>
@@ -41,7 +41,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($result as $r): ?>
+                <?php
+foreach ($result as $r):
+    if ($r->goals_home7 != -1): ?>
                 <tr>
                     <td><?=$r->home_name?></td>
                     <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
@@ -51,12 +53,14 @@
                     <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
                     <td><?=$r->away_name?></td>
                 </tr>
-                <?php endforeach?>
+                <?php
+endif;
+endforeach?>
             </tbody>
         </table>
         <?php endforeach?>
     </section>
-    <section class="hidden" id="res2008">
+    <section class="results-section hidden" id="res2008">
         <?php foreach ($results as $result): ?>
         <table>
             <thead>
@@ -80,7 +84,7 @@
         </table>
         <?php endforeach?>
     </section>
-    <section class="hidden" id="res2009">
+    <section class="results-section hidden" id="res2009">
         <?php foreach ($results as $result): ?>
         <table>
             <thead>
@@ -104,7 +108,7 @@
         </table>
         <?php endforeach?>
     </section>
-    <section class="hidden" id="res2010">
+    <section class="results-section hidden" id="res2010">
         <?php foreach ($results as $result): ?>
         <table>
             <thead>
@@ -113,7 +117,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($result as $r): ?>
+                <?php
+foreach ($result as $r):
+    if ($r->goals_home10 != -1): ?>
                 <tr>
                     <td><?=$r->home_name?></td>
                     <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
@@ -123,7 +129,9 @@
                     <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
                     <td><?=$r->away_name?></td>
                 </tr>
-                <?php endforeach?>
+                <?php
+endif;
+endforeach?>
             </tbody>
         </table>
         <?php endforeach?>
