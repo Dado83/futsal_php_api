@@ -28,11 +28,7 @@ class Home extends BaseController
     public function team($id)
     {
         $data['team'] = $this->model->getTeamByID($id);
-        $data['results6'] = $this->model->getResultsByID('results6', $id);
-        $data['results7'] = $this->model->getResultsByID('results7', $id);
-        $data['results8'] = $this->model->getResultsByID('results8', $id);
-        $data['results9'] = $this->model->getResultsByID('results9', $id);
-        $data['results10'] = $this->model->getResultsByID('results10', $id);
+        $data['results'] = $this->model->getResultsByID($id);
 
         echo view('header');
         echo view('team', $data);

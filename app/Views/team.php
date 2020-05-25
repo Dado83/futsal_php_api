@@ -8,41 +8,38 @@
         <p><?=$team->game_time?></p>
     </div>
     <section>
-        <nav>
-            <ul>
-                <li id="team-results6">2006</li>
-                <li id="team-results7">2007</li>
-                <li id="team-results8">2008</li>
-                <li id="team-results9">2009</li>
-                <li id="team-results10">2010</li>
-            </ul>
-        </nav>
-        <?php
-$results = [2006 => $results6, $results7, $results8, $results9, $results10];
-foreach ($results as $key => $result):
-    if (!$result):
-    else: ?>
-        <table class="hidden" id=<?="res$key"?>>
+        <?php foreach ($results as $result): ?>
+        <table>
             <thead>
-                <th>kolo</th>
-                <th><?=$key?>. godiste</th>
+                <tr>
+                    <th><?=$result->m_day?>. kolo</th>
+                    <th>2006</th>
+                    <th><?=($result->goals_home7 != -1) ? '2007' : ''?></th>
+                    <th>2008</th>
+                    <th>2009</th>
+                    <th><?=($result->goals_home10 != -1) ? '2010' : ''?></th>
+                </tr>
             </thead>
             <tbody>
-                <?php foreach ($result as $r): ?>
                 <tr>
-                    <td><?=$r->m_day?></td>
-                    <td><?=$r->home_team?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_teamid.png"?>></td>
-                    <td><?=$r->goals_home?>:<?=$r->goals_away?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_teamid.png"?>></td>
-                    <td><?=$r->away_team?></td>
+                    <td><?=$result->home_name?></td>
+                    <td><?=$result->goals_home6?></td>
+                    <td><?=($result->goals_home7 != -1) ?: ''?></td>
+                    <td><?=$result->goals_home8?></td>
+                    <td><?=$result->goals_home9?></td>
+                    <td><?=($result->goals_home10 != -1) ?: ''?></td>
                 </tr>
-                <?php endforeach?>
+                <tr>
+                    <td><?=$result->away_name?></td>
+                    <td><?=$result->goals_away6?></td>
+                    <td><?=($result->goals_away7 != -1) ?: ''?></td>
+                    <td><?=$result->goals_away8?></td>
+                    <td><?=$result->goals_away9?></td>
+                    <td><?=($result->goals_away10 != -1) ?: ''?></td>
+                </tr>
             </tbody>
         </table>
-        <?php
-endif;
-endforeach?>
+        <?php endforeach?>
     </section>
 </article>
 <script>

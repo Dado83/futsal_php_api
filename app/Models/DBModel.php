@@ -67,10 +67,9 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
-    //polemicno
-    public function getResultsByID($results, $id)
+    public function getResultsByID($id)
     {
-        $sql = "SELECT * FROM $results WHERE home_teamid = $id OR away_teamid = $id ORDER BY m_day";
+        $sql = "SELECT * FROM results WHERE home_id = $id OR away_id = $id ORDER BY m_day";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
@@ -111,7 +110,6 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    //prepravit
     public function getResults()
     {
         $sql = "SELECT * FROM results ORDER BY m_day";
@@ -119,7 +117,6 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    //prepravit
     public function getResultsByMday($mday)
     {
         $sql = "SELECT * FROM results WHERE m_day = $mday";
@@ -224,7 +221,6 @@ class DBModel extends Model
         $this->db->query($sqlPlayed);
     }
 
-    //prepravit
     public function insertGame($mday, $home, $home_id, $away, $away_id,
         $goals_h7, $goals_a7,
         $goals_h8, $goals_a8,
