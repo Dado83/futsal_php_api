@@ -26,7 +26,7 @@
                 <li><a href="/raspored">raspored</a></li>
                 <li><a href="/turnir">turnir mejk</a></li>
                 <li><a href="/o-nama">o nama</a></li>
-                <!-- <li><a href="/admin">admin</a></li> -->
+                <li><a href="/admin">admin</a></li>
             </ul>
         </nav>
         <a class="home" href="/"></a>

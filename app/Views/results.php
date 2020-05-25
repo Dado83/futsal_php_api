@@ -8,6 +8,7 @@
             <li id="results10">2010</li>
         </ul>
     </nav>
+    <?php if (isset($results)): ?>
     <section class="results-section hidden" id="res2006">
         <?php foreach ($results as $result): ?>
         <table>
@@ -135,31 +136,35 @@ endforeach?>
             </tbody>
         </table>
         <?php endforeach?>
+    </section>
+    <?php
+else:
+    echo 'Nema odigranih utakmica';
+endif?>
+    <script>
+    let nav = document.querySelectorAll('.results li')
+    nav[0].className = 'nav-select'
+    document.querySelector('#res2006').style.display = 'block'
 
-        <script>
-        let nav = document.querySelectorAll('.results li')
-        nav[0].className = 'nav-select'
-        document.querySelector('#res2006').style.display = 'block'
+    for (let i = 0; i < nav.length; i++) {
+        nav[i].addEventListener('mouseup', navigation)
+    }
 
-        for (let i = 0; i < nav.length; i++) {
-            nav[i].addEventListener('mouseup', navigation)
+    function navigation() {
+        for (n of nav) {
+            n.classList.remove('nav-select')
         }
 
-        function navigation() {
-            for (n of nav) {
-                n.classList.remove('nav-select')
-            }
+        let id = this.textContent
+        this.className = 'nav-select'
+        let results = document.querySelectorAll('section')
 
-            let id = this.textContent
-            this.className = 'nav-select'
-            let results = document.querySelectorAll('section')
-
-            for (let i = 0; i < results.length; i++) {
-                results[i].style.display = 'none'
-            }
-
-            document.querySelector('#res' + id).style.display = 'block'
-            document.querySelector('#res' + id).style.width = '340px'
-            document.querySelector('#res' + id).style.margin = 'auto'
+        for (let i = 0; i < results.length; i++) {
+            results[i].style.display = 'none'
         }
-        </script>
+
+        document.querySelector('#res' + id).style.display = 'block'
+        document.querySelector('#res' + id).style.width = '340px'
+        document.querySelector('#res' + id).style.margin = 'auto'
+    }
+    </script>
