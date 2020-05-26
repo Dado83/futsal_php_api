@@ -1,12 +1,12 @@
 <article class="team">
-    <div>
+    <section>
         <img src="/public/images/logos-big/<?=$team->id?>.png" alt="grb-klub">
         <p><?=$team->team_name?></p>
         <p><?=$team->team_city?></p>
         <p><?=$team->kit_color?></p>
         <p><?=$team->venue?></p>
         <p><?=$team->game_time?></p>
-    </div>
+    </section>
     <section>
         <?php foreach ($results as $result): ?>
         <table>
@@ -14,15 +14,15 @@
                 <tr>
                     <th><?=$result->m_day?>. kolo</th>
                     <th>2006</th>
-                    <th><?=($result->goals_home7 != -1) ? '2007' : ''?></th>
+                    <th>2007</th>
                     <th>2008</th>
                     <th>2009</th>
-                    <th><?=($result->goals_home10 != -1) ? '2010' : ''?></th>
+                    <th>2010</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><?=$result->home_name?></td>
+                    <td><a href=<?="/ekipa/$result->home_id"?>><img src=<?="/public/images/logos/$result->home_id.png"?>><?=$result->home_name?></a></td>
                     <td><?=$result->goals_home6?></td>
                     <td><?=($result->goals_home7 != -1) ?: ''?></td>
                     <td><?=$result->goals_home8?></td>
@@ -30,7 +30,7 @@
                     <td><?=($result->goals_home10 != -1) ?: ''?></td>
                 </tr>
                 <tr>
-                    <td><?=$result->away_name?></td>
+                    <td><a href=<?="/ekipa/$result->away_id"?>><img src=<?="/public/images/logos/$result->away_id.png"?>><?=$result->away_name?></a></td>
                     <td><?=$result->goals_away6?></td>
                     <td><?=($result->goals_away7 != -1) ?: ''?></td>
                     <td><?=$result->goals_away8?></td>

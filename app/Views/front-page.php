@@ -1,7 +1,7 @@
 <h3>Liga Budućih Šampiona 2019/2020</h3>
 <article class="front-page">
     <?php foreach ($teams as $team): ?>
-    <a href=<?="ekipa/" . $team->id?>>
+    <a href=<?="/ekipa/$team->id"?>>
         <div>
             <img src="/public/images/logos/<?=$team->id?>.png" alt="grb">
             <p>
