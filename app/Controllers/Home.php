@@ -79,7 +79,9 @@ class Home extends BaseController
 
     public function createTournament()
     {
+        echo view('header');
         echo view('fts.html');
+        echo view('footer');
     }
 
     public function admin()
