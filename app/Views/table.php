@@ -29,7 +29,7 @@ foreach ($tables as $k => $table): ?>
 foreach ($table as $i => $row): ?>
             <tr>
                 <td><?=++$i?></td>
-                <td><img src=<?="/public/images/logos/$row->id.png"?> alt="grb"><?=$row->team?></td>
+                <td><a href=<?="/ekipa/$row->id"?>><img src=<?="/public/images/logos/$row->id.png"?> alt="grb"><?=$row->team?></a></td>
                 <td><?=$row->games_played?></td>
                 <td><?=$row->games_won?></td>
                 <td><?=$row->games_drew?></td>

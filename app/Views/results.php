@@ -20,13 +20,19 @@
             <tbody>
                 <?php foreach ($result as $r): ?>
                 <tr>
-                    <td><?=$r->home_name?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <?=$r->home_name?><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                        </a>
+                    </td>
                     <td><?=$r->goals_home6?></td>
                     <td>:</td>
                     <td><?=$r->goals_away6?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
-                    <td><?=$r->away_name?></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach?>
             </tbody>
@@ -46,13 +52,19 @@
 foreach ($result as $r):
     if ($r->goals_home7 != -1): ?>
                 <tr>
-                    <td><?=$r->home_name?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <?=$r->home_name?><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                        </a>
+                    </td>
                     <td><?=$r->goals_home7?></td>
                     <td>:</td>
                     <td><?=$r->goals_away7?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
-                    <td><?=$r->away_name?></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                        </a>
+                    </td>
                 </tr>
                 <?php
 endif;
@@ -72,13 +84,19 @@ endforeach?>
             <tbody>
                 <?php foreach ($result as $r): ?>
                 <tr>
-                    <td><?=$r->home_name?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <?=$r->home_name?><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                        </a>
+                    </td>
                     <td><?=$r->goals_home8?></td>
                     <td>:</td>
                     <td><?=$r->goals_away8?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
-                    <td><?=$r->away_name?></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach?>
             </tbody>
@@ -96,13 +114,19 @@ endforeach?>
             <tbody>
                 <?php foreach ($result as $r): ?>
                 <tr>
-                    <td><?=$r->home_name?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <?=$r->home_name?><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                        </a>
+                    </td>
                     <td><?=$r->goals_home9?></td>
                     <td>:</td>
                     <td><?=$r->goals_away9?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
-                    <td><?=$r->away_name?></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                        </a>
+                    </td>
                 </tr>
                 <?php endforeach?>
             </tbody>
@@ -122,13 +146,19 @@ endforeach?>
 foreach ($result as $r):
     if ($r->goals_home10 != -1): ?>
                 <tr>
-                    <td><?=$r->home_name?></td>
-                    <td><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb"></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <?=$r->home_name?><img src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                        </a>
+                    </td>
                     <td><?=$r->goals_home10?></td>
                     <td>:</td>
                     <td><?=$r->goals_away10?></td>
-                    <td><img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"></td>
-                    <td><?=$r->away_name?></td>
+                    <td>
+                        <a href=<?="/ekipa/$r->home_id"?>>
+                            <img src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                        </a>
+                    </td>
                 </tr>
                 <?php
 endif;
