@@ -15,7 +15,6 @@ nav ul {
     justify-content: space-evenly;
     padding-left: 0;
     list-style: none;
-
 }
 
 nav li {
@@ -30,6 +29,7 @@ nav li {
     border-left: 1px solid var(--color2);
     border-right: 1px solid var(--color2);
     border-bottom: none;
+    font-weight: bold;
 }
 
 .hidden {
@@ -45,7 +45,11 @@ table {
 header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin: -10px -10px 50px -10px;
+    padding: 2px 0;
+    align-items: center;
+    background: var(--color1);
+    box-shadow: 0 0 2px var(--color2);
 }
 
 header a.home {
@@ -53,11 +57,9 @@ header a.home {
     display: block;
     width: 50px;
     height: 50px;
+    margin-left: 5px;
     background-position: center;
     background-size: cover;
-    margin: auto;
-    position: relative;
-    left: 10px;
     transition: transform 0.5s;
 }
 
@@ -65,17 +67,15 @@ header a.home:hover {
     transform: scale(1.1);
 }
 
-.login {
-    height: 100%;
-}
-
 .nav-bar {
     flex-direction: column;
-    width: 100px;
+    width: 0;
     height: 0;
-    overflow: hidden;
     position: absolute;
-    top: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    top: 30px;
+    right: 0px;
     z-index: 1;
     transition: 0.6s;
     opacity: 0;
@@ -83,32 +83,31 @@ header a.home:hover {
 }
 
 .menu:hover .nav-bar {
+    width: 100px;
     height: 180px;
     opacity: 1;
+    box-shadow: 0 0 4px var(--color2);
 }
 
 .menu {
-    height: 0;
+    margin-right: 10px;
 }
 
 .nav-bar a {
     color: var(--color1);
     text-decoration: none;
-    display: block;
+    padding-right: 10px;
 }
 
 .nav-bar a:hover {
-    color: var(--color2);
+    color: white;
 }
 
 .nav-bar li {
+    text-align: right;
     padding: 5px;
     transition: 0.5s;
-}
-
-.nav-bar li:hover {
-    transform: scale(1.1);
-    background: var(--color1);
+    border: none;
 }
 
 .bar1,

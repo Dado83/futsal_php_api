@@ -14,6 +14,7 @@
 </head>
 <body>
     <header>
+        <a class="home" href="/"></a><span>Liga Budućih Šampiona</span>
         <nav class="menu">
             <div class="menu-container">
                 <div class="bar1"></div>
@@ -29,6 +30,4 @@
                 <li><a href="/admin">admin</a></li>
             </ul>
         </nav>
-        <a class="home" href="/"></a>
-        <button class="login">login</button>
     </header>
