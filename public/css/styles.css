@@ -13,23 +13,20 @@ body {
 
 nav ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-left: 0;
     list-style: none;
+    text-align: center;
 }
 
 nav li {
     cursor: pointer;
     padding: 2px 8px;
-    border-bottom: 1px solid var(--color2);
     width: 100%;
 }
 
 .nav-select {
-    border-top: 1px solid var(--color2);
-    border-left: 1px solid var(--color2);
-    border-right: 1px solid var(--color2);
-    border-bottom: none;
+    border-bottom: 4px solid var(--color1);
     font-weight: bold;
     color: var(--color3);
 }
