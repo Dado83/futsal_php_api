@@ -12,9 +12,9 @@
     </form>
 </div>
 <div id="adminCards">
-    <div class="adminCards"><a href="/home/newsLetter"><img src="/images/icons/newsletter.svg" style="width: 100%" />Bilten</a>
+    <div class="adminCards"><a href="/Home/newsLetter"><img src="/images/icons/newsletter.svg" style="width: 100%" />Bilten</a>
     </div>
-    <div class="adminCards"><a href="/home/metrics"><img src="/images/icons/charts.svg" style="width: 100%" />Metrics</a>
+    <div class="adminCards"><a href="/Home/metrics"><img src="/images/icons/charts.svg" style="width: 100%" />Metrics</a>
     </div>
     <div id="passwordChange" class="adminCards"><img src="/images/icons/pass.svg" style="width: 100%" />Password
     </div>
@@ -32,7 +32,7 @@
         <td class="oddResRow"><?=$row->m_day?></td>
         <td><?=$row->home_name?></td>
         <td><?=$row->away_name?></td>
-        <td><a class='button' href='/home/brisanjeKola/<?=$row->id?>' onclick="return confirm('Brišem zadnje kolo?')">Briši</a></td>
+        <td><a class='button' href='/Home/deleteGame/<?=$row->id?>' onclick="return confirm('Brišem zadnje kolo?')">Briši</a></td>
     </tr>
     <?php endforeach?>
 </table>
@@ -49,7 +49,7 @@
         <td class="oddResRow"><?=$row->m_day?></td>
         <td><?=$row->home_team?></td>
         <td><?=$row->away_team?></td>
-        <td><a class='button' href='/home/formIn/<?=$row->id?>'>Unos</a></td>
+        <td><a class='button' href='/Home/formIn/<?=$row->id?>'>Unos</a></td>
     </tr>
     <?php endforeach?>
 </table>

@@ -1,5 +1,5 @@
 <div class="form">
-    <form action="/home/unosKola" method="POST">
+    <form action="/Home/inputGame" method="post">
         <fieldset>
             <legend>Unos rezultata <?=$game->m_day?>. kola</legend>
             <table>

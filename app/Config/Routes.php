@@ -40,6 +40,8 @@ $routes->get('/raspored', 'Home::fixtures');
 $routes->get('/o-nama', 'Home::about');
 $routes->get('/admin', 'Home::admin');
 $routes->get('/turnir', 'Home::createTournament');
+$routes->get('/login', 'Home::login');
+$routes->get('/test', 'Home::test');
 
 /**
  * --------------------------------------------------------------------

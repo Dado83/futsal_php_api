@@ -78,7 +78,7 @@ header a.home {
 }
 
 header a.home:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .nav-bar {

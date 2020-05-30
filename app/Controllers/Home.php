@@ -105,10 +105,10 @@ class Home extends BaseController
         echo view('gameInput', $data);
     }
 
-    public function unosKola()
+    public function inputGame()
     {
 
-        $request = service('request');
+        $request = $this->request;
 
         $id = $request->getVar('id');
         $mDay = $request->getVar('mday');
@@ -141,7 +141,7 @@ class Home extends BaseController
         return redirect()->to('/admin');
     }
 
-    public function brisanjeKola($id)
+    public function deleteGame($id)
     {
 
         $game = $this->model->getGameFromResults($id);
@@ -202,18 +202,56 @@ class Home extends BaseController
         echo json_encode($data);
     }
 
+    public function login()
+    {
+        echo view('header');
+        echo view('login');
+        echo view('footer');
+    }
+
+    public function setUser()
+    {
+        $request = $this->request;
+        $user = $request->getVar('userName');
+        $pass = $request->getVar('userPassword');
+
+        $session = $this->session;
+        $session->set('user', $user);
+        return redirect()->to('/admin');
+    }
+
     public function test()
     {
-        $maxMDay = $this->model->getNumberOfMdaysPlayed()->mDay;
 
-        for ($i = 1; $i <= $maxMDay; $i++) {
-            $data['results'][$i] = $this->model->getResultsByMday($i);
+        $session = $this->session;
+        //$session->set('user', 'd');
+        $session->remove('user');
+        echo "user: $session->user<br>";
+        $agent = $this->request->getUserAgent();
+        if ($agent->isRobot()) {
+            $device = 'mobile';
+        } elseif ($agent->isMobile()) {
+            $device = 'robot';
+        } else {
+            $device = 'desktop';
         }
-        foreach ($data['results'] as $result) {
-            foreach ($result as $r) {
-                echo $r->home_name;
-            }
+        $data = [
+            'device' => $device,
+            'browser' => $agent->getBrowser(),
+            'browserVer' => $agent->getVersion(),
+            'mobile' => $agent->getMobile(),
+            'robot' => $agent->getRobot(),
+            'platform' => $agent->getPlatform(),
+            'referral' => $agent->getReferrer(),
+            'agent' => $agent->getAgentString(),
+            'date' => date('d/m/y', time()),
+            'time' => date('H:i', time()),
+        ];
 
+        $session->set($data);
+
+        foreach ($data as $k => $d) {
+            echo "$k: $d<br>";
         }
     }
 }
