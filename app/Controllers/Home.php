@@ -211,12 +211,23 @@ class Home extends BaseController
 
     public function setUser()
     {
-        $request = $this->request;
-        $user = $request->getVar('userName');
-        $pass = $request->getVar('userPassword');
-
         $session = $this->session;
-        $session->set('user', $user);
+        $request = $this->request;
+        $userRole = $request->getVar('userRole');
+        $userPass = $request->getVar('userPassword');
+        $dbUser = $this->model->getUser($userRole);
+        if ($dbUser) {
+            $dbRole = $dbUser->role;
+            $dbPass = $dbUser->password;
+            if (!password_verify($userPass, $dbPass)) {
+                $session->setTempdata('info', 'Lozinka netacna', 1);
+            } else {
+                $session->set('user', $dbRole);
+            }
+        } else {
+            $session->setTempdata('info', 'Korisnik nije u bazi', 1);
+        }
+
         return redirect()->to('/admin');
     }
 
@@ -224,9 +235,13 @@ class Home extends BaseController
     {
 
         $session = $this->session;
-        //$session->set('user', 'd');
-        $session->remove('user');
-        echo "user: $session->user<br>";
+        $session->setFlashdata('user', 'd');
+        //$session->remove('user');
+        $user = $this->model->getUser('aa');
+        //$pass = password_verify('admin2014', $user->password);
+        //echo "user: $pass<br>";
+        var_dump($session->user);
+        echo '<br>';
         $agent = $this->request->getUserAgent();
         if ($agent->isRobot()) {
             $device = 'mobile';

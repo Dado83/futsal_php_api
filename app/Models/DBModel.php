@@ -472,7 +472,7 @@ class DBModel extends Model
 
     public function getUser($user)
     {
-        $sql = "SELECT * FROM users WHERE user = '$user'";
+        $sql = "SELECT * FROM users WHERE role = '$user'";
         $query = $this->db->query($sql);
         return $query->getRow();
     }
