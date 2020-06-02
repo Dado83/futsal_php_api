@@ -435,39 +435,29 @@ class DBModel extends Model
         $this->db->query($sql_a2);
     }
 
-    public function setVisitor($role = 'NULL')
+    public function setVisitor($session)
     {
-        $ip = $this->session->ip;
-        $mobile = $this->session->mobile;
-        $robot = $this->session->robot;
-        $platform = $this->session->platform;
-        $browser = $this->session->browser;
-        $version = $this->session->version;
-        $userAgent = $this->session->userAgent;
-        $newVisitor = $this->session->newVisitor;
-        $startTime = $this->session->startTime;
-        $site = $this->session->site;
+        $role = $session->role;
+        $returnVisitor = $session->returnVisitor;
+        $ip = $session->ip;
+        $device = $session->device;
+        $browser = $session->browser;
+        $browserVer = $session->browserVer;
+        $mobile = $session->mobile;
+        $platform = $session->platform;
+        $referral = $session->referral;
+        $agent = $session->agent;
+        $page = $session->page;
+        $date = $session->date;
+        $time = $session->time;
 
-        $this->checkIfNULL($ip);
-        $this->checkIfNULL($mobile);
-        $this->checkIfNULL($robot);
-        $this->checkIfNULL($platform);
-        $this->checkIfNULL($browser);
-        $this->checkIfNULL($version);
-        $this->checkIfNULL($userAgent);
-        $this->checkIfNULL($newVisitor);
-        $this->checkIfNULL($startTime);
-
-        $sql = "INSERT INTO visitors (ip, mobile, robot, platform, browser, version, user_agent, new_visitor, role, time, site)
-        VALUES ('$ip', '$mobile', '$robot', '$platform', '$browser', '$version', '$userAgent', $newVisitor, '$role', $startTime, '$site')";
+        $sql = "INSERT INTO visitors (
+            role, return_visitor, ip, device, browser, browser_ver,
+            mobile, platform, referral, agent, page, date, time)
+        VALUES (
+            '$role', '$returnVisitor', '$ip', '$device', '$browser', '$browserVer',
+            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time')";
         $this->db->query($sql);
-    }
-
-    private function checkIfNULL(&$value)
-    {
-        if ($value === '') {
-            $value = 'NULL';
-        }
     }
 
     public function getUser($user)
@@ -580,9 +570,10 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
+    //prepravit
     public function visitorListForCurrentYear()
     {
-        $sql = "SELECT * FROM visitors";
+        $sql = "SELECT * FROM visitors ORDER BY id DESC";
         $query = $this->db->query($sql);
         $result = ($query) ? $query->getResult() : array();
 
@@ -591,69 +582,68 @@ class DBModel extends Model
         foreach ($result as $v) {
             $visitors[] = (object) [
                 'id' => $v->id,
-                'ip' => $v->ip,
-                'mobile' => $v->mobile,
-                'robot' => $v->robot,
-                'platform' => $v->platform,
-                'browser' => $v->browser,
-                'version' => $v->version,
-                'user_agent' => $v->user_agent,
-                'new_visitor' => $v->new_visitor,
                 'role' => $v->role,
-                'day' => date('d', $v->time),
-                'month' => date('M', $v->time),
-                'year' => date('Y', $v->time),
-                'time' => date('H:i', $v->time),
-                'site' => $v->site,
+                'returnVisitor' => $v->return_visitor,
+                'ip' => $v->ip,
+                'device' => $v->device,
+                'browser' => $v->browser,
+                'browserVersion' => $v->browser_ver,
+                'mobile' => $v->mobile,
+                'platform' => $v->platform,
+                'referral' => $v->referral,
+                'agent' => $v->agent,
+                'page' => $v->page,
+                'date' => $v->date,
+                'time' => $v->time,
             ];
         }
 
-        $currentYear = date('Y', time());
+        /* $currentYear = date('Y', time());
         $year = [];
         $vis = array_reverse($visitors);
         foreach ($vis as $v) {
-            if ($v->year == $currentYear) {
-                switch ($v->month) {
-                    case 'Jan':
-                        $year['Januar'][] = $v;
-                        break;
-                    case 'Feb':
-                        $year['Februar'][] = $v;
-                        break;
-                    case 'Mar':
-                        $year['Mart'][] = $v;
-                        break;
-                    case 'Apr':
-                        $year['April'][] = $v;
-                        break;
-                    case 'May':
-                        $year['Maj'][] = $v;
-                        break;
-                    case 'Jun':
-                        $year['Jun'][] = $v;
-                        break;
-                    case 'Jul':
-                        $year['Jul'][] = $v;
-                        break;
-                    case 'Aug':
-                        $year['Avgust'][] = $v;
-                        break;
-                    case 'Sep':
-                        $year['Septembar'][] = $v;
-                        break;
-                    case 'Oct':
-                        $year['Oktobar'][] = $v;
-                        break;
-                    case 'Nov':
-                        $year['Novembar'][] = $v;
-                        break;
-                    case 'Dec':
-                        $year['Decembar'][] = $v;
-                        break;
-                }
-            }
+        if ($v->year == $currentYear) {
+        switch ($v->month) {
+        case 'Jan':
+        $year['Januar'][] = $v;
+        break;
+        case 'Feb':
+        $year['Februar'][] = $v;
+        break;
+        case 'Mar':
+        $year['Mart'][] = $v;
+        break;
+        case 'Apr':
+        $year['April'][] = $v;
+        break;
+        case 'May':
+        $year['Maj'][] = $v;
+        break;
+        case 'Jun':
+        $year['Jun'][] = $v;
+        break;
+        case 'Jul':
+        $year['Jul'][] = $v;
+        break;
+        case 'Aug':
+        $year['Avgust'][] = $v;
+        break;
+        case 'Sep':
+        $year['Septembar'][] = $v;
+        break;
+        case 'Oct':
+        $year['Oktobar'][] = $v;
+        break;
+        case 'Nov':
+        $year['Novembar'][] = $v;
+        break;
+        case 'Dec':
+        $year['Decembar'][] = $v;
+        break;
         }
+        }
+        } */
 
-        return $year;
+        return $result;
     }
 }
