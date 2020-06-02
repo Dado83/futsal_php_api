@@ -10,7 +10,7 @@ class FPFilter implements FilterInterface
     public function before(RequestInterface $request)
     {
         $session = session();
-        if ($session->user != 'admin') {
+        if ($session->role != 'admin') {
             return redirect()->to('/login');
         }
     }

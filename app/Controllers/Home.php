@@ -182,7 +182,7 @@ class Home extends BaseController
     public function metrics()
     {
         $data['title'] = 'Metrics';
-        $data['vis'] = $this->model->visitorListForCurrentYear();
+        $data['visitors'] = $this->model->visitorListForCurrentYear();
         echo view('metrics', $data);
 
     }
@@ -209,9 +209,9 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function setUser()
+    public function userLogin()
     {
-        $session = $this->session;
+        $session = session();
         $request = $this->request;
         $userRole = $request->getVar('userRole');
         $userPass = $request->getVar('userPassword');
@@ -221,52 +221,22 @@ class Home extends BaseController
             $dbPass = $dbUser->password;
             if (!password_verify($userPass, $dbPass)) {
                 $session->setTempdata('info', 'Lozinka netacna', 1);
+                return redirect()->to('/admin');
             } else {
-                $session->set('user', $dbRole);
+                $session->set('role', $dbRole);
+                return redirect()->to('/admin')->setCookie('role', 'admin', 60 * 60 * 24 * 30 * 3);
             }
         } else {
             $session->setTempdata('info', 'Korisnik nije u bazi', 1);
+            return redirect()->to('/admin');
         }
-
-        return redirect()->to('/admin');
     }
 
     public function test()
     {
-
-        $session = $this->session;
-        $session->setFlashdata('user', 'd');
-        //$session->remove('user');
-        $user = $this->model->getUser('aa');
-        //$pass = password_verify('admin2014', $user->password);
-        //echo "user: $pass<br>";
-        var_dump($session->user);
+        var_dump(session()->role);
         echo '<br>';
-        $agent = $this->request->getUserAgent();
-        if ($agent->isRobot()) {
-            $device = 'mobile';
-        } elseif ($agent->isMobile()) {
-            $device = 'robot';
-        } else {
-            $device = 'desktop';
-        }
-        $data = [
-            'device' => $device,
-            'browser' => $agent->getBrowser(),
-            'browserVer' => $agent->getVersion(),
-            'mobile' => $agent->getMobile(),
-            'robot' => $agent->getRobot(),
-            'platform' => $agent->getPlatform(),
-            'referral' => $agent->getReferrer(),
-            'agent' => $agent->getAgentString(),
-            'date' => date('d/m/y', time()),
-            'time' => date('H:i', time()),
-        ];
-
-        $session->set($data);
-
-        foreach ($data as $k => $d) {
-            echo "$k: $d<br>";
-        }
+        var_dump(get_cookie('role'));
+        session_destroy();
     }
 }

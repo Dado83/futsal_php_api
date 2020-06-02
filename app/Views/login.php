@@ -1,4 +1,4 @@
-<form action="/Home/setUser" method="post">
+<form action="/Home/userLogin" method="post">
     <fieldset>
         <legend>Prijava</legend>
         <table>
