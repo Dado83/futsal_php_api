@@ -43,7 +43,7 @@ class Home extends BaseController
             'platform' => $agent->getPlatform() ?: 'NULL',
             'referral' => $agent->getReferrer() ?: 'NULL',
             'agent' => $agent->getAgentString() ?: 'NULL',
-            'page' => uri_string() ?: 'NULL',
+            'page' => uri_string() == '/' ? 'fairplay2014' : uri_string(),
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
         ];
