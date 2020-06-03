@@ -7,7 +7,9 @@ class Home extends BaseController
     {
         parent::initController($request, $response, $logger);
         $this->model = new \App\Models\DBModel;
-        $this->model->setVisitor($this->setSession());
+        if (get_cookie('role') != 'admin') {
+            $this->model->setVisitor($this->setSession());
+        }
     }
 
     private function setSession()
