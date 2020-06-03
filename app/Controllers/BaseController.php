@@ -79,7 +79,7 @@ class BaseController extends Controller
             'platform' => $agent->getPlatform() ?: 'NULL',
             'referral' => $agent->getReferrer() ?: 'NULL',
             'agent' => $agent->getAgentString() ?: 'NULL',
-            'page' => uri_string() ?: 'NULL',
+            'page' => current_url() ?: 'NULL',
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
         ];

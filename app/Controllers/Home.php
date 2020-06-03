@@ -234,9 +234,6 @@ class Home extends BaseController
 
     public function test()
     {
-        var_dump(session()->role);
-        echo '<br>';
-        var_dump(get_cookie('role'));
-        session_destroy();
+        echo current_url();
     }
 }
