@@ -7,7 +7,7 @@ class Home extends BaseController
     {
         parent::initController($request, $response, $logger);
         $this->model = new \App\Models\DBModel;
-        if (get_cookie('role') != 'admin') {
+        if (get_cookie('role') != 'admin' && !$this->request->getUserAgent()->isRobot()) {
             $this->model->setVisitor($this->setSession());
         }
     }
@@ -285,6 +285,10 @@ class Home extends BaseController
 
     public function test()
     {
-        //echo $this->request->fetch_class();
+        var_dump(date('H:i'));
+        echo '<br>';
+        echo time();
+        echo '<br>';
+        echo strtotime('13:33');
     }
 }

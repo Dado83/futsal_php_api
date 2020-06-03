@@ -7,7 +7,7 @@ class Sk extends BaseController
     {
         parent::initController($request, $response, $logger);
         $this->model = new \App\Models\DBModel;
-        if (get_cookie('role') != 'admin') {
+        if (get_cookie('role') != 'admin' && !$this->request->getUserAgent()->isRobot()) {
             $this->model->setVisitor($this->setSession());
         }
     }

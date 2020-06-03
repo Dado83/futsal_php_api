@@ -578,7 +578,6 @@ class DBModel extends Model
         $result = ($query) ? $query->getResult() : array();
 
         $visitors = [];
-
         foreach ($result as $v) {
             $visitors[] = (object) [
                 'id' => $v->id,
@@ -597,52 +596,6 @@ class DBModel extends Model
                 'time' => $v->time,
             ];
         }
-
-        /* $currentYear = date('Y', time());
-        $year = [];
-        $vis = array_reverse($visitors);
-        foreach ($vis as $v) {
-        if ($v->year == $currentYear) {
-        switch ($v->month) {
-        case 'Jan':
-        $year['Januar'][] = $v;
-        break;
-        case 'Feb':
-        $year['Februar'][] = $v;
-        break;
-        case 'Mar':
-        $year['Mart'][] = $v;
-        break;
-        case 'Apr':
-        $year['April'][] = $v;
-        break;
-        case 'May':
-        $year['Maj'][] = $v;
-        break;
-        case 'Jun':
-        $year['Jun'][] = $v;
-        break;
-        case 'Jul':
-        $year['Jul'][] = $v;
-        break;
-        case 'Aug':
-        $year['Avgust'][] = $v;
-        break;
-        case 'Sep':
-        $year['Septembar'][] = $v;
-        break;
-        case 'Oct':
-        $year['Oktobar'][] = $v;
-        break;
-        case 'Nov':
-        $year['Novembar'][] = $v;
-        break;
-        case 'Dec':
-        $year['Decembar'][] = $v;
-        break;
-        }
-        }
-        } */
 
         return $result;
     }
