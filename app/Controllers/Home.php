@@ -2,13 +2,13 @@
 
 class Home extends BaseController
 {
-
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
     {
         parent::initController($request, $response, $logger);
         $this->model = new \App\Models\DBModel;
+        $session = $this->setSession();
         if (get_cookie('role') != 'admin' && !$this->request->getUserAgent()->isRobot()) {
-            $this->model->setVisitor($this->setSession());
+            $this->model->setVisitor($session);
         }
     }
 
@@ -47,6 +47,8 @@ class Home extends BaseController
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
             'timestamp' => time(),
+            'lastHourViews' => $this->model->getVisitors('lastHourViews'),
+            'lastHourVisitors' => $this->model->getVisitors('lastHourVisitors'),
         ];
         $session->set($data);
 
@@ -232,9 +234,10 @@ class Home extends BaseController
     public function metrics()
     {
         $data['title'] = 'Metrics';
-        $data['visitors'] = $this->model->visitorListForCurrentYear();
-        echo view('metrics', $data);
+        $data['vis'] = $this->model->visitorListForCurrentYear();
 
+        echo view('header');
+        echo view('metrics', $data);
     }
     public function getVisitorData()
     {
@@ -290,6 +293,6 @@ class Home extends BaseController
         echo '<br>';
         echo strtotime('13:33');
         echo '<br>';
-        echo ('13:33' > '1:00');
+        echo ($this->lastHourViews->vis);
     }
 }
