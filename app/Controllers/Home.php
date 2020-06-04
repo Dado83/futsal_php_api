@@ -293,6 +293,6 @@ class Home extends BaseController
         echo '<br>';
         echo strtotime('13:33');
         echo '<br>';
-        echo ($this->lastHourViews->vis);
+        echo (session()->lastHourViews->vis);
     }
 }

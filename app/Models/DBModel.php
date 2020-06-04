@@ -457,7 +457,7 @@ class DBModel extends Model
             mobile, platform, referral, agent, page, date, time, timestamp)
         VALUES (
             '$role', $returnVisitor, '$ip', '$device', '$browser', '$browserVer',
-            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time',$timestamp)";
+            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time', $timestamp)";
         $this->db->query($sql);
     }
 
@@ -554,10 +554,10 @@ class DBModel extends Model
                 $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='desktop'";
                 break;
             case 'lastHourViews':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE time>$lastHour";
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$lastHour";
                 break;
             case 'lastHourVisitors':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE time>$lastHour";
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$lastHour";
                 break;
         }
 
