@@ -27,9 +27,7 @@ class Home extends BaseController
             $visitor = '0';
         }
         $agent = $this->request->getUserAgent();
-        if ($agent->isRobot()) {
-            $device = 'robot';
-        } elseif ($agent->isMobile()) {
+        if ($agent->isMobile()) {
             $device = 'mobile';
         } else {
             $device = 'desktop';
@@ -48,6 +46,7 @@ class Home extends BaseController
             'page' => uri_string() == '/' ? 'fairplay2014' : uri_string(),
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
+            'timestamp' => time(),
         ];
         $session->set($data);
 
@@ -285,10 +284,12 @@ class Home extends BaseController
 
     public function test()
     {
-        var_dump(date('H:i'));
+        var_dump(date('F'));
         echo '<br>';
         echo time();
         echo '<br>';
         echo strtotime('13:33');
+        echo '<br>';
+        echo ('13:33' > '1:00');
     }
 }

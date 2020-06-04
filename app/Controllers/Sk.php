@@ -27,9 +27,7 @@ class Sk extends BaseController
             $visitor = '0';
         }
         $agent = $this->request->getUserAgent();
-        if ($agent->isRobot()) {
-            $device = 'robot';
-        } elseif ($agent->isMobile()) {
+        if ($agent->isMobile()) {
             $device = 'mobile';
         } else {
             $device = 'desktop';
@@ -48,6 +46,7 @@ class Sk extends BaseController
             'page' => 'svet-kompjutera',
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
+            'timestamp' => time(),
         ];
         $session->set($data);
 

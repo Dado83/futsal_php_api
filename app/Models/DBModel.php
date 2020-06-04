@@ -450,13 +450,14 @@ class DBModel extends Model
         $page = $session->page;
         $date = $session->date;
         $time = $session->time;
+        $timestamp = $session->timestamp;
 
         $sql = "INSERT INTO visitors (
             role, return_visitor, ip, device, browser, browser_ver,
-            mobile, platform, referral, agent, page, date, time)
+            mobile, platform, referral, agent, page, date, time, timestamp)
         VALUES (
-            '$role', '$returnVisitor', '$ip', '$device', '$browser', '$browserVer',
-            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time')";
+            '$role', $returnVisitor, '$ip', '$device', '$browser', '$browserVer',
+            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time',$timestamp)";
         $this->db->query($sql);
     }
 
@@ -535,34 +536,28 @@ class DBModel extends Model
         $lastHour = time() - (60 * 60);
         switch ($type) {
             case 'all':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE robot='NULL'";
+                $sql = "SELECT COUNT(*) AS vis FROM visitors";
                 break;
             case 'allUnique':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE robot='NULL'";
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors";
                 break;
             case 'mobile':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE robot='NULL' AND NOT mobile='NULL'";
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE device='mobile'";
                 break;
             case 'mobileUnique':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE robot='NULL' AND NOT mobile='NULL'";
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='mobile'";
                 break;
             case 'desktop':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE robot='NULL' AND mobile='NULL'";
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE device='desktop'";
                 break;
             case 'desktopUnique':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE robot='NULL' AND mobile='NULL'";
-                break;
-            case 'robot':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE NOT robot='NULL'";
-                break;
-            case 'robotUnique':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE NOT robot='NULL'";
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='desktop'";
                 break;
             case 'lastHourViews':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE robot='NULL' AND time>$lastHour";
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE time>$lastHour";
                 break;
             case 'lastHourVisitors':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE robot='NULL' AND time>$lastHour";
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE time>$lastHour";
                 break;
         }
 
@@ -594,9 +589,57 @@ class DBModel extends Model
                 'page' => $v->page,
                 'date' => $v->date,
                 'time' => $v->time,
+                'timestamp' => $v->timestamp,
+                'month' => date('M', $v->time),
+                'year' => date('Y', $v->time),
             ];
         }
 
-        return $result;
+        $currentYear = date('Y', time());
+        $year = [];
+        $vis = array_reverse($visitors);
+        foreach ($vis as $v) {
+            if ($v->year == $currentYear) {
+                switch ($v->month) {
+                    case 'Jan':
+                        $year['Januar'][] = $v;
+                        break;
+                    case 'Feb':
+                        $year['Februar'][] = $v;
+                        break;
+                    case 'Mar':
+                        $year['Mart'][] = $v;
+                        break;
+                    case 'Apr':
+                        $year['April'][] = $v;
+                        break;
+                    case 'May':
+                        $year['Maj'][] = $v;
+                        break;
+                    case 'Jun':
+                        $year['Jun'][] = $v;
+                        break;
+                    case 'Jul':
+                        $year['Jul'][] = $v;
+                        break;
+                    case 'Aug':
+                        $year['Avgust'][] = $v;
+                        break;
+                    case 'Sep':
+                        $year['Septembar'][] = $v;
+                        break;
+                    case 'Oct':
+                        $year['Oktobar'][] = $v;
+                        break;
+                    case 'Nov':
+                        $year['Novembar'][] = $v;
+                        break;
+                    case 'Dec':
+                        $year['Decembar'][] = $v;
+                        break;
+                }
+            }
+        }
+        return $year;
     }
 }
