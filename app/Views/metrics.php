@@ -6,17 +6,21 @@
 </div>
 <p>Requests za <?=date('Y', time())?>. godinu</p>
 <div>
+    <?php
+$keys = array_keys($vis);
+foreach ($keys as $k):
+    $count = count($vis[$k])?>
     <details>
-        <summary> posjete</summary>
+        <summary> <?=$k?> (<?=$count?>)</summary>
         <table class="visitorTable">
             <thead>
                 <tr>
                     <th>role</th>
-                    <th>revisit</th>
+                    <th>return vis</th>
                     <th>ip</th>
                     <th>device</th>
                     <th>browser</th>
-                    <th>br ver</th>
+                    <th>browser ver</th>
                     <th>mobile</th>
                     <th>platform</th>
                     <th>referral</th>
@@ -27,24 +31,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($visitors as $v): ?>
+                <?php
+    for ($i = 0; $i < count($vis[$k]); $i++):
+    ?>
                 <tr>
-                    <td><?=$v->role?></td>
-                    <td><?=$v->return_visitor?></td>
-                    <td><?=$v->ip?></td>
-                    <td><?=$v->device?></td>
-                    <td><?=$v->browser?></td>
-                    <td><?=$v->browser_ver?></td>
-                    <td><?=$v->mobile?></td>
-                    <td><?=$v->platform?></td>
-                    <td><?=$v->referral?></td>
-                    <td><?=$v->agent?></td>
-                    <td><?=$v->page?></td>
-                    <td><?=$v->date?></td>
-                    <td><?=$v->time?></td>
+                    <td><?=$vis[$k][$i]->role?></td>
+                    <td><?=$vis[$k][$i]->returnVisitor?></td>
+                    <td><?=$vis[$k][$i]->ip?></td>
+                    <td><?=$vis[$k][$i]->device?></td>
+                    <td><?=$vis[$k][$i]->browser?></td>
+                    <td><?=$vis[$k][$i]->browserVersion?></td>
+                    <td><?=$vis[$k][$i]->mobile?></td>
+                    <td><?=$vis[$k][$i]->platform?></td>
+                    <td><?=$vis[$k][$i]->referral?></td>
+                    <td><?=$vis[$k][$i]->agent?></td>
+                    <td><?=$vis[$k][$i]->page?></td>
+                    <td><?=$vis[$k][$i]->date?></td>
+                    <td><?=$vis[$k][$i]->time?></td>
                 </tr>
-                <?php endforeach?>
+                <?php endfor?>
             </tbody>
         </table>
     </details>
+    <?php endforeach?>
 </div>

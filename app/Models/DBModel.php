@@ -565,7 +565,6 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
-    //prepravit
     public function visitorListForCurrentYear()
     {
         $sql = "SELECT * FROM visitors ORDER BY id DESC";
@@ -590,8 +589,8 @@ class DBModel extends Model
                 'date' => $v->date,
                 'time' => $v->time,
                 'timestamp' => $v->timestamp,
-                'month' => date('M', $v->time),
-                'year' => date('Y', $v->time),
+                'month' => date('M', $v->timestamp),
+                'year' => date('Y', $v->timestamp),
             ];
         }
 

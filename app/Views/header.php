@@ -15,7 +15,14 @@
 <body>
     <header>
         <a class="home" href="/"></a>
-        <h3>Liga Budućih Šampiona</h3>
+        <h3>Liga Budućih Šampiona
+            <?php
+$views = session()->lastHourViews->vis;
+$visitors = session()->lastHourVisitors->vis;
+if (session()->role == 'admin'): ?>
+            <?="$views/$visitors"?>
+            <?php endif?>
+        </h3>
         <nav class="menu">
             <div class="menu-container">
                 <div class="bar1"></div>
