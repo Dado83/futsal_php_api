@@ -194,7 +194,5 @@ endif?>
         }
 
         document.querySelector('#res' + id).style.display = 'block'
-        document.querySelector('#res' + id).style.width = '340px'
-        document.querySelector('#res' + id).style.margin = 'auto'
     }
     </script>
