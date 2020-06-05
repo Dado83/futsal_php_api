@@ -97,7 +97,7 @@ header a.home:hover {
 
 .menu:hover .nav-bar {
     width: 100px;
-    height: 180px;
+    height: 200px;
     opacity: 1;
     box-shadow: 0 0 4px var(--color2);
 }
@@ -405,7 +405,7 @@ h3 {
 
     .menu:hover .nav-bar {
         width: 120px;
-        height: 200px;
+        height: 240px;
     }
 
     .nav-select {
@@ -518,7 +518,11 @@ h3 {
 
     .menu:hover .nav-bar {
         width: 140px;
-        height: 240px;
+        height: 280px;
+    }
+
+    .nav-bar {
+        top: 40px;
     }
 
     .nav-select {

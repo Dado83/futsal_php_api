@@ -34,6 +34,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'sktestplay') !== false) {
 }
 $routes->get('/', 'Home::index');
 $routes->get('/ekipa/(:num)', 'Home::team/$1');
+$routes->get('/ucesnici', 'Home::teams');
 $routes->get('/tabela', 'Home::table');
 $routes->get('/rezultati', 'Home::results');
 $routes->get('/raspored', 'Home::fixtures');

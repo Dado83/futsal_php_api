@@ -57,43 +57,57 @@ class Home extends BaseController
 
     public function index()
     {
+        $data['title'] = 'Fair Play LBŠ';
         $data['teams'] = $this->model->getTeams();
 
-        echo view('header');
+        echo view('header', $data);
         echo view('front-page', $data);
         echo view('footer');
     }
 
     public function table()
     {
+        $data['title'] = 'LBŠ tabela';
         $data['table6'] = $this->model->getTable('table6', true);
         $data['table7'] = $this->model->getTable('table7', true, 8);
         $data['table8'] = $this->model->getTable('table8', true);
         $data['table9'] = $this->model->getTable('table9', true);
         $data['table10'] = $this->model->getTable('table10', true, 7, 1);
 
-        echo view('header');
+        echo view('header', $data);
         echo view('table', $data);
+        echo view('footer');
+    }
+
+    public function teams()
+    {
+        $data['title'] = 'LBŠ učesnici';
+        $data['teams'] = $this->model->getTeams();
+
+        echo view('header', $data);
+        echo view('teams', $data);
         echo view('footer');
     }
 
     public function team($id)
     {
+        $data['title'] = $this->model->getTeamByID($id)->team_name;
         $data['team'] = $this->model->getTeamByID($id);
         $data['results'] = $this->model->getResultsByID($id);
 
-        echo view('header');
+        echo view('header', $data);
         echo view('team', $data);
         echo view('footer');
     }
 
     public function fixtures()
     {
+        $data['title'] = 'LBŠ raspored';
         $maxMDay = $this->model->getMaxMday()->mDay;
         for ($i = 1; $i <= $maxMDay; $i++) {
             $data['fixtures'][$i] = $this->model->getMatchPairs($i);
         }
-        echo view('header');
+        echo view('header', $data);
         echo view('fixtures', $data);
         echo view('footer');
     }
@@ -106,6 +120,7 @@ class Home extends BaseController
 
     public function results()
     {
+        $data['title'] = 'LBŠ rezultati';
         $maxMDay = $this->model->getNumberOfMdaysPlayed()->mDay;
 
         for ($i = 1; $i <= $maxMDay; $i++) {
@@ -117,31 +132,34 @@ class Home extends BaseController
             $data['dates'][$i] = $this->model->getMatchPairs($i);
         }
 
-        echo view('header');
+        echo view('header', $data);
         echo view('results', $data);
         echo view('footer');
     }
 
     public function about()
     {
-        echo view('header');
+        $data['title'] = 'Fair Play LBŠ';
+        echo view('header', $data);
         echo view('about');
         echo view('footer');
     }
 
     public function createTournament()
     {
-        echo view('header');
+        $data['title'] = 'Pravljenje rasporeda';
+        echo view('header', $data);
         echo view('fts.html');
         echo view('footer');
     }
 
     public function admin()
     {
+        $data['title'] = 'LBŠ admin';
         $data['results'] = $this->model->getResults();
         $data['matchPairs'] = $this->model->getMatchPairsNotPlayed();
 
-        echo view('header');
+        echo view('header', $data);
         echo view('admin', $data);
         echo view('footer');
 
@@ -149,7 +167,6 @@ class Home extends BaseController
 
     public function formIn($id)
     {
-
         $data['title'] = 'Unos kola';
         $data['game'] = $this->model->getGameByID($id);
 
@@ -159,7 +176,6 @@ class Home extends BaseController
 
     public function inputGame()
     {
-
         $request = $this->request;
 
         $id = $request->getVar('id');
@@ -195,7 +211,6 @@ class Home extends BaseController
 
     public function deleteGame($id)
     {
-
         $game = $this->model->getGameFromResults($id);
         $matchPair = $this->model->getMatchPair($game->home_id, $game->away_id);
         $this->model->setPlayed($matchPair->id, 'FALSE');
@@ -236,12 +251,11 @@ class Home extends BaseController
         $data['title'] = 'Metrics';
         $data['vis'] = $this->model->visitorListForCurrentYear();
 
-        echo view('header');
+        echo view('header', $data);
         echo view('metrics', $data);
     }
     public function getVisitorData()
     {
-
         $data['visAll'] = $this->model->getVisitors('all');
         $data['visUni'] = $this->model->getVisitors('allUnique');
         $data['visDesk'] = $this->model->getVisitors('desktop');
@@ -257,7 +271,8 @@ class Home extends BaseController
 
     public function login()
     {
-        echo view('header');
+        $data['title'] = 'LBŠ login';
+        echo view('header', $data);
         echo view('login');
         echo view('footer');
     }

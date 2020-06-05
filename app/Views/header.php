@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>LBS</title>
+    <title><?=$title?></title>
     <meta name="description" content="Fair Play LBŠ website">
     <meta name="keywords" content="Fair Play, Liga Budućih Šampiona, LBŠ, Liga">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,7 @@ if (session()->role == 'admin'): ?>
                 <li><a href="/rezultati">rezultati</a></li>
                 <li><a href="/tabela">tabela</a></li>
                 <li><a href="/raspored">raspored</a></li>
+                <li><a href="/ucesnici">učesnici</a></li>
                 <li><a href="/turnir">turnir mejk</a></li>
                 <li><a href="/o-nama">o nama</a></li>
                 <li><a href="/admin">admin</a></li>
