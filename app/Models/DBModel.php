@@ -172,18 +172,9 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
-    //nece trebat
     public function getGameFromResults($id)
     {
         $sql = "SELECT * FROM results WHERE id = $id";
-        $query = $this->db->query($sql);
-        return ($query) ? $query->getRow() : array();
-    }
-
-    //nece trebat
-    public function getGameBySel($results, $home_id, $away_id)
-    {
-        $sql = "SELECT * FROM $results WHERE home_teamid = $home_id AND away_teamid = $away_id";
         $query = $this->db->query($sql);
         return ($query) ? $query->getRow() : array();
     }
@@ -435,45 +426,6 @@ class DBModel extends Model
         $this->db->query($sql_a2);
     }
 
-    public function setVisitor($session)
-    {
-        $role = $session->role;
-        $returnVisitor = $session->returnVisitor;
-        $ip = $session->ip;
-        $device = $session->device;
-        $browser = $session->browser;
-        $browserVer = $session->browserVer;
-        $mobile = $session->mobile;
-        $platform = $session->platform;
-        $referral = $session->referral;
-        $agent = $session->agent;
-        $page = $session->page;
-        $date = $session->date;
-        $time = $session->time;
-        $timestamp = $session->timestamp;
-
-        $sql = "INSERT INTO visitors (
-            role, return_visitor, ip, device, browser, browser_ver,
-            mobile, platform, referral, agent, page, date, time, timestamp)
-        VALUES (
-            '$role', $returnVisitor, '$ip', '$device', '$browser', '$browserVer',
-            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time', $timestamp)";
-        $this->db->query($sql);
-    }
-
-    public function getUser($user)
-    {
-        $sql = "SELECT * FROM users WHERE role = '$user'";
-        $query = $this->db->query($sql);
-        return $query->getRow();
-    }
-
-    public function updatePassword($userID, $newPass)
-    {
-        $sql = "UPDATE users SET password = '$newPass' WHERE id = $userID";
-        $this->db->query($sql);
-    }
-
     public function getMaxMday()
     {
         $sql = "SELECT MAX(m_day) as mDay FROM matchpairs";
@@ -640,5 +592,44 @@ class DBModel extends Model
             }
         }
         return $year;
+    }
+
+    public function setVisitor($session)
+    {
+        $role = $session->role;
+        $returnVisitor = $session->returnVisitor;
+        $ip = $session->ip;
+        $device = $session->device;
+        $browser = $session->browser;
+        $browserVer = $session->browserVer;
+        $mobile = $session->mobile;
+        $platform = $session->platform;
+        $referral = $session->referral;
+        $agent = $session->agent;
+        $page = $session->page;
+        $date = $session->date;
+        $time = $session->time;
+        $timestamp = $session->timestamp;
+
+        $sql = "INSERT INTO visitors (
+            role, return_visitor, ip, device, browser, browser_ver,
+            mobile, platform, referral, agent, page, date, time, timestamp)
+        VALUES (
+            '$role', $returnVisitor, '$ip', '$device', '$browser', '$browserVer',
+            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time', $timestamp)";
+        $this->db->query($sql);
+    }
+
+    public function getUser($user)
+    {
+        $sql = "SELECT * FROM users WHERE role = '$user'";
+        $query = $this->db->query($sql);
+        return $query->getRow();
+    }
+
+    public function updatePassword($userID, $newPass)
+    {
+        $sql = "UPDATE users SET password = '$newPass' WHERE id = $userID";
+        $this->db->query($sql);
     }
 }

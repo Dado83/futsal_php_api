@@ -58,7 +58,8 @@ class Home extends BaseController
     public function index()
     {
         $data['title'] = 'Fair Play LBŠ';
-        $data['teams'] = $this->model->getTeams();
+        $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
+        $data['lastResults'] = $this->model->getResultsByMday($data['lastMday']);
 
         echo view('header', $data);
         echo view('front-page', $data);
@@ -110,12 +111,6 @@ class Home extends BaseController
         echo view('header', $data);
         echo view('fixtures', $data);
         echo view('footer');
-    }
-
-    public function getMatchPairsNotPlayed()
-    {
-        $data = $this->model->getMatchPairsNotPlayed();
-        return $this->response->setJSON($data);
     }
 
     public function results()
