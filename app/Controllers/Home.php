@@ -58,8 +58,10 @@ class Home extends BaseController
     public function index()
     {
         $data['title'] = 'Fair Play LBŠ';
+        $data['maxMday'] = $this->model->getMaxMday()->mDay;
         $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
         $data['lastResults'] = $this->model->getResultsByMday($data['lastMday']);
+        $data['nextFixture'] = $this->model->getNextFixture();
 
         echo view('header', $data);
         echo view('front-page', $data);

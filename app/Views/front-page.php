@@ -1,11 +1,42 @@
-<h3>Liga Budućih Šampiona 2019/2020</h3>
+<h3>Fair Play Liga Budućih Šampiona 2019/20</h3>
+<br>
 <article class="front-page">
-    <section>
+    <?php if ($lastMday != $maxMday): ?>
+    <section class="next-fixture">
+        <table>
+            <tr>
+                <th colspan="2"><?=$lastResults[0]->m_day + 1?>. kolo</th>
+                <th><?=$nextFixture[0]->game_date?></th>
+            </tr>
+            <?php foreach ($nextFixture as $fixture): ?>
+            <tr>
+                <td>
+                    <a href=<?="/ekipa/$fixture->home_team"?>>
+                        <img src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
+                        <?=$fixture->home?>
+                    </a>
+                </td>
+                <td>-:-</td>
+                <td>
+                    <a href=<?="/ekipa/$fixture->away_team"?>>
+                        <img src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                        <?=$fixture->away?>
+                    </a>
+                </td>
+            </tr>
+            <?php endforeach?>
+        </table>
+    </section>
+    <?php else: ?>
+    <section class=final-four>zavrsnica
+    </section>
+    <?php endif?>
+    <section class="last-mday">
         <?php foreach ($lastResults as $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th></th>
+                    <th><?=$lastResults[0]->m_day?>. kolo</th>
                     <th>2006</th>
                     <th>2007</th>
                     <th>2008</th>
@@ -34,5 +65,4 @@
         </table>
         <?php endforeach?>
     </section>
-    <section>iduce kolo</section>
 </article>

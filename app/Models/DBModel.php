@@ -124,27 +124,9 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    //da li ce trebat
-    public function getLastResults($results)
-    {
-        $s = "SELECT MAX(m_day) AS mDay FROM $results";
-        $q = $this->db->query($s);
-        $max = $q->getRow();
-        $max_mday = $max->mDay;
-        if ($max_mday == null) {
-            $max_mday = 0;
-        }
-        $sql = "SELECT * FROM $results WHERE m_day = $max_mday";
-        $query = $this->db->query($sql);
-        $data['lastMday'] = $max_mday;
-        $data['results'] = ($query) ? $query->getResult() : array();
-
-        return $data;
-    }
-
     public function getNextFixture()
     {
-        $sql_last = "SELECT DISTINCT m_day FROM results6";
+        $sql_last = "SELECT DISTINCT m_day FROM results";
         $query_num = $this->db->query($sql_last);
         $mday_num = sizeof($query_num->getResult());
         $next_game = ++$mday_num;

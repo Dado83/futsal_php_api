@@ -10,11 +10,12 @@
     </nav>
     <?php if (isset($results)): ?>
     <section class="results-section hidden" id="res2006">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($results as $key => $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th><?=$result[0]->m_day?>. kolo</th>
+                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,11 +41,12 @@
         <?php endforeach?>
     </section>
     <section class="results-section hidden" id="res2007">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($results as $key => $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th><?=$result[0]->m_day?>. kolo</th>
+                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -74,11 +76,12 @@ endforeach?>
         <?php endforeach?>
     </section>
     <section class="results-section hidden" id="res2008">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($results as $key => $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th><?=$result[0]->m_day?>. kolo</th>
+                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -104,11 +107,12 @@ endforeach?>
         <?php endforeach?>
     </section>
     <section class="results-section hidden" id="res2009">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($results as $key => $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th><?=$result[0]->m_day?>. kolo</th>
+                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -134,11 +138,12 @@ endforeach?>
         <?php endforeach?>
     </section>
     <section class="results-section hidden" id="res2010">
-        <?php foreach ($results as $result): ?>
+        <?php foreach ($results as $key => $result): ?>
         <table>
             <thead>
                 <tr>
-                    <th><?=$result[0]->m_day?>. kolo</th>
+                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
