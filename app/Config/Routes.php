@@ -38,6 +38,7 @@ $routes->get('/ucesnici', 'Home::teams');
 $routes->get('/tabela', 'Home::table');
 $routes->get('/rezultati', 'Home::results');
 $routes->get('/raspored', 'Home::fixtures');
+$routes->get('/zavrsnica', 'Home::finalFour');
 $routes->get('/o-nama', 'Home::about');
 $routes->get('/admin', 'Home::admin');
 $routes->get('/turnir', 'Home::createTournament');

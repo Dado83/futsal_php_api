@@ -134,6 +134,15 @@ class Home extends BaseController
         echo view('footer');
     }
 
+    public function finalFour()
+    {
+        $data['title'] = ' LBŠ Završnica';
+
+        echo view('header', $data);
+        echo view('final-four', $data);
+        echo view('footer');
+    }
+
     public function about()
     {
         $data['title'] = 'Fair Play LBŠ';

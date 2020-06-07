@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#fcc914">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/public/css/styles.css?v=1.1">
+    <link rel="stylesheet" href="/public/css/styles.css?v=1.2">
     <link rel="shortcut icon" href="/public/images/fp.ico" type="image/x-icon">
     <script src="/public/js/scripts.js?v=0.1" defer></script>
     <script src="/public/js/Chart.bundle.min.js" defer></script>
@@ -34,6 +34,7 @@ if (session()->role == 'admin'): ?>
                 <li><a href="/rezultati">rezultati</a></li>
                 <li><a href="/tabela">tabela</a></li>
                 <li><a href="/raspored">raspored</a></li>
+                <li><a href="/zavrsnica">završnica</a></li>
                 <li><a href="/ucesnici">učesnici</a></li>
                 <li><a href="/turnir">turnir mejk</a></li>
                 <li><a href="/o-nama">o nama</a></li>

@@ -102,7 +102,7 @@ header a.home:hover {
 
 .menu:hover .nav-bar {
     width: 100px;
-    height: 200px;
+    height: 240px;
     opacity: 1;
     box-shadow: 0 0 4px var(--color2);
 }
@@ -232,6 +232,16 @@ footer address {
 
 .next-fixture td:nth-of-type(3) {
     text-align: left;
+}
+
+.final-four {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.final-four a {
+    cursor: pointer;
 }
 
 /* teams */
@@ -473,7 +483,7 @@ h3 {
 
     .menu:hover .nav-bar {
         width: 120px;
-        height: 240px;
+        height: 280px;
     }
 
     .nav-select {
@@ -489,7 +499,7 @@ h3 {
 
     /* front-page */
     .last-mday a {
-        all: unset;
+        font-size: unset;
     }
 
     /* teams */
@@ -597,7 +607,7 @@ h3 {
 
     .menu:hover .nav-bar {
         width: 140px;
-        height: 280px;
+        height: 320px;
     }
 
     .nav-bar {

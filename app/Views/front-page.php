@@ -1,5 +1,3 @@
-<h3>Fair Play Liga Budućih Šampiona 2019/20</h3>
-<br>
 <article class="front-page">
     <?php if ($lastMday != $maxMday): ?>
     <section class="next-fixture">
@@ -28,7 +26,12 @@
         </table>
     </section>
     <?php else: ?>
-    <section class=final-four>zavrsnica
+    <section class=final-four>
+        <a>
+            <h1>Završni turnir</h1>
+        </a>
+        <p>Subota, 7. mart 2020. g. - Žepče<br>(2007, 2008, 2010)</p>
+        <p>Nedjelja, 8. mart 2020. g. - Maglaj<br>(2006, 2009)</p>
     </section>
     <?php endif?>
     <section class="last-mday">

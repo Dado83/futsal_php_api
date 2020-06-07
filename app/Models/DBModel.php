@@ -530,8 +530,8 @@ class DBModel extends Model
 
         $currentYear = date('Y', time());
         $year = [];
-        $vis = array_reverse($visitors);
-        foreach ($vis as $v) {
+        //$vis = array_reverse($visitors);
+        foreach ($visitors as $v) {
             if ($v->year == $currentYear) {
                 switch ($v->month) {
                     case 'Jan':
