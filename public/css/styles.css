@@ -8,6 +8,7 @@ body {
     min-width: 350px;
     max-width: 100%;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 nav ul {
@@ -37,6 +38,13 @@ nav li {
 table {
     width: 350px;
     margin: 20px auto;
+    border-collapse: collapse;
+}
+
+tfoot th,
+thead th {
+    background: var(--color1);
+    padding: 4px;
 }
 
 a {
@@ -59,7 +67,7 @@ header {
     align-items: center;
     background: var(--color1);
     box-shadow: 0 0 2px var(--color2);
-    margin-bottom: 40px;
+    margin: 0 0 40px 0;
 }
 
 header a.home {
@@ -226,10 +234,6 @@ footer address {
     text-align: left;
 }
 
-.last-mday table:nth-of-type(n+2) th:nth-of-type(1) {
-    color: transparent;
-}
-
 /* teams */
 .teams {
     display: grid;
@@ -373,10 +377,6 @@ h3 {
     background: whitesmoke;
 }
 
-.standings-table {
-    border-collapse: collapse;
-}
-
 /* about */
 .about {
     margin-left: 6px;
@@ -444,6 +444,12 @@ h3 {
 
 
 /* media queries */
+@media screen and (max-width:640px) {
+    .goals {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 640px) {
 
     body {
@@ -481,7 +487,12 @@ h3 {
         margin: 30px auto;
     }
 
-    /* frontpage */
+    /* front-page */
+    .last-mday a {
+        all: unset;
+    }
+
+    /* teams */
     .teams img {
         transform: scale(1.2);
         margin-top: 15px;
@@ -509,6 +520,10 @@ h3 {
     }
 
     /* table */
+    .standings-table {
+        width: 500px;
+    }
+
     .standings-table td:nth-of-type(2) {
         width: 50%;
         text-align: left;
@@ -600,7 +615,25 @@ h3 {
         margin: 40px auto;
     }
 
-    /* frontpage */
+    /* front-page */
+    .last-mday {
+        display: grid;
+        grid-template-areas:
+            'a b'
+            'c d';
+        width: 850px;
+        margin: auto;
+    }
+
+    .last-mday table td:nth-of-type(1) {
+        width: 50%;
+    }
+
+    .last-mday table {
+        width: 400px;
+    }
+
+    /* teams */
     .teams img {
         transform: scale(1.4);
         margin-top: 20px;
@@ -629,6 +662,10 @@ h3 {
     }
 
     /* table */
+    .standings-table {
+        width: 600px;
+    }
+
     .standings-table td:nth-of-type(2) {
         width: 60%;
         text-align: left;

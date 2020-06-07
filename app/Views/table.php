@@ -19,7 +19,7 @@ foreach ($tables as $k => $table): ?>
                 <th>pob</th>
                 <th>ner</th>
                 <th>por</th>
-                <th class="hidden">gol</th>
+                <th class="goals">gol</th>
                 <th>+/-</th>
                 <th>bod</th>
             </tr>
@@ -34,7 +34,7 @@ foreach ($table as $i => $row): ?>
                 <td><?=$row->games_won?></td>
                 <td><?=$row->games_drew?></td>
                 <td><?=$row->games_lost?></td>
-                <td class="hidden"><?=$row->goals?></td>
+                <td class="goals"><?=$row->goals?></td>
                 <td>
                     <?php if ($row->g_diff > 0): ?>
                     <?="+$row->g_diff"?>
@@ -46,6 +46,11 @@ foreach ($table as $i => $row): ?>
             </tr>
             <?php endforeach?>
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="9">Fair Play Liga Budućih Šampiona</th>
+            </tr>
+        </tfoot>
     </table>
 </article>
 <?php
