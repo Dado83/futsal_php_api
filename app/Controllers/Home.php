@@ -137,10 +137,43 @@ class Home extends BaseController
     public function finalFour()
     {
         $data['title'] = ' LBŠ Završnica';
+        for ($i = 1; $i <= 4; $i++) {
+            $data['finals6'][$i] = $this->model->getTeamByTablePos('table6', $i);
+            $data['finals7'][$i] = $this->model->getTeamByTablePos('table7', $i);
+            $data['finals8'][$i] = $this->model->getTeamByTablePos('table8', $i);
+            $data['finals9'][$i] = $this->model->getTeamByTablePos('table9', $i);
+            $data['finals10'][$i] = $this->model->getTeamByTablePos('table10', $i);
+        }
+        $data['combinedTable'] = $this->getCombinedTable();
 
         echo view('header', $data);
         echo view('final-four', $data);
         echo view('footer');
+    }
+
+    private function getCombinedTable()
+    {
+        $t1 = $this->model->getCombinedTable(1);
+        $t2 = $this->model->getCombinedTable(2);
+        $t3 = $this->model->getCombinedTable(3);
+        $t4 = $this->model->getCombinedTable(4);
+        $t5 = $this->model->getCombinedTable(5);
+        $t6 = $this->model->getCombinedTable(6);
+        $t7 = $this->model->getCombinedTable(7);
+        $t8 = $this->model->getCombinedTable(8);
+        $t9 = $this->model->getCombinedTable(9);
+        $total = array($t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9);
+        usort($total, array($this, 'sortByPoints'));
+
+        return $total;
+    }
+
+    private function sortByPoints($a, $b)
+    {
+        if ($a->pointsAll == $b->pointsAll) {
+            return 0;
+        }
+        return ($a->pointsAll > $b->pointsAll) ? -1 : 1;
     }
 
     public function about()

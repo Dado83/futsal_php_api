@@ -14,8 +14,8 @@
     <script src="/public/js/Chart.bundle.min.js" defer></script>
 </head>
 <body>
-    <header>
-        <a class="home" href="/"></a>
+    <header class="header-main">
+        <a class="home-logo" href="/"></a>
         <h3>Liga Budućih Šampiona
             <?php
 $views = session()->lastHourViews->vis;

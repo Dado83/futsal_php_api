@@ -1,6 +1,6 @@
-<article class="standings">
+<article>
     <nav>
-        <ul>
+        <ul class="nav-tab">
             <li id="table6">2006</li>
             <li id="table7">2007</li>
             <li id="table8">2008</li>
@@ -11,9 +11,9 @@
     <?php
 $tables = [2006 => $table6, $table7, $table8, $table9, $table10];
 foreach ($tables as $k => $table): ?>
-    <table class="standings-table hidden" id=<?="tab$k"?>>
-        <thead>
-            <tr>
+    <table class="standings hidden" id=<?="tab$k"?>>
+        <thead class="background-row">
+            <tr class="table-th">
                 <th colspan="2"><?=$k?>. god</th>
                 <th>ut</th>
                 <th>pob</th>
@@ -29,25 +29,30 @@ foreach ($tables as $k => $table): ?>
 foreach ($table as $i => $row): ?>
             <tr>
                 <td><?=++$i?></td>
-                <td><a href=<?="/ekipa/$row->id"?>><img src=<?="/public/images/logos/$row->id.png"?> alt="grb"><?=$row->team?></a></td>
-                <td><?=$row->games_played?></td>
-                <td><?=$row->games_won?></td>
-                <td><?=$row->games_drew?></td>
-                <td><?=$row->games_lost?></td>
+                <td class="standings-club__width">
+                    <a href=<?="/ekipa/$row->id"?>>
+                        <img class="club-logo__small" src=<?="/public/images/logos/$row->id.png"?> alt="grb">
+                        <?=$row->team?>
+                    </a>
+                </td>
+                <td class="text-align__right"><?=$row->games_played?></td>
+                <td class="text-align__right"><?=$row->games_won?></td>
+                <td class="text-align__right"><?=$row->games_drew?></td>
+                <td class="text-align__right"><?=$row->games_lost?></td>
                 <td class="goals"><?=$row->goals?></td>
-                <td>
+                <td class="text-align__right">
                     <?php if ($row->g_diff > 0): ?>
                     <?="+$row->g_diff"?>
                     <?php else: ?>
                     <?=$row->g_diff?>
                     <?php endif?>
                 </td>
-                <td><?=$row->points?></td>
+                <td class="text-align__right text-bold"><?=$row->points?></td>
             </tr>
             <?php endforeach?>
         </tbody>
-        <tfoot>
-            <tr>
+        <tfoot class="background-row">
+            <tr class="table-th">
                 <th colspan="9">Fair Play Liga Budućih Šampiona</th>
             </tr>
         </tfoot>
@@ -56,8 +61,7 @@ foreach ($table as $i => $row): ?>
 <?php
 endforeach?>
 <script>
-let nav = document.querySelectorAll('.standings li')
-//nav[0].style.background = 'var(--color1)'
+let nav = document.querySelectorAll('.nav-tab li')
 nav[0].className = 'nav-select'
 document.querySelector('#tab2006').style.display = 'block'
 
@@ -71,7 +75,7 @@ function navigation() {
     }
     this.className = 'nav-select'
     let id = this.textContent
-    let tables = document.querySelectorAll('.standings-table')
+    let tables = document.querySelectorAll('.standings')
     for (let i = 0; i < tables.length; i++) {
         tables[i].style.display = 'none'
     }

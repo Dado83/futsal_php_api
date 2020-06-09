@@ -1,23 +1,23 @@
 <article class="front-page">
     <?php if ($lastMday != $maxMday): ?>
     <section class="next-fixture">
-        <table>
+        <table class="table">
             <tr>
-                <th colspan="2"><?=$lastResults[0]->m_day + 1?>. kolo</th>
-                <th><?=$nextFixture[0]->game_date?></th>
+                <th class="table-td__left" colspan="2"><?=$lastResults[0]->m_day + 1?>. kolo</th>
+                <th class="table-td__right"><?=$nextFixture[0]->game_date?></th>
             </tr>
             <?php foreach ($nextFixture as $fixture): ?>
             <tr>
                 <td>
                     <a href=<?="/ekipa/$fixture->home_team"?>>
-                        <img src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
+                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
                         <?=$fixture->home?>
                     </a>
                 </td>
                 <td>-:-</td>
                 <td>
                     <a href=<?="/ekipa/$fixture->away_team"?>>
-                        <img src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
                         <?=$fixture->away?>
                     </a>
                 </td>
@@ -27,7 +27,7 @@
     </section>
     <?php else: ?>
     <section class=final-four>
-        <a>
+        <a href="/zavrsnica">
             <h1>Završni turnir</h1>
         </a>
         <p>Subota, 7. mart 2020. g. - Žepče<br>(2007, 2008, 2010)</p>
@@ -49,7 +49,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><a href=<?="/ekipa/$result->home_id"?>><img src=<?="/public/images/logos/$result->home_id.png"?>><?=$result->home_name?></a></td>
+                    <td>
+                        <a href=<?="/ekipa/$result->home_id"?>>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png"?>>
+                            <?=$result->home_name?>
+                        </a>
+                    </td>
                     <td><?=$result->goals_home6?></td>
                     <td><?=($result->goals_home7 != -1) ?: ''?></td>
                     <td><?=$result->goals_home8?></td>
@@ -57,7 +62,11 @@
                     <td><?=($result->goals_home10 != -1) ?: ''?></td>
                 </tr>
                 <tr>
-                    <td><a href=<?="/ekipa/$result->away_id"?>><img src=<?="/public/images/logos/$result->away_id.png"?>><?=$result->away_name?></a></td>
+                    <td><a href=<?="/ekipa/$result->away_id"?>>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png"?>>
+                            <?=$result->away_name?>
+                        </a>
+                    </td>
                     <td><?=$result->goals_away6?></td>
                     <td><?=($result->goals_away7 != -1) ?: ''?></td>
                     <td><?=$result->goals_away8?></td>

@@ -423,7 +423,7 @@ class DBModel extends Model
 
     public function getCombinedTable($id)
     {
-        $sql = "SELECT id, CONCAT(team_name,' ', team_city) AS team,
+        $sql = "SELECT id, team_name,
         (SELECT games_played FROM table6 WHERE id=$id)
         + (SELECT games_played FROM table7 WHERE id=$id)
         + (SELECT games_played FROM table8 WHERE id=$id)
