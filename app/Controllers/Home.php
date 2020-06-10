@@ -236,14 +236,15 @@ class Home extends BaseController
         $home6 = $request->getVar('home6');
         $away6 = $request->getVar('away6');
 
-        $this->model->insertGame($mDay, $home, $homeID, $away, $awayID,
-            $home7, $away7,
-            $home8, $away8,
-            $home9, $away9,
-            $home10, $away10,
-            $home6, $away6);
-
-        $this->model->setPlayed($id, true);
+        if (!$this->model->checkForResult($homeID, $awayID)) {
+            $this->model->insertGame($mDay, $home, $homeID, $away, $awayID,
+                $home7, $away7,
+                $home8, $away8,
+                $home9, $away9,
+                $home10, $away10,
+                $home6, $away6);
+            $this->model->setPlayed($id, true);
+        }
 
         return redirect()->to('/admin');
     }
@@ -341,12 +342,7 @@ class Home extends BaseController
 
     public function test()
     {
-        var_dump(date('F'));
-        echo '<br>';
-        echo time();
-        echo '<br>';
-        echo strtotime('13:33');
-        echo '<br>';
-        echo (session()->lastHourViews->vis);
+        $result = $this->model->checkForResult(1, 18);
+        var_dump($result);
     }
 }

@@ -74,6 +74,13 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
+    public function checkForResult($home, $away)
+    {
+        $sql = "SELECT * FROM results WHERE home_id = $home AND away_id = $away";
+        $query = $this->db->query($sql);
+        return $query->getRow() ? true : false;
+    }
+
     public function getMatchPairs($mday)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,

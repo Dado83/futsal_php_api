@@ -2,10 +2,12 @@
     --color1: #fcc914;
     --color2: #3d3d3d;
     --color3: #db2519;
-    --table-width: 340px;
+    --table-width: 350px;
     --standings-width: 340px;
     --font-size-16: 16px;
     --td-padding: 0 2px;
+    --club-logo__small: 20px;
+    --club-logo__big: 150px
 }
 
 body {
@@ -191,8 +193,8 @@ a:hover {
 }
 
 .club-logo__small {
-    height: 20px;
-    width: 20px;
+    height: var(--club-logo__small);
+    width: var(--club-logo__small);
     vertical-align: bottom;
     padding: 0 2px;
 }
@@ -205,7 +207,7 @@ a:hover {
 }
 
 .club-logo__big {
-    width: 150px;
+    width: var(--club-logo__big);
     float: left;
     padding: 0 20px 20px 0;
 }
@@ -263,6 +265,12 @@ a:hover {
     border-right: 3px solid var(--color1);
 }
 
+.team-results {
+    clear: both;
+    margin: 0 0 20px 0;
+    border-collapse: collapse;
+}
+
 /* media queries */
 @media screen and (max-width:640px) {
     .goals {
@@ -276,12 +284,14 @@ a:hover {
         --standings-width: 520px;
         --font-size-16: 20px;
         --td-padding: 0 6px;
+        --club-logo__small: 30px;
     }
 
 }
 
 @media screen and (min-width: 900px) {
     :root {
+        --font-size-16: 22px;
         --standings-width: 750px;
         --table-width: 500px;
         --td-padding: 0 12px;
