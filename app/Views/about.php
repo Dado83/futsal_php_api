@@ -1,4 +1,4 @@
-<article class="about">
+<article class="container">
     <section>
         <h1>Fair Play Liga Budućih Šampiona</h1>
         <img class="about__image" src="/public/images/grb.png" alt="grb">

@@ -14,7 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th class="text-align__left" colspan="4"><?=$result[0]->m_day?>. kolo</th>
                     <th class="text-align__right"><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@
                     <td class="text-align__center"><?=$r->goals_home6?></td>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away6?></td>
-                    <td class="standings-club__width">
+                    <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->home_id"?>>
                             <img class="club-logo__medium" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
@@ -45,8 +45,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
-                    <th><?=$dates[$key][0]->game_date?></th>
+                    <th class="text-align__left" colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th class="text-align__right"><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@ foreach ($result as $r):
                     <td class="text-align__center"><?=$r->goals_home7?></td>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away7?></td>
-                    <td class="standings-club__width">
+                    <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->home_id"?>>
                             <img class="club-logo__medium" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
@@ -80,8 +80,8 @@ endforeach?>
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
-                    <th><?=$dates[$key][0]->game_date?></th>
+                    <th class="text-align__left" colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th class="text-align__right"><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -95,7 +95,7 @@ endforeach?>
                     <td class="text-align__center"><?=$r->goals_home8?></td>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away8?></td>
-                    <td class="standings-club__width">
+                    <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->home_id"?>>
                             <img class="club-logo__medium" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
@@ -111,8 +111,8 @@ endforeach?>
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
-                    <th><?=$dates[$key][0]->game_date?></th>
+                    <th class="text-align__left" colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th class="text-align__right"><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -126,7 +126,7 @@ endforeach?>
                     <td class="text-align__center"><?=$r->goals_home9?></td>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away9?></td>
-                    <td class="standings-club__width">
+                    <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->home_id"?>>
                             <img class="club-logo__medium" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
@@ -142,8 +142,8 @@ endforeach?>
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="4"><?=$result[0]->m_day?>. kolo</th>
-                    <th><?=$dates[$key][0]->game_date?></th>
+                    <th class="text-align__left" colspan="4"><?=$result[0]->m_day?>. kolo</th>
+                    <th class="text-align__right"><?=$dates[$key][0]->game_date?></th>
                 </tr>
             </thead>
             <tbody>
@@ -159,7 +159,7 @@ foreach ($result as $r):
                     <td class="text-align__center"><?=$r->goals_home10?></td>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away10?></td>
-                    <td class="standings-club__width">
+                    <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->home_id"?>>
                             <img class="club-logo__medium" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>

@@ -3,7 +3,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th><?=$i?>. kolo</th>
+                <th class="text-align__left"><?=$i?>. kolo</th>
                 <th class="text-align__right" colspan="2"><?=$fixture[0]->game_date?></th>
             </tr>
         </thead>
@@ -16,7 +16,7 @@
                     </a>
                 </td>
                 <td class="text-align__center">-</td>
-                <td class="standings-club__width">
+                <td class="standings-club__width text-align__left">
                     <a href=<?="/ekipa/$f->away_team"?>>
                         <img class="club-logo__medium" src=<?="/public/images/logos/$f->away_team.png"?> alt="grb"><?=$f->away_club?>
                     </a>

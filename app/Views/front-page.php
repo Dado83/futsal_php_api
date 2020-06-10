@@ -3,21 +3,21 @@
     <section class="next-fixture">
         <table class="table">
             <tr>
-                <th class="table-td__left" colspan="2"><?=$lastResults[0]->m_day + 1?>. kolo</th>
-                <th class="table-td__right"><?=$nextFixture[0]->game_date?></th>
+                <th class="text-align__left"><?=$lastResults[0]->m_day + 1?>. kolo</th>
+                <th class="text-align__right" colspan="2"><?=$nextFixture[0]->game_date?></th>
             </tr>
             <?php foreach ($nextFixture as $fixture): ?>
             <tr>
-                <td>
+                <td class="text-align__right standings-club__width">
                     <a href=<?="/ekipa/$fixture->home_team"?>>
-                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
                         <?=$fixture->home?>
+                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
                     </a>
                 </td>
-                <td>-:-</td>
-                <td>
+                <td class="text-align__center">-</td>
+                <td class="standings-club__width">
                     <a href=<?="/ekipa/$fixture->away_team"?>>
-                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                        <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
                         <?=$fixture->away?>
                     </a>
                 </td>
@@ -36,10 +36,10 @@
     <?php endif?>
     <section class="last-mday">
         <?php foreach ($lastResults as $result): ?>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
-                    <th><?=$lastResults[0]->m_day?>. kolo</th>
+                    <th class="text-align__left"><?=$lastResults[0]->m_day?>. kolo</th>
                     <th>2006</th>
                     <th>2007</th>
                     <th>2008</th>
@@ -49,29 +49,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>
+                    <td class="standings-club__width">
                         <a href=<?="/ekipa/$result->home_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png"?>>
                             <?=$result->home_name?>
                         </a>
                     </td>
-                    <td><?=$result->goals_home6?></td>
-                    <td><?=($result->goals_home7 != -1) ?: ''?></td>
-                    <td><?=$result->goals_home8?></td>
-                    <td><?=$result->goals_home9?></td>
-                    <td><?=($result->goals_home10 != -1) ?: ''?></td>
+                    <td class="text-align__right"><?=$result->goals_home6?></td>
+                    <td class="text-align__right"><?=($result->goals_home7 != -1) ?: ''?></td>
+                    <td class="text-align__right"><?=$result->goals_home8?></td>
+                    <td class="text-align__right"><?=$result->goals_home9?></td>
+                    <td class="text-align__right"><?=($result->goals_home10 != -1) ?: ''?></td>
                 </tr>
                 <tr>
-                    <td><a href=<?="/ekipa/$result->away_id"?>>
+                    <td class="standings-club__width"><a href=<?="/ekipa/$result->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png"?>>
                             <?=$result->away_name?>
                         </a>
                     </td>
-                    <td><?=$result->goals_away6?></td>
-                    <td><?=($result->goals_away7 != -1) ?: ''?></td>
-                    <td><?=$result->goals_away8?></td>
-                    <td><?=$result->goals_away9?></td>
-                    <td><?=($result->goals_away10 != -1) ?: ''?></td>
+                    <td class="text-align__right"><?=$result->goals_away6?></td>
+                    <td class="text-align__right"><?=($result->goals_away7 != -1) ?: ''?></td>
+                    <td class="text-align__right"><?=$result->goals_away8?></td>
+                    <td class="text-align__right"><?=$result->goals_away9?></td>
+                    <td class="text-align__right"><?=($result->goals_away10 != -1) ?: ''?></td>
                 </tr>
             </tbody>
         </table>

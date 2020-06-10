@@ -3,9 +3,13 @@
     --color2: #3d3d3d;
     --color3: #db2519;
     --table-width: 340px;
+    --standings-width: 340px;
+    --font-size-16: 16px;
+    --td-padding: 0 2px;
 }
 
 body {
+    margin: 0;
     min-width: 350px;
     max-width: 100%;
     font-family: 'Roboto', sans-serif;
@@ -34,7 +38,7 @@ a:hover {
     align-items: center;
     background: var(--color1);
     box-shadow: 0 0 2px var(--color2);
-    margin: -8px 0 40px 0;
+    margin: 0 0 40px 0;
 }
 
 .home-logo {
@@ -137,7 +141,7 @@ a:hover {
     color: var(--color3);
 }
 
-.about {
+.container {
     margin-left: 6px;
 }
 
@@ -206,8 +210,14 @@ a:hover {
     padding: 0 20px 20px 0;
 }
 
+.text-align__left {
+    text-align: left;
+    padding: var(--td-padding);
+}
+
 .text-align__right {
     text-align: right;
+    padding: var(--td-padding);
 }
 
 .text-align__center {
@@ -220,21 +230,37 @@ a:hover {
 
 .background-row {
     background: var(--color1);
+    border: 1px solid;
 }
 
 .goals {
     text-align: center;
 }
 
-.standings,
-.table {
+.standings {
     border-collapse: collapse;
-    width: var(--table-width);
+    width: var(--standings-width);
     margin: 20px auto;
+    font-size: var(--font-size-16);
+}
+
+.table {
+    width: var(--table-width);
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: var(--font-size-16);
 }
 
 .standings-club__width {
     width: 45%;
+}
+
+.standings td:nth-of-type(n+2) {
+    padding: var(--td-padding);
+}
+
+.standings tr:nth-of-type(-n+4) td:nth-of-type(1) {
+    border-right: 3px solid var(--color1);
 }
 
 /* media queries */
@@ -244,6 +270,20 @@ a:hover {
     }
 }
 
-@media screen and (min-width: 640px) {}
+@media screen and (min-width: 640px) {
+    :root {
+        --table-width: 450px;
+        --standings-width: 520px;
+        --font-size-16: 20px;
+        --td-padding: 0 6px;
+    }
 
-@media screen and (min-width: 900px) {}
+}
+
+@media screen and (min-width: 900px) {
+    :root {
+        --standings-width: 750px;
+        --table-width: 500px;
+        --td-padding: 0 12px;
+    }
+}
