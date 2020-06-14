@@ -26,7 +26,7 @@
         </table>
     </section>
     <?php else: ?>
-    <section class=table>
+    <section class=next-fixture>
         <a class="text-align__center" href="/zavrsnica">
             <h1>Završni turnir 2019/20</h1>
         </a>
@@ -34,6 +34,7 @@
         <p class="text-align__center">Nedjelja, 8. mart 2020. g. - Maglaj<br>(2006, 2009)</p>
     </section>
     <?php endif?>
+    <hr>
     <section class="last-mday">
         <?php foreach ($lastResults as $result): ?>
         <table class="table">

@@ -24,7 +24,7 @@
                 <tr>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$result->home_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png"?>>
+                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->home_id.png"?>>
                             <?=$result->home_name?>
                         </a>
                     </td>
@@ -37,7 +37,7 @@
                 <tr>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$result->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png"?>>
+                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->away_id.png"?>>
                             <?=$result->away_name?>
                         </a>
                     </td>
@@ -50,6 +50,9 @@
             </tbody>
         </table>
         <?php endforeach?>
+    </section>
+    <section>
+        prijasnji plasman
     </section>
 </article>
 <script>

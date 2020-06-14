@@ -199,9 +199,9 @@ a:hover {
     padding: 0 2px;
 }
 
-.club-logo__medium {
-    height: 30px;
-    width: 30px;
+.club-logo__fixed {
+    height: 20px;
+    width: 20px;
     vertical-align: middle;
     padding: 0 2px;
 }
@@ -271,6 +271,10 @@ a:hover {
     border-collapse: collapse;
 }
 
+.next-fixture {
+    margin-bottom: 60px;
+}
+
 /* media queries */
 @media screen and (max-width:640px) {
     .goals {
@@ -283,7 +287,6 @@ a:hover {
         --table-width: 450px;
         --standings-width: 520px;
         --font-size-16: 20px;
-        --td-padding: 0 6px;
         --club-logo__small: 30px;
     }
 
@@ -294,6 +297,5 @@ a:hover {
         --font-size-16: 22px;
         --standings-width: 750px;
         --table-width: 500px;
-        --td-padding: 0 12px;
     }
 }
