@@ -272,6 +272,15 @@ a:hover {
     border-collapse: collapse;
 }
 
+.teams {
+    margin-left: 6px;
+}
+
+.teams__list {
+    border-bottom: 1px solid var(--color2);
+    padding-bottom: 4px;
+}
+
 .next-fixture {
     margin-bottom: 60px;
 }
@@ -293,6 +302,10 @@ a:hover {
         --standings-width: 520px;
         --font-size-16: 20px;
         --club-logo__small: 30px;
+    }
+
+    .opponent {
+        width: 45%;
     }
 
 }

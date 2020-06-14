@@ -14,7 +14,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[1]->id}.png"?> alt="grb">
                 <?=$finals6[1]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">0</td>
             <td class="bottom-border"></td>
             <td></td>
             <td></td>
@@ -26,7 +26,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[4]->id}.png"?> alt="grb">
                 <?=$finals6[4]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">6</td>
             <td class="vertical-border"></td>
             <td></td>
             <td></td>
@@ -80,7 +80,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[2]->id}.png"?> alt="grb">
                 <?=$finals6[2]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">1(3)</td>
             <td class="bottom-border vertical-border"></td>
             <td></td>
             <td></td>
@@ -92,7 +92,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[3]->id}.png"?> alt="grb">
                 <?=$finals6[3]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">1(2)</td>
             <td></td>
             <td></td>
             <td></td>
@@ -368,7 +368,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[1]->id}.png"?> alt="grb">
                 <?=$finals9[1]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">2</td>
             <td class="bottom-border"></td>
             <td></td>
             <td></td>
@@ -380,7 +380,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[4]->id}.png"?> alt="grb">
                 <?=$finals9[4]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">0</td>
             <td class="vertical-border"></td>
             <td></td>
             <td></td>
@@ -434,7 +434,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[2]->id}.png"?> alt="grb">
                 <?=$finals9[2]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">0</td>
             <td class="bottom-border vertical-border"></td>
             <td></td>
             <td></td>
@@ -446,7 +446,7 @@
                 <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[3]->id}.png"?> alt="grb">
                 <?=$finals9[3]->team?>
             </td>
-            <td class="score"></td>
+            <td class="score">2</td>
             <td></td>
             <td></td>
             <td></td>
