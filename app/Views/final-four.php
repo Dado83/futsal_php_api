@@ -7,14 +7,12 @@
         <li id="finals10">2010</li>
     </ul>
 </nav>
-<?php $finals = [2006 => $finals6, $finals7, $finals8, $finals9, $finals10];
-foreach ($finals as $k => $final): ?>
 <section>
-    <table class="table hidden" id=<?="tab$k"?>>
+    <table class="table hidden" id=tab2006>
         <tr class="semis">
             <td class="opponent opponent-border">
-                <img class="club-logo__small" src=<?="/public/images/logos/{$final[1]->id}.png"?> alt="grb">
-                <?=$final[1]->team?>
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[1]->id}.png"?> alt="grb">
+                <?=$finals6[1]->team?>
             </td>
             <td class="score"></td>
             <td class="bottom-border"></td>
@@ -25,8 +23,8 @@ foreach ($finals as $k => $final): ?>
         </tr>
         <tr class="semis">
             <td class="opponent">
-                <img class="club-logo__small" src=<?="/public/images/logos/{$final[4]->id}.png"?> alt="grb">
-                <?=$final[4]->team?>
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[4]->id}.png"?> alt="grb">
+                <?=$finals6[4]->team?>
             </td>
             <td class="score"></td>
             <td class="vertical-border"></td>
@@ -49,8 +47,11 @@ foreach ($finals as $k => $final): ?>
             <td></td>
             <td class="vertical-border"></td>
             <td class="bottom-border"></td>
-            <td class="opponent opponent-border">?</td>
-            <td class="score"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[4]->id}.png"?> alt="grb">
+                <?=$finals6[4]->team?>
+            </td>
+            <td class="score">0</td>
             <td></td>
         </tr>
         <tr class="finals">
@@ -58,8 +59,11 @@ foreach ($finals as $k => $final): ?>
             <td></td>
             <td class="vertical-border"></td>
             <td></td>
-            <td class="opponent">?</td>
-            <td class="score"></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[2]->id}.png"?> alt="grb">
+                <?=$finals6[2]->team?>
+            </td>
+            <td class="score">1</td>
             <td></td>
         </tr>
         <tr class="spacer">
@@ -73,8 +77,8 @@ foreach ($finals as $k => $final): ?>
         </tr>
         <tr class="semis">
             <td class="opponent opponent-border">
-                <img class="club-logo__small" src=<?="/public/images/logos/{$final[2]->id}.png"?> alt="grb">
-                <?=$final[2]->team?>
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[2]->id}.png"?> alt="grb">
+                <?=$finals6[2]->team?>
             </td>
             <td class="score"></td>
             <td class="bottom-border vertical-border"></td>
@@ -85,8 +89,8 @@ foreach ($finals as $k => $final): ?>
         </tr>
         <tr class="semis">
             <td class="opponent">
-                <img class="club-logo__small" src=<?="/public/images/logos/{$final[3]->id}.png"?> alt="grb">
-                <?=$final[3]->team?>
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[3]->id}.png"?> alt="grb">
+                <?=$finals6[3]->team?>
             </td>
             <td class="score"></td>
             <td></td>
@@ -100,8 +104,11 @@ foreach ($finals as $k => $final): ?>
             <td></td>
             <td></td>
             <td></td>
-            <td class="opponent opponent-border">?</td>
-            <td class="score"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[1]->id}.png"?> alt="grb">
+                <?=$finals6[1]->team?>
+            </td>
+            <td class="score">4</td>
             <td></td>
         </tr>
         <tr class="playoff">
@@ -109,13 +116,488 @@ foreach ($finals as $k => $final): ?>
             <td></td>
             <td></td>
             <td></td>
-            <td class="opponent">?</td>
-            <td class="score"></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals6[3]->id}.png"?> alt="grb">
+                <?=$finals6[3]->team?>
+            </td>
+            <td class="score">3</td>
             <td></td>
         </tr>
     </table>
 </section>
-<?php endforeach?>
+<section>
+    <table class="table hidden" id=tab2007>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[1]->id}.png"?> alt="grb">
+                <?=$finals7[1]->team?>
+            </td>
+            <td class="score">3</td>
+            <td class="bottom-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[4]->id}.png"?> alt="grb">
+                <?=$finals7[4]->team?>
+            </td>
+            <td class="score">2</td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td class="bottom-border"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[1]->id}.png"?> alt="grb">
+                <?=$finals7[1]->team?>
+            </td>
+            <td class="score">1</td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[2]->id}.png"?> alt="grb">
+                <?=$finals7[2]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[2]->id}.png"?> alt="grb">
+                <?=$finals7[2]->team?>
+            </td>
+            <td class="score">1</td>
+            <td class="bottom-border vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[3]->id}.png"?> alt="grb">
+                <?=$finals7[3]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[4]->id}.png"?> alt="grb">
+                <?=$finals7[4]->team?>
+            </td>
+            <td class="score">1(2)</td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals7[3]->id}.png"?> alt="grb">
+                <?=$finals7[3]->team?>
+            </td>
+            <td class="score">1(1)</td>
+            <td></td>
+        </tr>
+    </table>
+</section>
+<section>
+    <table class="table hidden" id=tab2008>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[1]->id}.png"?> alt="grb">
+                <?=$finals8[1]->team?>
+            </td>
+            <td class="score">3</td>
+            <td class="bottom-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[4]->id}.png"?> alt="grb">
+                <?=$finals8[4]->team?>
+            </td>
+            <td class="score">1</td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td class="bottom-border"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[1]->id}.png"?> alt="grb">
+                <?=$finals8[1]->team?>
+            </td>
+            <td class="score">1</td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[2]->id}.png"?> alt="grb">
+                <?=$finals8[2]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[2]->id}.png"?> alt="grb">
+                <?=$finals8[2]->team?>
+            </td>
+            <td class="score">2</td>
+            <td class="bottom-border vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[3]->id}.png"?> alt="grb">
+                <?=$finals8[3]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[4]->id}.png"?> alt="grb">
+                <?=$finals8[4]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals8[3]->id}.png"?> alt="grb">
+                <?=$finals8[3]->team?>
+            </td>
+            <td class="score">1</td>
+            <td></td>
+        </tr>
+    </table>
+</section>
+<section>
+    <table class="table hidden" id=tab2009>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[1]->id}.png"?> alt="grb">
+                <?=$finals9[1]->team?>
+            </td>
+            <td class="score"></td>
+            <td class="bottom-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[4]->id}.png"?> alt="grb">
+                <?=$finals9[4]->team?>
+            </td>
+            <td class="score"></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td class="bottom-border"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[1]->id}.png"?> alt="grb">
+                <?=$finals9[1]->team?>
+            </td>
+            <td class="score">4</td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[3]->id}.png"?> alt="grb">
+                <?=$finals9[3]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[2]->id}.png"?> alt="grb">
+                <?=$finals9[2]->team?>
+            </td>
+            <td class="score"></td>
+            <td class="bottom-border vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[3]->id}.png"?> alt="grb">
+                <?=$finals9[3]->team?>
+            </td>
+            <td class="score"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[4]->id}.png"?> alt="grb">
+                <?=$finals9[4]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals9[2]->id}.png"?> alt="grb">
+                <?=$finals9[2]->team?>
+            </td>
+            <td class="score">1</td>
+            <td></td>
+        </tr>
+    </table>
+</section>
+<section>
+    <table class="table hidden" id=tab2010>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[1]->id}.png"?> alt="grb">
+                <?=$finals10[1]->team?>
+            </td>
+            <td class="score">9</td>
+            <td class="bottom-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[4]->id}.png"?> alt="grb">
+                <?=$finals10[4]->team?>
+            </td>
+            <td class="score">1</td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td class="bottom-border"></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[1]->id}.png"?> alt="grb">
+                <?=$finals10[1]->team?>
+            </td>
+            <td class="score">2</td>
+            <td></td>
+        </tr>
+        <tr class="finals">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[3]->id}.png"?> alt="grb">
+                <?=$finals10[3]->team?>
+            </td>
+            <td class="score">1</td>
+            <td></td>
+        </tr>
+        <tr class="spacer">
+            <td></td>
+            <td></td>
+            <td class="vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[2]->id}.png"?> alt="grb">
+                <?=$finals10[2]->team?>
+            </td>
+            <td class="score">0(1)</td>
+            <td class="bottom-border vertical-border"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="semis">
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[3]->id}.png"?> alt="grb">
+                <?=$finals10[3]->team?>
+            </td>
+            <td class="score">0(2)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent opponent-border">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[4]->id}.png"?> alt="grb">
+                <?=$finals10[4]->team?>
+            </td>
+            <td class="score">0</td>
+            <td></td>
+        </tr>
+        <tr class="playoff">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="opponent">
+                <img class="club-logo__small" src=<?="/public/images/logos/{$finals10[2]->id}.png"?> alt="grb">
+                <?=$finals10[2]->team?>
+            </td>
+            <td class="score">4</td>
+            <td></td>
+        </tr>
+    </table>
+</section>
+<hr>
 <section>
     <table class="standings">
         <thead class="background-row">

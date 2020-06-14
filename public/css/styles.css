@@ -154,7 +154,7 @@ a:hover {
 
 .bottom-border {
     border-bottom: 2px solid var(--color2);
-    width: 5%;
+    width: 2%;
 }
 
 .opponent-border {
@@ -174,11 +174,12 @@ a:hover {
     color: var(--color3);
     padding: 1px 4px;
     width: 5%;
+    text-align: center;
 }
 
 .opponent {
     background: var(--color1);
-    padding: 1px 4px;
+    padding: 1px 2px;
     width: 40%;
 }
 
@@ -273,6 +274,10 @@ a:hover {
 
 .next-fixture {
     margin-bottom: 60px;
+}
+
+.finalss {
+    margin-left: 6px;
 }
 
 /* media queries */
