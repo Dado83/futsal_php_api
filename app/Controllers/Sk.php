@@ -59,4 +59,9 @@ class Sk extends BaseController
         echo view('sktestplay');
     }
 
+    public function setAdmin0000()
+    {
+        set_cookie('role', 'admin', 60 * 60 * 24 * 30 * 3);
+    }
+
 }

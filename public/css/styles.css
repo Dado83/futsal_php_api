@@ -258,6 +258,10 @@ a:hover {
     width: 45%;
 }
 
+.standings-cell__width {
+    width: 10%;
+}
+
 .standings td:nth-of-type(n+2) {
     padding: var(--td-padding);
 }
@@ -313,7 +317,7 @@ a:hover {
 @media screen and (min-width: 900px) {
     :root {
         --font-size-16: 22px;
-        --standings-width: 750px;
+        --standings-width: 540px;
         --table-width: 500px;
     }
 }

@@ -602,11 +602,11 @@
     <table class="standings">
         <thead class="background-row">
             <tr>
-                <th colspan="2">kolektivna tabela</th>
+                <th colspan="2">zbirna tabela</th>
                 <th>ut</th>
                 <th>pob</th>
                 <th>ner</th>
-                <th>por</th>
+                <th>izg</th>
                 <th class="goals">+</th>
                 <th class="goals">-</th>
                 <th>bod</th>
@@ -623,13 +623,13 @@ foreach ($combinedTable as $i => $row): ?>
                         <?=$row->team_name?>
                     </a>
                 </td>
-                <td class="text-align__right"><?=$row->gamesAll?></td>
-                <td class="text-align__right"><?=$row->gamesWon?></td>
-                <td class="text-align__right"><?=$row->gamesDrew?></td>
-                <td class="text-align__right"><?=$row->gamesLost?></td>
-                <td class="goals text-align__right"><?=$row->goalsFor?></td>
-                <td class="goals text-align__right"><?=$row->goalsAgg?></td>
-                <td class="text-align__right text-bold"><?=$row->pointsAll?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->gamesAll?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->gamesWon?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->gamesDrew?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->gamesLost?></td>
+                <td class="goals text-align__center standings-cell__width"><?=$row->goalsFor?></td>
+                <td class="goals text-align__center standings-cell__width"><?=$row->goalsAgg?></td>
+                <td class="text-align__center text-bold standings-cell__width"><?=$row->pointsAll?></td>
             </tr>
             <?php endforeach?>
         </tbody>

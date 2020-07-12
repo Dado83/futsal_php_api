@@ -18,7 +18,7 @@ foreach ($tables as $k => $table): ?>
                 <th>ut</th>
                 <th>pob</th>
                 <th>ner</th>
-                <th>por</th>
+                <th>izg</th>
                 <th class="goals">gol</th>
                 <th>+/-</th>
                 <th>bod</th>
@@ -35,19 +35,19 @@ foreach ($table as $i => $row): ?>
                         <?=$row->team?>
                     </a>
                 </td>
-                <td class="text-align__right"><?=$row->games_played?></td>
-                <td class="text-align__right"><?=$row->games_won?></td>
-                <td class="text-align__right"><?=$row->games_drew?></td>
-                <td class="text-align__right"><?=$row->games_lost?></td>
-                <td class="goals"><?=$row->goals?></td>
-                <td class="text-align__right">
+                <td class="text-align__center standings-cell__width"><?=$row->games_played?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->games_won?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->games_drew?></td>
+                <td class="text-align__center standings-cell__width"><?=$row->games_lost?></td>
+                <td class="goals standings-cell__width"><?=$row->goals?></td>
+                <td class="text-align__center standings-cell__width">
                     <?php if ($row->g_diff > 0): ?>
                     <?="+$row->g_diff"?>
                     <?php else: ?>
                     <?=$row->g_diff?>
                     <?php endif?>
                 </td>
-                <td class="text-align__right text-bold"><?=$row->points?></td>
+                <td class="text-align__center text-bold standings-cell__width"><?=$row->points?></td>
             </tr>
             <?php endforeach?>
         </tbody>

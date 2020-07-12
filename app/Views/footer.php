@@ -9,7 +9,7 @@
     <address class="address">
         <a href="mailto:ofkfairplay@yahoo.com">ofkfairplay@yahoo.com</a>
     </address>
-    <p>&copy; 2014-<?php echo date("Y"); ?></p>
+    <p>&#169; 2014-<?php echo date("Y"); ?></p>
 </footer>
 </body>
 </html>

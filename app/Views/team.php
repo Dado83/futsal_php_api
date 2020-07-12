@@ -52,7 +52,7 @@
         <?php endforeach?>
     </section>
     <section>
-        prijasnji plasman
+
     </section>
 </article>
 <script>
