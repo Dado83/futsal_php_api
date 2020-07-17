@@ -193,6 +193,98 @@ a:hover {
     height: 15px;
 }
 
+.admin a {
+    background: var(--color1);
+    color: black;
+    text-decoration: none;
+    padding: 1px 10px;
+    margin: 5px;
+    border-radius: 2px;
+    box-shadow: 0 0 2px var(--color5);
+    font-size: 15px;
+}
+
+.admin {
+    font-size: 15px;
+}
+
+.admin a:hover {
+    background: var(--color3);
+    color: white;
+}
+
+.adminCards {
+    display: inline-block;
+    width: 50px;
+    max-width: 200px;
+    font-size: var(--fontSize12);
+    font-weight: bold;
+    padding: 5px 15px;
+    box-shadow: 0 0 2px var(--color5);
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.modalForm {
+    text-align: right;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    margin-left: -10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color2);
+    z-index: 1;
+    display: none;
+}
+
+.modalForm form {
+    width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color1);
+}
+
+.modalForm input {
+    background: var(--color2);
+    color: white;
+    margin: 2px;
+}
+
+.modalForm input[type='submit'] {
+    background: var(--color3);
+}
+
+.modalForm input[type='submit']:hover {
+    cursor: pointer;
+    color: var(--color1);
+}
+
+.visitorTable {
+    border: 1px solid var(--color3);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.visitorTable td {
+    padding: 2px 3px;
+    text-align: center;
+    border-bottom: 1px solid var(--color2);
+    border-top: 1px solid var(--color2);
+}
+
+.visitorTable td:nth-of-type(10) {
+    border-left: 1px solid var(--color2);
+}
+
+.visitorTable th {
+    background: var(--color1);
+    color: black;
+}
+
 .club-logo__small {
     height: var(--club-logo__small);
     width: var(--club-logo__small);
