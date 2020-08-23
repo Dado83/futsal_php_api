@@ -2,7 +2,7 @@
     <section>
         <h1>Fair Play Liga Budućih Šampiona</h1>
         <img class="about__image" src="/public/images/grb.png" alt="grb">
-        <p>Fair Play Liga je formirana sa osnovnim ciljem da podstakne najmlađe učesnike sportskih manfestacija – djecu,
+        <p>Fair Play Liga je formirana je 2014. god. sa osnovnim ciljem da podstakne najmlađe učesnike sportskih manfestacija – djecu,
             da se kroz igru i zabavu nauče fer-plej ponašanju.
             Osnovna ideja u osnivanju Fair Play lige je bila da se propišu jedinstveni standardi –
             propozicije i pravila koja su potpuno prilagođena djeci.</p>
