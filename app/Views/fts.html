@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/stylesFts.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- izbaci jquery -->
     <script src="/js/scripts.js" defer></script>
 </head>
 <body>
@@ -48,19 +48,29 @@
             function makeTables() {
                 //start of dynamic tables
                 let numOfTeams = $('#numOfTeams').val();
-                let numOfRows = $('#numOfTeamsPerGroup').val();
-                let numOfGroups = numOfTeams / numOfRows;
+                let numOfTeamsPerGroup = $('#numOfTeamsPerGroup').val();
+                let remainderTeams = numOfTeams % numOfTeamsPerGroup;
+                /*  if (remainderTeams == 2) {
+                     numOfTeamsPerGroup -= 1;
+                     remainderTeams = 1;
+                     //$('#numOfTeams').val('numOfTeamsPerGroup');
+                 } else if (remainderTeams == 1) {
+                     numOfTeamsPerGroup -= 1;
+                 } */
+                let numOfGroups = numOfTeams / numOfTeamsPerGroup;
+                console.log('U slucaju nedjeljivog broja ekipa, ostatak je: ' + remainderTeams);
+                console.log('Ako je visak 2 tima onda su timovi po grupi: ' + numOfTeamsPerGroup);
 
                 for (let i = 1; i <= numOfGroups; i++) {
                     let tableBody = `<table id="tab${i}"><caption>Grupa ${i}</caption><tr><th>id</th><th>ekipa</th></tr></table>`;
                     $('#dynamic').append(tableBody);
-                    if (numOfRows % 2 != 0) {
-                        numOfRows++;
-                        for (let j = 1; j <= numOfRows; j++) {
+                    if (numOfTeamsPerGroup % 2 != 0) {
+                        numOfTeamsPerGroup++;
+                        for (let j = 1; j <= numOfTeamsPerGroup; j++) {
                             $(`#tab${i}`).append(`<tr><td>${j}</td><td><input type="text" id="group${i}team${j}"/></td></tr>`);
                         }
                     } else {
-                        for (let j = 1; j <= numOfRows; j++) {
+                        for (let j = 1; j <= numOfTeamsPerGroup; j++) {
                             $(`#tab${i}`).append(`<tr><td>${j}</td><td><input type="text" id="group${i}team${j}"/></td></tr>`);
                         }
                     }
@@ -84,8 +94,8 @@
 
             function makeSchedule() {
                 let numOfTeams = $('#numOfTeams').val();
-                let numOfRows = $('#numOfTeamsPerGroup').val();
-                let numOfGroups = numOfTeams / numOfRows;
+                let numOfTeamsPerGroup = $('#numOfTeamsPerGroup').val();
+                let numOfGroups = numOfTeams / numOfTeamsPerGroup;
                 let startHour = $('#startHour').val();
                 let startMin = $('#startMin').val();
                 let startTime = new Date(1983, 2, 18, startHour, startMin);
@@ -100,7 +110,7 @@
                 console.log(groups);
                 for (let i = 1; i <= numOfGroups; i++) {
                     groups[i] = new Map();
-                    for (let j = 1; j <= numOfRows; j++) {
+                    for (let j = 1; j <= numOfTeamsPerGroup; j++) {
                         let team = $(`#group${i}team${j}`).val();
                         //console.log(team);
                         groups[i].set(j, team);

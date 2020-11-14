@@ -1,15 +1,15 @@
 <article>
     <nav>
         <ul class="nav-tab">
-            <li id="table6">2006</li>
             <li id="table7">2007</li>
             <li id="table8">2008</li>
             <li id="table9">2009</li>
             <li id="table10">2010</li>
+            <li id="table11">2011</li>
         </ul>
     </nav>
     <?php
-$tables = [2006 => $table6, $table7, $table8, $table9, $table10];
+$tables = [2007 => $table7, $table8, $table9, $table10, $table11];
 foreach ($tables as $k => $table): ?>
     <table class="standings hidden" id=<?="tab$k"?>>
         <thead class="background-row">
@@ -63,7 +63,7 @@ endforeach?>
 <script>
 let nav = document.querySelectorAll('.nav-tab li')
 nav[0].className = 'nav-select'
-document.querySelector('#tab2006').style.display = 'block'
+document.querySelector('#tab2007').style.display = 'block'
 
 for (let i = 0; i < nav.length; i++) {
     nav[i].addEventListener('mouseup', navigation)

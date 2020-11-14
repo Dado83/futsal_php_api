@@ -31,6 +31,17 @@
                         <input type="hidden" name="away" value="<?=$game->away?>">
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        2011
+                    </td>
+                    <td>
+                        <input type="number" name="home11" value="0">
+                    </td>
+                    <td>
+                        <input type="number" name="away11" value="0">
+                    </td>
+                </tr>
                 <?php if (($game->home_team == 1 or $game->away_team == 1) or ($game->home_team == 7 or $game->away_team == 7)): ?>
                 <tr>
                     <td>
@@ -103,17 +114,6 @@
                     </td>
                 </tr>
                 <?php endif?>
-                <tr>
-                    <td>
-                        2006
-                    </td>
-                    <td>
-                        <input type="number" name="home6" value="0">
-                    </td>
-                    <td>
-                        <input type="number" name="away6" value="0">
-                    </td>
-                </tr>
                 <tr>
                     <td colspan="3">
                         <input type="submit" value="Snimi u bazu">

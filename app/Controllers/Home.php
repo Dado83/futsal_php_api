@@ -60,7 +60,10 @@ class Home extends BaseController
         $data['title'] = 'Fair Play LBŠ';
         $data['maxMday'] = $this->model->getMaxMday()->mDay;
         $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
-        $data['lastResults'] = $this->model->getResultsByMday($data['lastMday']);
+        if ($data['lastMday'] != null) {
+            $data['lastResults'] = $this->model->getResultsByMday($data['lastMday']);
+        }
+        $data['startDate'] = $this->model->getMatchDates(1)->game_date;
         $data['nextFixture'] = $this->model->getNextFixture();
 
         echo view('header', $data);
@@ -68,14 +71,15 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function table()
+    public function table() //provjerit
+
     {
         $data['title'] = 'LBŠ tabela';
-        $data['table6'] = $this->model->getTable('table6', true);
         $data['table7'] = $this->model->getTable('table7', true, 8);
         $data['table8'] = $this->model->getTable('table8', true);
         $data['table9'] = $this->model->getTable('table9', true);
         $data['table10'] = $this->model->getTable('table10', true, 7, 1);
+        $data['table11'] = $this->model->getTable('table11', true);
 
         echo view('header', $data);
         echo view('table', $data);
@@ -134,15 +138,16 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function finalFour()
+    public function finalFour() //provjerit
+
     {
         $data['title'] = ' LBŠ Završnica';
         for ($i = 1; $i <= 4; $i++) {
-            $data['finals6'][$i] = $this->model->getTeamByTablePos('table6', $i);
             $data['finals7'][$i] = $this->model->getTeamByTablePos('table7', $i);
             $data['finals8'][$i] = $this->model->getTeamByTablePos('table8', $i);
             $data['finals9'][$i] = $this->model->getTeamByTablePos('table9', $i);
             $data['finals10'][$i] = $this->model->getTeamByTablePos('table10', $i);
+            $data['finals11'][$i] = $this->model->getTeamByTablePos('table11', $i);
         }
         $data['combinedTable'] = $this->getCombinedTable();
 
@@ -213,7 +218,8 @@ class Home extends BaseController
         echo view('gameInput', $data);
     }
 
-    public function inputGame()
+    public function inputGame() //provjerit
+
     {
         $request = $this->request;
 
@@ -225,6 +231,8 @@ class Home extends BaseController
         $homeID = $request->getVar('homeID');
         $awayID = $request->getVar('awayID');
 
+        $home11 = $request->getVar('home11');
+        $away11 = $request->getVar('away11');
         $home10 = $request->getVar('home10');
         $away10 = $request->getVar('away10');
         $home9 = $request->getVar('home9');
@@ -233,8 +241,6 @@ class Home extends BaseController
         $away8 = $request->getVar('away8');
         $home7 = $request->getVar('home7');
         $away7 = $request->getVar('away7');
-        $home6 = $request->getVar('home6');
-        $away6 = $request->getVar('away6');
 
         if (!$this->model->checkForResult($homeID, $awayID)) {
             $this->model->insertGame($mDay, $home, $homeID, $away, $awayID,
@@ -242,7 +248,7 @@ class Home extends BaseController
                 $home8, $away8,
                 $home9, $away9,
                 $home10, $away10,
-                $home6, $away6);
+                $home11, $away11);
             $this->model->setPlayed($id, true);
         }
 
@@ -260,21 +266,20 @@ class Home extends BaseController
         return redirect()->to('/admin');
     }
 
-    public function newsLetter()
+    public function newsLetter() //provjerit
+
     {
         $data['title'] = 'Bilten';
         $data['teams'] = $this->model->getTeams();
-        $data['table6'] = $this->model->getTable('table6');
         $data['table7'] = $this->model->getTable('table7', false, 8);
         $data['table8'] = $this->model->getTable('table8');
         $data['table9'] = $this->model->getTable('table9');
         $data['table10'] = $this->model->getTable('table10', false, 7, 1);
-        $data['results6'] = $this->model->getLastResults('results6')['results'];
-        $data['results7'] = $this->model->getLastResults('results7')['results'];
-        $data['results8'] = $this->model->getLastResults('results8')['results'];
-        $data['results9'] = $this->model->getLastResults('results9')['results'];
-        $data['results10'] = $this->model->getLastResults('results10')['results'];
-        $data['lastMday'] = $this->model->getLastResults('results6')['lastMday'];
+        $data['table11'] = $this->model->getTable('table11');
+
+        $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
+        $data['results'] = $this->model->getResultsByMday($data['lastMday']);
+
         $data['nextFixture'] = $this->model->getNextFixture();
         $data['nextMday'] = $data['lastMday'] + 1;
         $data['notPlaying'] = $this->model->getNotPlaying($data['lastMday'] + 1);
@@ -342,7 +347,6 @@ class Home extends BaseController
 
     public function test()
     {
-        $result = $this->model->checkForResult(1, 18);
-        var_dump($result);
+        echo view('test.html');
     }
 }

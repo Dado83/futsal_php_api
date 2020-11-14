@@ -124,7 +124,8 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getResultsByMday($mday)
+    public function getResultsByMday($mday) //kad nea rez problem?
+
     {
         $sql = "SELECT * FROM results WHERE m_day = $mday";
         $query = $this->db->query($sql);
@@ -206,7 +207,7 @@ class DBModel extends Model
         $goals_h8, $goals_a8,
         $goals_h9, $goals_a9,
         $goals_h10, $goals_a10,
-        $goals_h6, $goals_a6) {
+        $goals_h11, $goals_a11) {
 
         $sql = "INSERT INTO results
         (m_day, home_name, home_id, away_name, away_id,
@@ -214,13 +215,13 @@ class DBModel extends Model
         goals_home8, goals_away8,
         goals_home9, goals_away9,
         goals_home10, goals_away10,
-        goals_home6, goals_away6) VALUES
+        goals_home11, goals_away11) VALUES
         ($mday, '$home', $home_id, '$away', $away_id,
         $goals_h7, $goals_a7,
         $goals_h8, $goals_a8,
         $goals_h9, $goals_a9,
         $goals_h10, $goals_a10,
-        $goals_h6, $goals_a6)";
+        $goals_h11, $goals_a11)";
 
         $this->db->query($sql);
 
@@ -257,12 +258,12 @@ class DBModel extends Model
             $this->gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10);
         }
         //6
-        if ($goals_h6 > $goals_a6) {
-            $this->homeWin('table6', $home_id, $away_id, $goals_h6, $goals_a6);
-        } elseif ($goals_a6 > $goals_h6) {
-            $this->awayWin('table6', $home_id, $away_id, $goals_h6, $goals_a6);
-        } elseif ($goals_a6 == $goals_h6) {
-            $this->gameDraw('table6', $home_id, $away_id, $goals_h6, $goals_a6);
+        if ($goals_h11 > $goals_a11) {
+            $this->homeWin('table11', $home_id, $away_id, $goals_h11, $goals_a11);
+        } elseif ($goals_a11 > $goals_h11) {
+            $this->awayWin('table11', $home_id, $away_id, $goals_h11, $goals_a11);
+        } elseif ($goals_a11 == $goals_h11) {
+            $this->gameDraw('table11', $home_id, $away_id, $goals_h11, $goals_a11);
         }
     }
 
@@ -323,7 +324,7 @@ class DBModel extends Model
             'goals_h8' => $res->goals_home8, 'goals_a8' => $res->goals_away8,
             'goals_h9' => $res->goals_home9, 'goals_a9' => $res->goals_away9,
             'goals_h10' => $res->goals_home10, 'goals_a10' => $res->goals_away10,
-            'goals_h6' => $res->goals_home6, 'goals_a6' => $res->goals_away6,
+            'goals_h11' => $res->goals_home11, 'goals_a11' => $res->goals_away11,
         );
         //7
         if ($game['goals_h7'] > $game['goals_a7']) {
@@ -358,12 +359,12 @@ class DBModel extends Model
             $this->drawDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
         }
         //6
-        if ($game['goals_h6'] > $game['goals_a6']) {
-            $this->homeWinDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
-        } elseif ($game['goals_a6'] > $game['goals_h6']) {
-            $this->awayWinDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
-        } elseif ($game['goals_a6'] == $game['goals_h6']) {
-            $this->drawDel('table6', $game['home_id'], $game['away_id'], $game['goals_h6'], $game['goals_a6']);
+        if ($game['goals_h11'] > $game['goals_a11']) {
+            $this->homeWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
+        } elseif ($game['goals_a11'] > $game['goals_h11']) {
+            $this->awayWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
+        } elseif ($game['goals_a11'] == $game['goals_h11']) {
+            $this->drawDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
         }
 
         $sql_del = "DELETE FROM results WHERE id = $id";
@@ -425,43 +426,43 @@ class DBModel extends Model
     {
         $sql = "SELECT MAX(m_day) as mDay FROM results";
         $query = $this->db->query($sql);
-        return $query->getRow();
+        return ($query) ? $query->getRow() : array();
     }
 
     public function getCombinedTable($id)
     {
         $sql = "SELECT id, team_name,
-        (SELECT games_played FROM table6 WHERE id=$id)
+        (SELECT games_played FROM table11 WHERE id=$id)
         + (SELECT games_played FROM table7 WHERE id=$id)
         + (SELECT games_played FROM table8 WHERE id=$id)
         + (SELECT games_played FROM table9 WHERE id=$id)
         + (SELECT games_played FROM table10 WHERE id=$id) AS gamesAll,
-        (SELECT games_won FROM table6 WHERE id=$id)
+        (SELECT games_won FROM table11 WHERE id=$id)
         + (SELECT games_won FROM table7 WHERE id=$id)
         + (SELECT games_won FROM table8 WHERE id=$id)
         + (SELECT games_won FROM table9 WHERE id=$id)
         + (SELECT games_won FROM table10 WHERE id=$id) AS gamesWon,
-        (SELECT games_drew FROM table6 WHERE id=$id)
+        (SELECT games_drew FROM table11 WHERE id=$id)
         + (SELECT games_drew FROM table7 WHERE id=$id)
         + (SELECT games_drew FROM table8 WHERE id=$id)
         + (SELECT games_drew FROM table9 WHERE id=$id)
         + (SELECT games_drew FROM table10 WHERE id=$id) AS gamesDrew,
-        (SELECT games_lost FROM table6 WHERE id=$id)
+        (SELECT games_lost FROM table11 WHERE id=$id)
         + (SELECT games_lost FROM table7 WHERE id=$id)
         + (SELECT games_lost FROM table8 WHERE id=$id)
         + (SELECT games_lost FROM table9 WHERE id=$id)
         + (SELECT games_lost FROM table10 WHERE id=$id) AS gamesLost,
-        (SELECT goals_scored FROM table6 WHERE id=$id)
+        (SELECT goals_scored FROM table11 WHERE id=$id)
         + (SELECT goals_scored FROM table7 WHERE id=$id)
         + (SELECT goals_scored FROM table8 WHERE id=$id)
         + (SELECT goals_scored FROM table9 WHERE id=$id)
         + (SELECT goals_scored FROM table10 WHERE id=$id) AS goalsFor,
-        (SELECT goals_conceded FROM table6 WHERE id=$id)
+        (SELECT goals_conceded FROM table11 WHERE id=$id)
         + (SELECT goals_conceded FROM table7 WHERE id=$id)
         + (SELECT goals_conceded FROM table8 WHERE id=$id)
         + (SELECT goals_conceded FROM table9 WHERE id=$id)
         + (SELECT goals_conceded FROM table10 WHERE id=$id) AS goalsAgg,
-        (SELECT points FROM table6 WHERE id=$id)
+        (SELECT points FROM table11 WHERE id=$id)
         + (SELECT points FROM table7 WHERE id=$id)
         + (SELECT points FROM table8 WHERE id=$id)
         + (SELECT points FROM table9 WHERE id=$id)

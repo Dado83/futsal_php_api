@@ -13,11 +13,12 @@
             <thead class="background-row">
                 <tr>
                     <td><?=$result->m_day?>. kolo</td>
-                    <td>2006</td>
+
                     <td>2007</td>
                     <td>2008</td>
                     <td>2009</td>
                     <td>2010</td>
+                    <td>2011</td>
                 </tr>
             </thead>
             <tbody>
@@ -28,11 +29,12 @@
                             <?=$result->home_name?>
                         </a>
                     </td>
-                    <td class="text-align__right text-bold"><?=$result->goals_home6?></td>
-                    <td class="text-align__right text-bold"><?=($result->goals_home7 != -1) ?: ''?></td>
+
+                    <td class="text-align__right text-bold"><?=$result->goals_home7?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_home8?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_home9?></td>
-                    <td class="text-align__right text-bold"><?=($result->goals_home10 != -1) ?: ''?></td>
+                    <td class="text-align__right text-bold"><?=$result->goals_home10?></td>
+                    <td class="text-align__right text-bold"><?=$result->goals_home11?></td>
                 </tr>
                 <tr>
                     <td class="standings-club__width text-align__left">
@@ -41,11 +43,12 @@
                             <?=$result->away_name?>
                         </a>
                     </td>
-                    <td class="text-align__right text-bold"><?=$result->goals_away6?></td>
-                    <td class="text-align__right text-bold"><?=($result->goals_away7 != -1) ?: ''?></td>
+
+                    <td class="text-align__right text-bold"><?=$result->goals_away7?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_away8?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_away9?></td>
-                    <td class="text-align__right text-bold"><?=($result->goals_away10 != -1) ?: ''?></td>
+                    <td class="text-align__right text-bold"><?=$result->goals_away10?></td>
+                    <td class="text-align__right text-bold"><?=$result->goals_away11?></td>
                 </tr>
             </tbody>
         </table>
@@ -58,7 +61,7 @@
 <script>
 let nav = document.querySelectorAll('.team li')
 nav[0].className = 'nav-select'
-document.querySelector('#res2006').style.display = 'block'
+document.querySelector('#res2007').style.display = 'block'
 
 for (let i = 0; i < nav.length; i++) {
     nav[i].addEventListener('mouseup', navigation)

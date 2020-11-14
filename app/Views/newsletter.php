@@ -21,15 +21,61 @@
 <p>ad 1)</p>
 <p><?=$notPlayingLastMday->team?> pauzira</p>
 <div class="resultsNL">
+    <p>2011. godište</p>
+    <table>
+        <?php foreach ($results as $r): ?>
+        <tr>
+            <td><?=$r->home_name?></td>
+            <td><?=$r->goals_home11?></td>
+            <td> - </td>
+            <td><?=$r->goals_away11?></td>
+            <td><?=$r->away_name?></td>
+        </tr>
+        <?php endforeach?>
+    </table>
+</div>
+<div class="tableNL">
+    <table>
+        <tr>
+            <th>#</th>
+            <th>2011. godište</th>
+            <th>Ut</th>
+            <th>P</th>
+            <th>N</th>
+            <th>I</th>
+            <th>GOL</th>
+            <th>+/-</th>
+            <th>BOD</th>
+        </tr>
+        <?php
+$i = 1;
+foreach ($table11 as $row): ?>
+        <tr>
+            <td><?=$i?></td>
+            <td><?=$row->team?></td>
+            <td><?=$row->games_played?></td>
+            <td><?=$row->games_won?></td>
+            <td><?=$row->games_drew?></td>
+            <td><?=$row->games_lost?></td>
+            <td><?=$row->goals?></td>
+            <td><?=$row->g_diff?></td>
+            <td><?=$row->points?></td>
+        </tr>
+        <?php
+$i++;
+endforeach?>
+    </table>
+</div>
+<div class="resultsNL">
     <p>2010. godište</p>
     <table>
-        <?php foreach ($results10 as $r): ?>
+        <?php foreach ($results as $r): ?>
         <tr>
-            <td><?=$r->home_team?></td>
-            <td><?=$r->goals_home?></td>
+            <td><?=$r->home_name?></td>
+            <td><?=$r->goals_home10?></td>
             <td> - </td>
-            <td><?=$r->goals_away?></td>
-            <td><?=$r->away_team?></td>
+            <td><?=$r->goals_away10?></td>
+            <td><?=$r->away_name?></td>
         </tr>
         <?php endforeach?>
     </table>
@@ -69,13 +115,13 @@ endforeach?>
 <div class="resultsNL">
     <p>2009. godište</p>
     <table>
-        <?php foreach ($results9 as $r): ?>
+        <?php foreach ($results as $r): ?>
         <tr>
-            <td><?=$r->home_team?></td>
-            <td><?=$r->goals_home?></td>
+            <td><?=$r->home_name?></td>
+            <td><?=$r->goals_home9?></td>
             <td> - </td>
-            <td><?=$r->goals_away?></td>
-            <td><?=$r->away_team?></td>
+            <td><?=$r->goals_away9?></td>
+            <td><?=$r->away_name?></td>
         </tr>
         <?php endforeach?>
     </table>
@@ -115,13 +161,13 @@ endforeach?>
 <div class="resultsNL">
     <p>2008. godište</p>
     <table>
-        <?php foreach ($results8 as $r): ?>
+        <?php foreach ($results as $r): ?>
         <tr>
-            <td><?=$r->home_team?></td>
-            <td><?=$r->goals_home?></td>
+            <td><?=$r->home_name?></td>
+            <td><?=$r->goals_home8?></td>
             <td> - </td>
-            <td><?=$r->goals_away?></td>
-            <td><?=$r->away_team?></td>
+            <td><?=$r->goals_away8?></td>
+            <td><?=$r->away_name?></td>
         </tr>
         <?php endforeach?>
     </table>
@@ -161,13 +207,13 @@ endforeach?>
 <div class="resultsNL">
     <p>2007. godište</p>
     <table>
-        <?php foreach ($results7 as $r): ?>
+        <?php foreach ($results as $r): ?>
         <tr>
-            <td><?=$r->home_team?></td>
-            <td><?=$r->goals_home?></td>
+            <td><?=$r->home_name?></td>
+            <td><?=$r->goals_home7?></td>
             <td> - </td>
-            <td><?=$r->goals_away?></td>
-            <td><?=$r->away_team?></td>
+            <td><?=$r->goals_away7?></td>
+            <td><?=$r->away_name?></td>
         </tr>
         <?php endforeach?>
     </table>
@@ -204,52 +250,7 @@ $i++;
 endforeach?>
     </table>
 </div>
-<div class="resultsNL">
-    <p>2006. godište</p>
-    <table>
-        <?php foreach ($results6 as $r): ?>
-        <tr>
-            <td><?=$r->home_team?></td>
-            <td><?=$r->goals_home?></td>
-            <td> - </td>
-            <td><?=$r->goals_away?></td>
-            <td><?=$r->away_team?></td>
-        </tr>
-        <?php endforeach?>
-    </table>
-</div>
-<div class="tableNL">
-    <table>
-        <tr>
-            <th>#</th>
-            <th>2006. godište</th>
-            <th>Ut</th>
-            <th>P</th>
-            <th>N</th>
-            <th>I</th>
-            <th>GOL</th>
-            <th>+/-</th>
-            <th>BOD</th>
-        </tr>
-        <?php
-$i = 1;
-foreach ($table6 as $row): ?>
-        <tr>
-            <td><?=$i?></td>
-            <td><?=$row->team?></td>
-            <td><?=$row->games_played?></td>
-            <td><?=$row->games_won?></td>
-            <td><?=$row->games_drew?></td>
-            <td><?=$row->games_lost?></td>
-            <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
-            <td><?=$row->points?></td>
-        </tr>
-        <?php
-$i++;
-endforeach?>
-    </table>
-</div>
+
 <table class="nextGameNL">
     <?php if ($isLeagueOver): else: ?>
     <tr>
