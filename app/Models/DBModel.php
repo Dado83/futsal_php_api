@@ -12,7 +12,7 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getTable($table, $isShortName = false, $id1 = 11, $id2 = 12)
+    public function getTable($table, $isShortName = false, $id1 = 11, $id2 = 12, $id3 = 13)
     {
         if ($isShortName) {
             $sql = "SELECT teams.team_name AS team,
@@ -23,7 +23,7 @@ class DBModel extends Model
             $table.games_lost,
             CONCAT ($table.goals_scored, ':', $table.goals_conceded) AS goals,
             $table.goals_scored - $table.goals_conceded AS g_diff,
-            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2)
+            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2, $id3)
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team";
         } else {
             $sql = "SELECT CONCAT(teams.team_name, ' ', teams.team_city) AS team,
@@ -34,7 +34,7 @@ class DBModel extends Model
             $table.games_lost,
             CONCAT ($table.goals_scored, ':', $table.goals_conceded) AS goals,
             $table.goals_scored - $table.goals_conceded AS g_diff,
-            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2)
+            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2, $id3)
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team";
         }
         $query = $this->db->query($sql);
@@ -254,7 +254,7 @@ class DBModel extends Model
             $this->homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
         } elseif ($goals_a10 > $goals_h10) {
             $this->awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
-        } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
+        } elseif ($goals_a10 == $goals_h10) {
             $this->gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10);
         }
         //6
@@ -262,7 +262,7 @@ class DBModel extends Model
             $this->homeWin('table11', $home_id, $away_id, $goals_h11, $goals_a11);
         } elseif ($goals_a11 > $goals_h11) {
             $this->awayWin('table11', $home_id, $away_id, $goals_h11, $goals_a11);
-        } elseif ($goals_a11 == $goals_h11) {
+        } elseif ($goals_a11 == $goals_h11 && $goals_a11 != -1) {
             $this->gameDraw('table11', $home_id, $away_id, $goals_h11, $goals_a11);
         }
     }
@@ -355,15 +355,15 @@ class DBModel extends Model
             $this->homeWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
         } elseif ($game['goals_a10'] > $game['goals_h10']) {
             $this->awayWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
-        } elseif ($game['goals_a10'] == $game['goals_h10'] && $game['goals_h10'] != -1) {
+        } elseif ($game['goals_a10'] == $game['goals_h10']) {
             $this->drawDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
         }
-        //6
+        //11
         if ($game['goals_h11'] > $game['goals_a11']) {
             $this->homeWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
         } elseif ($game['goals_a11'] > $game['goals_h11']) {
             $this->awayWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
-        } elseif ($game['goals_a11'] == $game['goals_h11']) {
+        } elseif ($game['goals_a11'] == $game['goals_h11'] && $game['goals_h11'] != -1) {
             $this->drawDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11']);
         }
 

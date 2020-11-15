@@ -71,15 +71,14 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function table() //provjerit
-
+    public function table()
     {
         $data['title'] = 'LBŠ tabela';
-        $data['table7'] = $this->model->getTable('table7', true, 8);
+        $data['table7'] = $this->model->getTable('table7', true, 5, 8, 9);
         $data['table8'] = $this->model->getTable('table8', true);
         $data['table9'] = $this->model->getTable('table9', true);
-        $data['table10'] = $this->model->getTable('table10', true, 7, 1);
-        $data['table11'] = $this->model->getTable('table11', true);
+        $data['table10'] = $this->model->getTable('table10', true);
+        $data['table11'] = $this->model->getTable('table11', true, 4);
 
         echo view('header', $data);
         echo view('table', $data);
@@ -271,11 +270,11 @@ class Home extends BaseController
     {
         $data['title'] = 'Bilten';
         $data['teams'] = $this->model->getTeams();
-        $data['table7'] = $this->model->getTable('table7', false, 8);
+        $data['table7'] = $this->model->getTable('table7', false, 5, 8, 9);
         $data['table8'] = $this->model->getTable('table8');
         $data['table9'] = $this->model->getTable('table9');
-        $data['table10'] = $this->model->getTable('table10', false, 7, 1);
-        $data['table11'] = $this->model->getTable('table11');
+        $data['table10'] = $this->model->getTable('table10');
+        $data['table11'] = $this->model->getTable('table11', true, 4);
 
         $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
         $data['results'] = $this->model->getResultsByMday($data['lastMday']);

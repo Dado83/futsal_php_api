@@ -118,7 +118,7 @@ endforeach?>
             <tbody>
                 <?php
 foreach ($result as $r):
-    if ($r->goals_home10 != -1): ?>
+?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
@@ -135,7 +135,7 @@ foreach ($result as $r):
                     </td>
                 </tr>
                 <?php
-endif;
+
 endforeach?>
             </tbody>
         </table>
@@ -151,7 +151,8 @@ endforeach?>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($result as $r): ?>
+                <?php foreach ($result as $r):
+    if ($r->goals_home11 != -1): ?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
@@ -167,7 +168,9 @@ endforeach?>
                         </a>
                     </td>
                 </tr>
-                <?php endforeach?>
+
+                <?php endif;
+endforeach?>
             </tbody>
         </table>
         <?php endforeach?>
