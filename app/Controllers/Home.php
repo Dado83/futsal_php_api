@@ -277,7 +277,7 @@ class Home extends BaseController
         $data['table8'] = $this->model->getTable('table8');
         $data['table9'] = $this->model->getTable('table9');
         $data['table10'] = $this->model->getTable('table10');
-        $data['table11'] = $this->model->getTable('table11', true, 4);
+        $data['table11'] = $this->model->getTable('table11', false, 4);
 
         $data['lastMday'] = $this->model->getNumberOfMdaysPlayed()->mDay;
         $data['results'] = $this->model->getResultsByMday($data['lastMday']);

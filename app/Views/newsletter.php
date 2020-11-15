@@ -5,6 +5,36 @@
         margin: 40px 0 100px 30px;
         background: white;
     }
+
+    .resultsNL {
+        margin: 0 0 20px 40px;
+    }
+
+    .resultsNL p {
+        font-weight: bold;
+    }
+
+    .tableNL {
+        margin: 0 20px 40px 20px;
+        border-bottom: solid black 1px;
+    }
+
+    .tableNL table {
+        width: 500px;
+    }
+
+    .tableNL td:nth-of-type(-2n+9) {
+        text-align: center;
+        padding: 0 5px;
+    }
+
+    .tableNL th:nth-of-type(2) {
+        text-align: left;
+    }
+
+    .nextGameNL {
+        margin: 20px;
+    }
     </style>
 </head>
 <img style="width:15%; position:absolute; top:10px" src="/public/images/grb.png" alt="grb" />
@@ -256,7 +286,7 @@ $i++;
 endforeach?>
     </table>
 </div>
-
+<p>ad 2)</p>
 <table class="nextGameNL">
     <?php if ($isLeagueOver): else: ?>
     <tr>
