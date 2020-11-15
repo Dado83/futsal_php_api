@@ -91,7 +91,8 @@
                 </tr>
                 <?php if (($game->home_team == 5 or $game->away_team == 5)
     or ($game->home_team == 8 or $game->away_team == 8)
-    or ($game->home_team == 9 or $game->away_team == 9)): ?>
+    or ($game->home_team == 9 or $game->away_team == 9)
+    or ($game->home_team == 10 or $game->away_team == 10)): ?>
                 <tr>
                     <td>
                         2007

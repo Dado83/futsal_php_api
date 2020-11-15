@@ -5,14 +5,15 @@ use CodeIgniter\Model;
 class DBModel extends Model
 {
 
-    public function getTeams()
+    public function getTeams($id = 11) //korigovati
+
     {
-        $sql = 'SELECT * FROM teams WHERE NOT id = 10';
+        $sql = "SELECT * FROM teams WHERE NOT id = $id";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getTable($table, $isShortName = false, $id1 = 11, $id2 = 12, $id3 = 13)
+    public function getTable($table, $isShortName = false, $id1 = 11, $id2 = 12, $id3 = 13, $id4 = 14)
     {
         if ($isShortName) {
             $sql = "SELECT teams.team_name AS team,
@@ -23,7 +24,7 @@ class DBModel extends Model
             $table.games_lost,
             CONCAT ($table.goals_scored, ':', $table.goals_conceded) AS goals,
             $table.goals_scored - $table.goals_conceded AS g_diff,
-            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2, $id3)
+            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN ($id1, $id2, $id3, $id4)
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team";
         } else {
             $sql = "SELECT CONCAT(teams.team_name, ' ', teams.team_city) AS team,
@@ -34,14 +35,14 @@ class DBModel extends Model
             $table.games_lost,
             CONCAT ($table.goals_scored, ':', $table.goals_conceded) AS goals,
             $table.goals_scored - $table.goals_conceded AS g_diff,
-            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN (10, $id1, $id2, $id3)
+            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id IN ($id1, $id2, $id3, $id4)
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team";
         }
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getTeamByTablePos($table, $pos)
+    public function getTeamByTablePos($table, $pos, $id = 11)
     {
         $pos--;
         $sql = "SELECT teams.team_name AS team,
@@ -52,7 +53,7 @@ class DBModel extends Model
             $table.games_lost,
             CONCAT ($table.goals_scored, ':', $table.goals_conceded) AS goals,
             $table.goals_scored - $table.goals_conceded AS g_diff,
-            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id=10
+            $table.points FROM $table JOIN teams ON $table.id = teams.id WHERE NOT teams.id=$id
             ORDER BY $table.points DESC, g_diff DESC, $table.goals_scored DESC, team
             LIMIT 1 OFFSET $pos";
 
@@ -81,37 +82,37 @@ class DBModel extends Model
         return $query->getRow() ? true : false;
     }
 
-    public function getMatchPairs($mday)
+    public function getMatchPairs($mday, $id = 11)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
         home.team_name AS home_club, away.team_name AS away_club
         FROM matchpairs
         JOIN teams AS home ON matchpairs.home_team = home.id
         JOIN teams AS away ON matchpairs.away_team = away.id
-        WHERE matchpairs.m_day = $mday AND NOT (matchpairs.home_team = 10 XOR matchpairs.away_team = 10)";
+        WHERE matchpairs.m_day = $mday AND NOT (matchpairs.home_team = $id XOR matchpairs.away_team = $id)";
 
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getMatchDates($mday)
+    public function getMatchDates($mday, $pairNotToShow = 11)
     {
         $sql = "SELECT DISTINCT matchpairs.game_date
         FROM matchpairs
-        WHERE m_day = $mday AND NOT (matchpairs.home_team = 10 XOR matchpairs.away_team = 10)";
+        WHERE m_day = $mday AND NOT (matchpairs.home_team = $pairNotToShow XOR matchpairs.away_team = $pairNotToShow)";
 
         $query = $this->db->query($sql);
         return ($query) ? $query->getRow() : array();
     }
 
-    public function getMatchPairsNotPlayed()
+    public function getMatchPairsNotPlayed($id = 11)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
         home.team_name AS home_team, away.team_name AS away_team
         FROM matchpairs
         JOIN teams AS home ON matchpairs.home_team = home.id
         JOIN teams AS away ON matchpairs.away_team = away.id
-        WHERE matchpairs.is_played = FALSE AND NOT (matchpairs.home_team = 10 XOR matchpairs.away_team = 10)";
+        WHERE matchpairs.is_played = FALSE AND NOT (matchpairs.home_team = $id XOR matchpairs.away_team = $id)";
 
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
@@ -124,15 +125,14 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getResultsByMday($mday) //kad nea rez problem?
-
+    public function getResultsByMday($mday)
     {
         $sql = "SELECT * FROM results WHERE m_day = $mday";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getNextFixture()
+    public function getNextFixture($pairNotToShow = 11)
     {
         $sql_last = "SELECT DISTINCT m_day FROM results";
         $query_num = $this->db->query($sql_last);
@@ -143,7 +143,7 @@ class DBModel extends Model
         FROM matchpairs
         JOIN teams AS home ON matchpairs.home_team = home.id
         JOIN teams AS away ON matchpairs.away_team = away.id
-        WHERE matchpairs.m_day = $next_game AND NOT (matchpairs.home_team = 10 XOR matchpairs.away_team = 10)";
+        WHERE matchpairs.m_day = $next_game AND NOT (matchpairs.home_team = $pairNotToShow XOR matchpairs.away_team = $pairNotToShow)";
 
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();

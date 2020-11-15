@@ -64,7 +64,7 @@ class Home extends BaseController
             $data['lastResults'] = $this->model->getResultsByMday($data['lastMday']);
         }
         $data['startDate'] = $this->model->getMatchDates(1)->game_date;
-        $data['nextFixture'] = $this->model->getNextFixture();
+        $data['nextFixture'] = $this->model->getNextFixture(); //izbacit arg ako bude 10 ekipa
 
         echo view('header', $data);
         echo view('front-page', $data);
@@ -74,7 +74,8 @@ class Home extends BaseController
     public function table()
     {
         $data['title'] = 'LBŠ tabela';
-        $data['table7'] = $this->model->getTable('table7', true, 5, 8, 9);
+        //ukoliko ne bude 10 ekipa ubacit arg 10
+        $data['table7'] = $this->model->getTable('table7', true, 10, 5, 8, 9);
         $data['table8'] = $this->model->getTable('table8', true);
         $data['table9'] = $this->model->getTable('table9', true);
         $data['table10'] = $this->model->getTable('table10', true);
@@ -88,6 +89,7 @@ class Home extends BaseController
     public function teams()
     {
         $data['title'] = 'LBŠ učesnici';
+        //ako bude 9 ucesnika ubacit arg 10
         $data['teams'] = $this->model->getTeams();
 
         echo view('header', $data);
@@ -111,6 +113,7 @@ class Home extends BaseController
         $data['title'] = 'LBŠ raspored';
         $maxMDay = $this->model->getMaxMday()->mDay;
         for ($i = 1; $i <= $maxMDay; $i++) {
+            //ubacit arg 10 ako je 9 ekipa
             $data['fixtures'][$i] = $this->model->getMatchPairs($i);
         }
         echo view('header', $data);
@@ -137,10 +140,10 @@ class Home extends BaseController
         echo view('footer');
     }
 
-    public function finalFour() //provjerit
-
+    public function finalFour()
     {
         $data['title'] = ' LBŠ Završnica';
+        //ubaciti arg ako bude 9 ekipa
         for ($i = 1; $i <= 4; $i++) {
             $data['finals7'][$i] = $this->model->getTeamByTablePos('table7', $i);
             $data['finals8'][$i] = $this->model->getTeamByTablePos('table8', $i);
@@ -200,6 +203,7 @@ class Home extends BaseController
     {
         $data['title'] = 'LBŠ admin';
         $data['results'] = $this->model->getResults();
+        //ubaciti arg 10 ako bude 9 ekipa
         $data['matchPairs'] = $this->model->getMatchPairsNotPlayed();
 
         echo view('header', $data);
@@ -217,8 +221,7 @@ class Home extends BaseController
         echo view('gameInput', $data);
     }
 
-    public function inputGame() //provjerit
-
+    public function inputGame()
     {
         $request = $this->request;
 
@@ -270,7 +273,7 @@ class Home extends BaseController
     {
         $data['title'] = 'Bilten';
         $data['teams'] = $this->model->getTeams();
-        $data['table7'] = $this->model->getTable('table7', false, 5, 8, 9);
+        $data['table7'] = $this->model->getTable('table7', false, 5, 8, 9, 10);
         $data['table8'] = $this->model->getTable('table8');
         $data['table9'] = $this->model->getTable('table9');
         $data['table10'] = $this->model->getTable('table10');

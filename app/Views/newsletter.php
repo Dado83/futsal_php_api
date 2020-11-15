@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
     <style>
     body {
         margin: 40px 0 100px 30px;
@@ -7,7 +7,7 @@
     }
     </style>
 </head>
-<img style="width:15%; position:absolute; top:10px" src="/images/grb.png" alt="grb" />
+<img style="width:15%; position:absolute; top:10px" src="/public/images/grb.png" alt="grb" />
 <h1 style="text-align:center">FAIR PLAY Liga Budućih Šampiona</h1>
 <h2 style="text-align:center">takmičarska sezona 2019/20</h2>
 <h3 style="text-align:center">Bilten br. <?php echo $lastMday ?></h3>
@@ -19,11 +19,13 @@
 <?php endif?>
 <br>
 <p>ad 1)</p>
-<p><?=$notPlayingLastMday->team?> pauzira</p>
+<!-- <p><?=$notPlayingLastMday->team?> pauzira</p> -->
 <div class="resultsNL">
     <p>2011. godište</p>
     <table>
-        <?php foreach ($results as $r): ?>
+        <?php foreach ($results as $r):
+    if ($r->goals_home11 == -1): ?>
+        <?php else: ?>
         <tr>
             <td><?=$r->home_name?></td>
             <td><?=$r->goals_home11?></td>
@@ -31,7 +33,8 @@
             <td><?=$r->goals_away11?></td>
             <td><?=$r->away_name?></td>
         </tr>
-        <?php endforeach?>
+        <?php endif;
+endforeach?>
     </table>
 </div>
 <div class="tableNL">
@@ -207,7 +210,9 @@ endforeach?>
 <div class="resultsNL">
     <p>2007. godište</p>
     <table>
-        <?php foreach ($results as $r): ?>
+        <?php foreach ($results as $r):
+    if ($r->goals_home7 == -1): ?>
+        <?php else: ?>
         <tr>
             <td><?=$r->home_name?></td>
             <td><?=$r->goals_home7?></td>
@@ -215,7 +220,8 @@ endforeach?>
             <td><?=$r->goals_away7?></td>
             <td><?=$r->away_name?></td>
         </tr>
-        <?php endforeach?>
+        <?php endif;
+endforeach?>
     </table>
 </div>
 <div class="tableNL">
@@ -265,8 +271,8 @@ endforeach?>
         <td><?=$nf->game_time?></td>
     </tr>
     <?php endforeach?>
-    <tr>
+    <!-- <tr>
         <td colspan='5' style='font-style:italic;'><?=$notPlaying->team?> pauzira</td>
-    </tr>
+    </tr> -->
     <?php endif?>
 </table>
