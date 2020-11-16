@@ -56,6 +56,19 @@
                     </td>
                 </tr>
                 <?php endif?>
+                <?php if ($game->home_team == 11 or $game->away_team == 11): ?>
+                <tr>
+                    <td>
+                        2010
+                    </td>
+                    <td>
+                        <input type="number" name="home10" value="-1">
+                    </td>
+                    <td>
+                        <input type="number" name="away10" value="-1">
+                    </td>
+                </tr>
+                <?php else: ?>
                 <tr>
                     <td>
                         2010
@@ -67,6 +80,7 @@
                         <input type="number" name="away10" value="0">
                     </td>
                 </tr>
+                <?php endif?>
                 <tr>
                     <td>
                         2009

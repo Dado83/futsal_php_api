@@ -5,15 +5,14 @@ use CodeIgniter\Model;
 class DBModel extends Model
 {
 
-    public function getTeams($id = 11) //korigovati
-
+    public function getTeams($id = 12)
     {
         $sql = "SELECT * FROM teams WHERE NOT id = $id";
         $query = $this->db->query($sql);
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getTable($table, $isShortName = false, $id1 = 11, $id2 = 12, $id3 = 13, $id4 = 14)
+    public function getTable($table, $isShortName = false, $id1 = 12, $id2 = 13, $id3 = 14, $id4 = 15)
     {
         if ($isShortName) {
             $sql = "SELECT teams.team_name AS team,
@@ -82,7 +81,7 @@ class DBModel extends Model
         return $query->getRow() ? true : false;
     }
 
-    public function getMatchPairs($mday, $id = 11)
+    public function getMatchPairs($mday, $id = 12)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
         home.team_name AS home_club, away.team_name AS away_club
@@ -95,7 +94,7 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getMatchDates($mday, $pairNotToShow = 11)
+    public function getMatchDates($mday, $pairNotToShow = 12)
     {
         $sql = "SELECT DISTINCT matchpairs.game_date
         FROM matchpairs
@@ -105,7 +104,7 @@ class DBModel extends Model
         return ($query) ? $query->getRow() : array();
     }
 
-    public function getMatchPairsNotPlayed($id = 11)
+    public function getMatchPairsNotPlayed($id = 12)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
         home.team_name AS home_team, away.team_name AS away_team
@@ -132,7 +131,7 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getNextFixture($pairNotToShow = 11)
+    public function getNextFixture($pairNotToShow = 12)
     {
         $sql_last = "SELECT DISTINCT m_day FROM results";
         $query_num = $this->db->query($sql_last);
@@ -254,7 +253,7 @@ class DBModel extends Model
             $this->homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
         } elseif ($goals_a10 > $goals_h10) {
             $this->awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10);
-        } elseif ($goals_a10 == $goals_h10) {
+        } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
             $this->gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10);
         }
         //6
@@ -355,7 +354,7 @@ class DBModel extends Model
             $this->homeWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
         } elseif ($game['goals_a10'] > $game['goals_h10']) {
             $this->awayWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
-        } elseif ($game['goals_a10'] == $game['goals_h10']) {
+        } elseif ($game['goals_a10'] == $game['goals_h10'] && $game['goals_h10'] != -1) {
             $this->drawDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10']);
         }
         //11

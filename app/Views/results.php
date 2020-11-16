@@ -32,7 +32,7 @@ foreach ($result as $r):
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away7?></td>
                     <td class="standings-club__width text-align__left">
-                        <a href=<?="/ekipa/$r->home_id"?>>
+                        <a href=<?="/ekipa/$r->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
@@ -65,7 +65,7 @@ endforeach?>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away8?></td>
                     <td class="standings-club__width text-align__left">
-                        <a href=<?="/ekipa/$r->home_id"?>>
+                        <a href=<?="/ekipa/$r->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
@@ -96,7 +96,7 @@ endforeach?>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away9?></td>
                     <td class="standings-club__width text-align__left">
-                        <a href=<?="/ekipa/$r->home_id"?>>
+                        <a href=<?="/ekipa/$r->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
@@ -118,7 +118,7 @@ endforeach?>
             <tbody>
                 <?php
 foreach ($result as $r):
-?>
+    if ($r->goals_home10 != -1): ?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
@@ -129,13 +129,12 @@ foreach ($result as $r):
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away10?></td>
                     <td class="standings-club__width text-align__left">
-                        <a href=<?="/ekipa/$r->home_id"?>>
+                        <a href=<?="/ekipa/$r->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>
-                <?php
-
+                <?php endif;
 endforeach?>
             </tbody>
         </table>
@@ -163,7 +162,7 @@ endforeach?>
                     <td class="text-align__center">-</td>
                     <td class="text-align__center"><?=$r->goals_away11?></td>
                     <td class="standings-club__width text-align__left">
-                        <a href=<?="/ekipa/$r->home_id"?>>
+                        <a href=<?="/ekipa/$r->away_id"?>>
                             <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>

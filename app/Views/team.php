@@ -33,7 +33,7 @@
                     <td class="text-align__right text-bold"><?=($result->goals_home7 != -1) ?: ''?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_home8?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_home9?></td>
-                    <td class="text-align__right text-bold"><?=$result->goals_home10?></td>
+                    <td class="text-align__right text-bold"><?=($result->goals_home10 != -1) ?: ''?></td>
                     <td class="text-align__right text-bold"><?=($result->goals_home11 != -1) ?: ''?></td>
                 </tr>
                 <tr>
@@ -47,7 +47,7 @@
                     <td class="text-align__right text-bold"><?=($result->goals_away7 != -1) ?: ''?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_away8?></td>
                     <td class="text-align__right text-bold"><?=$result->goals_away9?></td>
-                    <td class="text-align__right text-bold"><?=$result->goals_away10?></td>
+                    <td class="text-align__right text-bold"><?=($result->goals_away10 != -1) ?: ''?></td>
                     <td class="text-align__right text-bold"><?=($result->goals_away11 != -1) ?: ''?></td>
                 </tr>
             </tbody>

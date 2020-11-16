@@ -1,5 +1,5 @@
 <article class="teams">
-    <h3>Liga Budućih Šampiona 2019/2020</h3>
+    <h3>Liga Budućih Šampiona 2020/2021</h3>
     <?php foreach ($teams as $team): ?>
     <p class="teams__list">
         <a href=<?="/ekipa/$team->id"?>>

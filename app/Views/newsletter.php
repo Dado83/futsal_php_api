@@ -39,7 +39,7 @@
 </head>
 <img style="width:15%; position:absolute; top:10px" src="/public/images/grb.png" alt="grb" />
 <h1 style="text-align:center">FAIR PLAY Liga Budućih Šampiona</h1>
-<h2 style="text-align:center">takmičarska sezona 2019/20</h2>
+<h2 style="text-align:center">takmičarska sezona 2020/21</h2>
 <h3 style="text-align:center">Bilten br. <?php echo $lastMday ?></h3>
 <br />
 <p>1. Registracija utakmica <?=$lastMday?>. kola</p>
@@ -102,7 +102,9 @@ endforeach?>
 <div class="resultsNL">
     <p>2010. godište</p>
     <table>
-        <?php foreach ($results as $r): ?>
+        <?php foreach ($results as $r):
+    if ($r->goals_home10 == -1): ?>
+        <?php else: ?>
         <tr>
             <td><?=$r->home_name?></td>
             <td><?=$r->goals_home10?></td>
@@ -110,7 +112,8 @@ endforeach?>
             <td><?=$r->goals_away10?></td>
             <td><?=$r->away_name?></td>
         </tr>
-        <?php endforeach?>
+        <?php endif;
+endforeach?>
     </table>
 </div>
 <div class="tableNL">

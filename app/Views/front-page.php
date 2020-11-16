@@ -1,6 +1,31 @@
 <article class="front-page">
     <?php if (!isset($lastResults)): ?>
-    <p>Liga pocinje <?=$startDate?> utakmicama 1. kola</p>
+    <table class="table">
+        <tr class="background-row">
+            <th class="text-align__left">1. kolo</th>
+            <th class="text-align__right" colspan="2"><?=$nextFixture[0]->game_date?></th>
+        </tr>
+        <?php foreach ($nextFixture as $fixture): ?>
+        <tr>
+            <td class="text-align__right standings-club__width">
+                <a href=<?="/ekipa/$fixture->home_team"?>>
+                    <?=$fixture->home?>
+                    <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
+                </a>
+            </td>
+            <td class="text-align__center">-</td>
+            <td class="standings-club__width">
+                <a href=<?="/ekipa/$fixture->away_team"?>>
+                    <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                    <?=$fixture->away?>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="venue"><?=$fixture->venue?></td>
+        </tr>
+        <?php endforeach?>
+    </table>
     <?php else: ?>
     <?php if ($lastMday != $maxMday): ?>
     <section class="next-fixture">
