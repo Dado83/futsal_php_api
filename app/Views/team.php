@@ -1,6 +1,6 @@
 <article class="team container">
     <section>
-        <img class="club-logo__big" src="/public/images/logos-big/<?=$team->id?>.png" alt="grb-klub">
+        <img class="club-logo__big" src="/public/images/logos-big/<?=$team->id?>.png?v=0.1" alt="grb-klub">
         <p><?=$team->team_name?></p>
         <p><?=$team->team_city?></p>
         <p><?=$team->kit_color?></p>
@@ -25,7 +25,7 @@
                 <tr>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$result->home_id"?>>
-                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->home_id.png"?>>
+                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->home_id.png?v=0.1"?>>
                             <?=$result->home_name?>
                         </a>
                     </td>
@@ -39,7 +39,7 @@
                 <tr>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$result->away_id"?>>
-                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->away_id.png"?>>
+                            <img class="club-logo__fixed" src=<?="/public/images/logos/$result->away_id.png?v=0.1"?>>
                             <?=$result->away_name?>
                         </a>
                     </td>

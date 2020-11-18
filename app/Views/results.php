@@ -5,7 +5,7 @@
             <li id="results8">2008</li>
             <li id="results9">2009</li>
             <li id="results10">2010</li>
-            <li id="results6">2011</li>
+            <li id="results11">2011</li>
         </ul>
     </nav>
     <?php if (isset($results)): ?>
@@ -25,7 +25,7 @@ foreach ($result as $r):
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
-                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png?v=0.1"?> alt="grb">
                         </a>
                     </td>
                     <td class="text-align__center"><?=$r->goals_home7?></td>
@@ -33,7 +33,7 @@ foreach ($result as $r):
                     <td class="text-align__center"><?=$r->goals_away7?></td>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png?v=0.1"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>
@@ -58,7 +58,7 @@ endforeach?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
-                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png?v=0.1"?> alt="grb">
                         </a>
                     </td>
                     <td class="text-align__center"><?=$r->goals_home8?></td>
@@ -66,7 +66,7 @@ endforeach?>
                     <td class="text-align__center"><?=$r->goals_away8?></td>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png?v=0.1"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>
@@ -89,7 +89,7 @@ endforeach?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
-                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png?v=0.1"?> alt="grb">
                         </a>
                     </td>
                     <td class="text-align__center"><?=$r->goals_home9?></td>
@@ -97,7 +97,7 @@ endforeach?>
                     <td class="text-align__center"><?=$r->goals_away9?></td>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png?v=0.1"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>
@@ -122,7 +122,7 @@ foreach ($result as $r):
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
-                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png?v=0.1"?> alt="grb">
                         </a>
                     </td>
                     <td class="text-align__center"><?=$r->goals_home10?></td>
@@ -130,7 +130,7 @@ foreach ($result as $r):
                     <td class="text-align__center"><?=$r->goals_away10?></td>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png?v=0.1"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>
@@ -155,7 +155,7 @@ endforeach?>
                 <tr>
                     <td class="text-align__right standings-club__width">
                         <a href=<?="/ekipa/$r->home_id"?>>
-                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png"?> alt="grb">
+                            <?=$r->home_name?><img class="club-logo__small" src=<?="/public/images/logos/$r->home_id.png?v=0.1"?> alt="grb">
                         </a>
                     </td>
                     <td class="text-align__center"><?=$r->goals_home11?></td>
@@ -163,7 +163,7 @@ endforeach?>
                     <td class="text-align__center"><?=$r->goals_away11?></td>
                     <td class="standings-club__width text-align__left">
                         <a href=<?="/ekipa/$r->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png"?> alt="grb"><?=$r->away_name?>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$r->away_id.png?v=0.1"?> alt="grb"><?=$r->away_name?>
                         </a>
                     </td>
                 </tr>

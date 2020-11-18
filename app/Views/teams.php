@@ -3,7 +3,7 @@
     <?php foreach ($teams as $team): ?>
     <p class="teams__list">
         <a href=<?="/ekipa/$team->id"?>>
-            <img class="club-logo__small" src="/public/images/logos/<?=$team->id?>.png" alt="grb">
+            <img class="club-logo__small" src="/public/images/logos/<?=$team->id?>.png?v=0.1" alt="grb">
             <?="$team->team_name $team->team_city"?>
         </a>
     </p>

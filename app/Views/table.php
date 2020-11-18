@@ -31,7 +31,7 @@ foreach ($table as $i => $row): ?>
                 <td><?=++$i?></td>
                 <td class="standings-club__width">
                     <a href=<?="/ekipa/$row->id"?>>
-                        <img class="club-logo__small" src=<?="/public/images/logos/$row->id.png"?> alt="grb">
+                        <img class="club-logo__small" src=<?="/public/images/logos/$row->id.png?v=0.1"?> alt="grb">
                         <?=$row->team?>
                     </a>
                 </td>

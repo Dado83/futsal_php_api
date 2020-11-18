@@ -42,6 +42,7 @@ class Filters extends BaseConfig
             '/Home/deleteGame',
             'Home/newsLetter',
             'Home/metrics',
+            '/zavrsnica',
         ]],
     ];
 }

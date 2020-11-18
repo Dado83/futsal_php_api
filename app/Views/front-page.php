@@ -10,13 +10,13 @@
             <td class="text-align__right standings-club__width">
                 <a href=<?="/ekipa/$fixture->home_team"?>>
                     <?=$fixture->home?>
-                    <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
+                    <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png?v=0.1"?> alt="grb">
                 </a>
             </td>
             <td class="text-align__center">-</td>
             <td class="standings-club__width">
                 <a href=<?="/ekipa/$fixture->away_team"?>>
-                    <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                    <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png?v=0.1"?> alt="grb">
                     <?=$fixture->away?>
                 </a>
             </td>
@@ -39,13 +39,13 @@
                 <td class="text-align__right standings-club__width">
                     <a href=<?="/ekipa/$fixture->home_team"?>>
                         <?=$fixture->home?>
-                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png"?> alt="grb">
+                        <img class="club-logo__small" src=<?="/public/images/logos/$fixture->home_team.png?v=0.1"?> alt="grb">
                     </a>
                 </td>
                 <td class="text-align__center">-</td>
                 <td class="standings-club__width">
                     <a href=<?="/ekipa/$fixture->away_team"?>>
-                        <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png"?> alt="grb">
+                        <img class=" club-logo__small" src=<?="/public/images/logos/$fixture->away_team.png?v=0.1"?> alt="grb">
                         <?=$fixture->away?>
                     </a>
                 </td>
@@ -80,7 +80,7 @@
                 <tr>
                     <td class="standings-club__width">
                         <a href=<?="/ekipa/$result->home_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png"?>>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png?v=0.1"?>>
                             <?=$result->home_name?>
                         </a>
                     </td>
@@ -92,7 +92,7 @@
                 </tr>
                 <tr>
                     <td class="standings-club__width"><a href=<?="/ekipa/$result->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png"?>>
+                            <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png?v=0.1"?>>
                             <?=$result->away_name?>
                         </a>
                     </td>
