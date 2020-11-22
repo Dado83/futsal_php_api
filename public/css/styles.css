@@ -5,6 +5,7 @@
     --table-width: 350px;
     --standings-width: 340px;
     --font-size-16: 14px;
+    --font-size-10: 10px;
     --td-padding: 0 2px;
     --club-logo__small: 20px;
     --club-logo__big: 150px
@@ -387,9 +388,18 @@ a:hover {
     margin-bottom: 60px;
 }
 
+/* naziv??? */
 .finalss {
     margin-left: 6px;
 }
+
+.tooltip {
+    margin-left: 10px;
+    font-size: var(--font-size-10);
+    font-weight: bold;
+    text-align: center;
+}
+
 
 /* media queries */
 @media screen and (max-width:640px) {
@@ -403,13 +413,13 @@ a:hover {
         --table-width: 450px;
         --standings-width: 520px;
         --font-size-16: 20px;
+        --font-size-10: 12px;
         --club-logo__small: 30px;
     }
 
     .opponent {
         width: 45%;
     }
-
 }
 
 @media screen and (min-width: 900px) {
