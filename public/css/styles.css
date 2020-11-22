@@ -270,6 +270,12 @@ a:hover {
     font-size: 14px;
 }
 
+.visitorTable th {
+    position: sticky;
+    z-index: 0;
+    top: 60px;
+}
+
 .visitorTable td {
     padding: 2px 3px;
     text-align: center;
