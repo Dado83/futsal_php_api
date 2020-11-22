@@ -16,20 +16,30 @@
 
     .tableNL {
         margin: 0 20px 40px 20px;
-        border-bottom: solid black 1px;
     }
 
     .tableNL table {
         width: 500px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .tableNL table td,
+    .tableNL table th {
+        border-bottom: 1px solid black;
     }
 
     .tableNL td:nth-of-type(-2n+9) {
         text-align: center;
-        padding: 0 5px;
+        padding: 0 15px;
     }
 
     .tableNL th:nth-of-type(2) {
         text-align: left;
+    }
+
+    .tableNL td:nth-of-type(2) {
+        border-left: 1px solid black;
     }
 
     .nextGameNL {
@@ -91,7 +101,11 @@ foreach ($table11 as $row): ?>
             <td><?=$row->games_drew?></td>
             <td><?=$row->games_lost?></td>
             <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
+            <td><?php if ($row->g_diff > 0): ?>
+                <?="+$row->g_diff"?>
+                <?php else: ?>
+                <?=$row->g_diff?>
+                <?php endif?></td>
             <td><?=$row->points?></td>
         </tr>
         <?php
@@ -140,7 +154,11 @@ foreach ($table10 as $row): ?>
             <td><?=$row->games_drew?></td>
             <td><?=$row->games_lost?></td>
             <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
+            <td><?php if ($row->g_diff > 0): ?>
+                <?="+$row->g_diff"?>
+                <?php else: ?>
+                <?=$row->g_diff?>
+                <?php endif?></td>
             <td><?=$row->points?></td>
         </tr>
         <?php
@@ -186,7 +204,11 @@ foreach ($table9 as $row): ?>
             <td><?=$row->games_drew?></td>
             <td><?=$row->games_lost?></td>
             <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
+            <td><?php if ($row->g_diff > 0): ?>
+                <?="+$row->g_diff"?>
+                <?php else: ?>
+                <?=$row->g_diff?>
+                <?php endif?></td>
             <td><?=$row->points?></td>
         </tr>
         <?php
@@ -232,7 +254,11 @@ foreach ($table8 as $row): ?>
             <td><?=$row->games_drew?></td>
             <td><?=$row->games_lost?></td>
             <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
+            <td><?php if ($row->g_diff > 0): ?>
+                <?="+$row->g_diff"?>
+                <?php else: ?>
+                <?=$row->g_diff?>
+                <?php endif?></td>
             <td><?=$row->points?></td>
         </tr>
         <?php
@@ -281,7 +307,11 @@ foreach ($table7 as $row): ?>
             <td><?=$row->games_drew?></td>
             <td><?=$row->games_lost?></td>
             <td><?=$row->goals?></td>
-            <td><?=$row->g_diff?></td>
+            <td><?php if ($row->g_diff > 0): ?>
+                <?="+$row->g_diff"?>
+                <?php else: ?>
+                <?=$row->g_diff?>
+                <?php endif?></td>
             <td><?=$row->points?></td>
         </tr>
         <?php

@@ -40,7 +40,6 @@ class Filters extends BaseConfig
             '/Home/formIn',
             '/Home/inputGame',
             '/Home/deleteGame',
-            'Home/newsLetter',
             'Home/metrics',
             '/zavrsnica',
         ]],
