@@ -334,8 +334,8 @@ endforeach?>
         <td><?=$nf->game_time?></td>
     </tr>
     <?php endforeach?>
-    <!-- <tr>
+    <tr>
         <td colspan='5' style='font-style:italic;'><?=$notPlaying->team?> pauzira</td>
-    </tr> -->
+    </tr>
     <?php endif?>
 </table>
