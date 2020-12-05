@@ -65,6 +65,7 @@ class Home extends BaseController
         }
         $data['startDate'] = $this->model->getMatchDates(1)->game_date;
         $data['nextFixture'] = $this->model->getNextFixture();
+        $data['notPlaying'] = $this->model->getNotPlaying(++$data['lastMday']);
 
         echo view('header', $data);
         echo view('front-page', $data);
@@ -112,6 +113,7 @@ class Home extends BaseController
         $maxMDay = $this->model->getMaxMday()->mDay;
         for ($i = 1; $i <= $maxMDay; $i++) {
             $data['fixtures'][$i] = $this->model->getMatchPairs($i);
+            $data['notPlaying'][$i] = $this->model->getNotPlaying($i);
         }
         echo view('header', $data);
         echo view('fixtures', $data);

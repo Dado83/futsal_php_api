@@ -25,6 +25,9 @@
             <td colspan="3" class="venue"><?=$fixture->venue?></td>
         </tr>
         <?php endforeach?>
+        <tr>
+            <td class="info-italic"><?=$notPlaying->team?> pauzira</td>
+        </tr>
     </table>
     <?php else: ?>
     <?php if ($lastMday != $maxMday): ?>
@@ -51,6 +54,9 @@
                 </td>
             </tr>
             <?php endforeach?>
+            <tr>
+                <td class="info-italic"><?=$notPlaying->team?> pauzira</td>
+            </tr>
         </table>
     </section>
     <?php else: ?>

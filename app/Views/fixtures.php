@@ -23,7 +23,11 @@
                 </td>
             </tr>
             <?php endforeach?>
+            <tr>
+                <td class="info-italic"><?=$notPlaying[$i]->team?> pauzira</td>
+            </tr>
         </tbody>
     </table>
+    <hr>
     <?php endforeach?>
 </article>

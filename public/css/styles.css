@@ -406,6 +406,12 @@ a:hover {
     text-align: center;
 }
 
+.info-italic {
+    font-style: italic;
+    font-size: 70%;
+    padding-top: 3%;
+}
+
 
 /* media queries */
 @media screen and (max-width:640px) {
