@@ -66,6 +66,11 @@ class Home extends BaseController
         $data['startDate'] = $this->model->getMatchDates(1)->game_date;
         $data['nextFixture'] = $this->model->getNextFixture();
         $data['notPlaying'] = $this->model->getNotPlaying(++$data['lastMday']);
+        if (!isset($data['notPlaying'])) {
+            $data['notPlaying'] = '';
+        } else {
+            $data['notPlaying'] = $data['notPlaying']->team . ' pauzira';
+        }
 
         echo view('header', $data);
         echo view('front-page', $data);

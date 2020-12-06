@@ -55,7 +55,7 @@
             </tr>
             <?php endforeach?>
             <tr>
-                <td class="info-italic"><?=$notPlaying->team?> pauzira</td>
+                <td class="info-italic"><?=$notPlaying?></td>
             </tr>
         </table>
     </section>
