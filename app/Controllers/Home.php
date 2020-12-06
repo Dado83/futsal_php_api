@@ -101,6 +101,8 @@ class Home extends BaseController
         $data['title'] = $this->model->getTeamByID($id)->team_name;
         $data['team'] = $this->model->getTeamByID($id);
         $data['results'] = $this->model->getResultsByID($id);
+        $lastMday = $this->model->getNumberOfMdaysPlayed()->mDay;
+        $data['fixtures'] = $this->model->getMatchPairsByTeam($id);
 
         echo view('header', $data);
         echo view('team', $data);
