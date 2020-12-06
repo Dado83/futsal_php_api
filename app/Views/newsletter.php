@@ -18,8 +18,12 @@
         margin: 0 20px 40px 20px;
     }
 
+    .tableNL tr:first-of-type {
+        background: #fcc914;
+    }
+
     .tableNL table {
-        width: 500px;
+        width: 600px;
         border: 1px solid black;
         border-collapse: collapse;
     }
