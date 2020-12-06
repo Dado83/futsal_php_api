@@ -474,7 +474,7 @@ class DBModel extends Model
 
     public function getVisitors($type)
     {
-        $lastHour = time() - (60 * 60);
+        $lastDay = time() - (60 * 60 * 24);
         switch ($type) {
             case 'all':
                 $sql = "SELECT COUNT(*) AS vis FROM visitors";
@@ -494,11 +494,11 @@ class DBModel extends Model
             case 'desktopUnique':
                 $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='desktop'";
                 break;
-            case 'lastHourViews':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$lastHour";
+            case 'lastDayViews':
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$lastDay";
                 break;
-            case 'lastHourVisitors':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$lastHour";
+            case 'lastDayVisitors':
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$lastDay";
                 break;
         }
 

@@ -47,8 +47,8 @@ class Home extends BaseController
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
             'timestamp' => time(),
-            'lastHourViews' => $this->model->getVisitors('lastHourViews'),
-            'lastHourVisitors' => $this->model->getVisitors('lastHourVisitors'),
+            'lastDayViews' => $this->model->getVisitors('lastDayViews'),
+            'lastDayVisitors' => $this->model->getVisitors('lastDayVisitors'),
         ];
         $session->set($data);
 

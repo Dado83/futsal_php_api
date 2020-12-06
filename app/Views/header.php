@@ -18,8 +18,8 @@
         <a class="home-logo" href="/"></a>
         <h3>Liga Budućih Šampiona
             <?php
-$views = session()->lastHourViews->vis;
-$visitors = session()->lastHourVisitors->vis;
+$views = session()->lastDayViews->vis;
+$visitors = session()->lastDayVisitors->vis;
 if (session()->role == 'admin'): ?>
             <?="$views/$visitors"?>
             <?php endif?>
