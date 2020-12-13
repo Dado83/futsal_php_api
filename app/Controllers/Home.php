@@ -47,8 +47,12 @@ class Home extends BaseController
             'date' => date('d/m/y', time()) ?: 'NULL',
             'time' => date('H:i', time()) ?: 'NULL',
             'timestamp' => time(),
-            'lastDayViews' => $this->model->getVisitors('lastDayViews'),
-            'lastDayVisitors' => $this->model->getVisitors('lastDayVisitors'),
+            'last12hrsViews' => $this->model->getVisitors('last12hrsViews'),
+            'last12hrsVisitors' => $this->model->getVisitors('last12hrsVisitors'),
+            'last6hrsViews' => $this->model->getVisitors('last6hrsViews'),
+            'last6hrsVisitors' => $this->model->getVisitors('last6hrsVisitors'),
+            'last2hrsViews' => $this->model->getVisitors('last2hrsViews'),
+            'last2hrsVisitors' => $this->model->getVisitors('last2hrsVisitors'),
         ];
         $session->set($data);
 

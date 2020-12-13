@@ -18,10 +18,15 @@
         <a class="home-logo" href="/"></a>
         <h3>Liga Budućih Šampiona
             <?php
-$views = session()->lastDayViews->vis;
-$visitors = session()->lastDayVisitors->vis;
+$views12hrs = session()->last12hrsViews->vis;
+$visitors12hrs = session()->last12hrsVisitors->vis;
+$views6hrs = session()->last6hrsViews->vis;
+$visitors6hrs = session()->last6hrsVisitors->vis;
+$views2hrs = session()->last2hrsViews->vis;
+$visitors2hrs = session()->last2hrsVisitors->vis;
+
 if (session()->role == 'admin'): ?>
-            <?="$views/$visitors"?>
+            <?="$views12hrs:$visitors12hrs/$views6hrs:$visitors6hrs/$views2hrs:$visitors2hrs"?>
             <?php endif?>
         </h3>
         <nav class="menu">

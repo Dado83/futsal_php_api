@@ -487,7 +487,9 @@ class DBModel extends Model
 
     public function getVisitors($type)
     {
-        $lastDay = time() - (60 * 60 * 24);
+        $last12hrs = time() - (60 * 60 * 12);
+        $last6hrs = time() - (60 * 60 * 6);
+        $last2hrs = time() - (60 * 60 * 2);
         switch ($type) {
             case 'all':
                 $sql = "SELECT COUNT(*) AS vis FROM visitors";
@@ -507,11 +509,23 @@ class DBModel extends Model
             case 'desktopUnique':
                 $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='desktop'";
                 break;
-            case 'lastDayViews':
-                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$lastDay";
+            case 'last12hrsViews':
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last12hrs";
                 break;
-            case 'lastDayVisitors':
-                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$lastDay";
+            case 'last12hrsVisitors':
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last12hrs";
+                break;
+            case 'last6hrsViews':
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last6hrs";
+                break;
+            case 'last6hrsVisitors':
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last6hrs";
+                break;
+            case 'last2hrsViews':
+                $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last2hrs";
+                break;
+            case 'last2hrsVisitors':
+                $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last2hrs";
                 break;
         }
 
