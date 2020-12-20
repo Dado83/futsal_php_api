@@ -70,47 +70,52 @@
     <?php endif?>
     <hr>
     <section class="last-mday">
-        <?php foreach ($lastResults as $result): ?>
         <table class="table">
-            <thead class="background-row">
-                <tr>
-                    <td class="text-align__left"><?=$lastResults[0]->m_day?>. kolo</th>
-                    <td>2007</td>
-                    <td>2008</td>
-                    <td>2009</td>
-                    <td>2010</td>
-                    <td>2011</td>
-                </tr>
+            <thead>
+                <td class="text-bold"><?=$lastResults[0]->m_day?>. kolo</td>
             </thead>
-            <tbody>
-                <tr>
-                    <td class="standings-club__width">
-                        <a href=<?="/ekipa/$result->home_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png?v=0.1"?>>
-                            <?=$result->home_name?>
-                        </a>
-                    </td>
-                    <td class="text-align__center text-bold"><?=$result->goals_home7 != -1 ? $result->goals_home7 : '*'?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_home8?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_home9?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_home10 != -1 ? $result->goals_home10 : '*'?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_home11 != -1 ? $result->goals_home11 : '*'?></td>
-                </tr>
-                <tr>
-                    <td class="standings-club__width"><a href=<?="/ekipa/$result->away_id"?>>
-                            <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png?v=0.1"?>>
-                            <?=$result->away_name?>
-                        </a>
-                    </td>
-                    <td class="text-align__center text-bold"><?=$result->goals_away7 != -1 ? $result->goals_away7 : '*'?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_away8?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_away9?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_away10 != -1 ? $result->goals_away10 : '*'?></td>
-                    <td class="text-align__center text-bold"><?=$result->goals_away11 != -1 ? $result->goals_away11 : '*'?></td>
-                </tr>
-            </tbody>
+            <?php foreach ($lastResults as $result): ?>
+            <table class="table">
+                <thead class="background-row">
+                    <tr>
+                        <td></td>
+                        <td>2007</td>
+                        <td>2008</td>
+                        <td>2009</td>
+                        <td>2010</td>
+                        <td>2011</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="standings-club__width">
+                            <a href=<?="/ekipa/$result->home_id"?>>
+                                <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png?v=0.1"?>>
+                                <?=$result->home_name?>
+                            </a>
+                        </td>
+                        <td class="text-align__center text-bold"><?=$result->goals_home7 != -1 ? $result->goals_home7 : '*'?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_home8?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_home9?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_home10 != -1 ? $result->goals_home10 : '*'?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_home11 != -1 ? $result->goals_home11 : '*'?></td>
+                    </tr>
+                    <tr>
+                        <td class="standings-club__width"><a href=<?="/ekipa/$result->away_id"?>>
+                                <img class="club-logo__small" src=<?="/public/images/logos/$result->away_id.png?v=0.1"?>>
+                                <?=$result->away_name?>
+                            </a>
+                        </td>
+                        <td class="text-align__center text-bold"><?=$result->goals_away7 != -1 ? $result->goals_away7 : '*'?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_away8?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_away9?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_away10 != -1 ? $result->goals_away10 : '*'?></td>
+                        <td class="text-align__center text-bold"><?=$result->goals_away11 != -1 ? $result->goals_away11 : '*'?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php endforeach?>
         </table>
-        <?php endforeach?>
         <p class="tooltip">* godište ne nastupa</p>
     </section>
     <?php endif?>
