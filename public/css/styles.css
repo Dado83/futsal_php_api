@@ -264,6 +264,10 @@ a:hover {
     color: var(--color1);
 }
 
+.row--highlight:hover {
+    background: var(--color1);
+}
+
 .visitorTable {
     border: 1px solid var(--color3);
     border-collapse: collapse;

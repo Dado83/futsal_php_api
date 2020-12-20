@@ -28,7 +28,7 @@
         <th>termin</th>
     </tr>
     <?php foreach ($results as $row): ?>
-    <tr>
+    <tr class="row--highlight">
         <td class="oddResRow"><?=$row->m_day?></td>
         <td><?=$row->home_name?></td>
         <td><?=$row->away_name?></td>
@@ -47,7 +47,7 @@
         <th>termin</th>
     </tr>
     <?php foreach ($matchPairs as $row): ?>
-    <tr>
+    <tr class="row--highlight">
         <td class="oddResRow"><?=$row->m_day?></td>
         <td><?=$row->home_team?></td>
         <td><?=$row->away_team?></td>
