@@ -1,4 +1,4 @@
-<div class="form">
+<div class="game-input">
     <form action="/Home/inputGame" method="post">
         <fieldset>
             <legend>Unos rezultata <?=$game->m_day?>. kola</legend>
@@ -32,7 +32,7 @@
                     </td>
                 </tr>
                 <?php if ($game->home_team == 4 or $game->away_team == 4): ?>
-                <tr>
+                <tr class="game-input__row">
                     <td>
                         2011
                     </td>
@@ -44,8 +44,8 @@
                     </td>
                 </tr>
                 <?php else: ?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2011
                     </td>
                     <td>
@@ -57,8 +57,8 @@
                 </tr>
                 <?php endif?>
                 <?php if ($game->home_team == 11 or $game->away_team == 11): ?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2010
                     </td>
                     <td>
@@ -69,8 +69,8 @@
                     </td>
                 </tr>
                 <?php else: ?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2010
                     </td>
                     <td>
@@ -81,8 +81,8 @@
                     </td>
                 </tr>
                 <?php endif?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2009
                     </td>
                     <td>
@@ -92,8 +92,8 @@
                         <input type="number" name="away9" value="0">
                     </td>
                 </tr>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2008
                     </td>
                     <td>
@@ -107,8 +107,8 @@
     or ($game->home_team == 8 or $game->away_team == 8)
     or ($game->home_team == 9 or $game->away_team == 9)
     or ($game->home_team == 10 or $game->away_team == 10)): ?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2007
                     </td>
                     <td>
@@ -119,8 +119,8 @@
                     </td>
                 </tr>
                 <?php else: ?>
-                <tr>
-                    <td>
+                <tr class="game-input__row">
+                    <td class="game-input__sel">
                         2007
                     </td>
                     <td>

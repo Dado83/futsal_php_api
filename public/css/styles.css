@@ -227,6 +227,11 @@ a:hover {
     cursor: pointer;
 }
 
+.game-input__row:hover {
+    background: var(--color1);
+    font-weight: bold;
+}
+
 .modalForm {
     text-align: right;
     width: 100%;
