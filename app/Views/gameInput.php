@@ -37,10 +37,10 @@
                         2011
                     </td>
                     <td>
-                        <input type="number" name="home11" value="-1">
+                        <input type="hidden" name="home11" value="-1">
                     </td>
                     <td>
-                        <input type="number" name="away11" value="-1">
+                        <input type="hidden" name="away11" value="-1">
                     </td>
                 </tr>
                 <?php else: ?>
@@ -62,10 +62,10 @@
                         2010
                     </td>
                     <td>
-                        <input type="number" name="home10" value="-1">
+                        <input type="hidden" name="home10" value="-1">
                     </td>
                     <td>
-                        <input type="number" name="away10" value="-1">
+                        <input type="hidden" name="away10" value="-1">
                     </td>
                 </tr>
                 <?php else: ?>
@@ -112,10 +112,10 @@
                         2007
                     </td>
                     <td>
-                        <input type="number" name="home7" value="-1">
+                        <input type="hidden" name="home7" value="-1">
                     </td>
                     <td>
-                        <input type="number" name="away7" value="-1">
+                        <input type="hidden" name="away7" value="-1">
                     </td>
                 </tr>
                 <?php else: ?>
