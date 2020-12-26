@@ -68,7 +68,6 @@
         <p class="text-align__center">?Nedjelja, 8. mart 2020. g. - Maglaj<br>(2006, 2009)</p>
     </section>
     <?php endif?>
-    <hr>
     <section class="last-mday">
         <table class="table">
             <thead>
@@ -87,7 +86,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="table-border">
                         <td class="standings-club__width">
                             <a href=<?="/ekipa/$result->home_id"?>>
                                 <img class="club-logo__small" src=<?="/public/images/logos/$result->home_id.png?v=0.1"?>>

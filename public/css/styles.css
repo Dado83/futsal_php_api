@@ -187,6 +187,7 @@ a:hover {
 .footer {
     margin: 60px 0 0 0;
     text-align: center;
+    padding-top: 5px;
 }
 
 .footer-image {
@@ -347,7 +348,7 @@ a:hover {
 
 .background-row {
     background: var(--color1);
-    border: 1px solid;
+    box-shadow: #3d3d3d 0px 1px 0px;
 }
 
 .goals {
@@ -368,6 +369,14 @@ a:hover {
     font-size: var(--font-size-16);
 }
 
+.table-shadow {
+    box-shadow: #3d3d3d 0px 1px 0px;
+}
+
+.table-border {
+    border-bottom: rgba(61, 61, 61, 0.2) 1px solid;
+}
+
 .standings-club__width {
     width: 50%;
 }
@@ -381,7 +390,7 @@ a:hover {
 }
 
 .standings tr:nth-of-type(-n+4) td:nth-of-type(1) {
-    border-right: 3px solid var(--color1);
+    border-right: rgba(61, 61, 61, 0.4) 3px solid;
 }
 
 .team-results {

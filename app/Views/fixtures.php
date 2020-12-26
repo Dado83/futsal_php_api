@@ -1,6 +1,6 @@
 <article class="fixtures">
     <?php foreach ($fixtures as $i => $fixture): ?>
-    <table class="table">
+    <table class="table table-shadow">
         <thead>
             <tr>
                 <th class="text-align__left"><?=$i?>. kolo</th>
@@ -28,6 +28,5 @@
             </tr>
         </tbody>
     </table>
-    <hr>
     <?php endforeach?>
 </article>

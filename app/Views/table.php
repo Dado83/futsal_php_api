@@ -27,7 +27,7 @@ foreach ($tables as $k => $table): ?>
         <tbody>
             <?php
 foreach ($table as $i => $row): ?>
-            <tr>
+            <tr class="table-border">
                 <td><?=++$i?></td>
                 <td class="standings-club__width">
                     <a href=<?="/ekipa/$row->id"?>>
