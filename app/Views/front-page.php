@@ -32,7 +32,7 @@
     <?php else: ?>
     <?php if ($lastMday != $maxMday): ?>
     <section class="next-fixture">
-        <table class="table">
+        <table class="table table--odd-row__dark">
             <tr class="background-row">
                 <th class="text-align__left"><?=$lastResults[0]->m_day + 1?>. kolo</th>
                 <th class="text-align__right" colspan="2"><?=$nextFixture[0]->game_date?></th>

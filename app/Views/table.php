@@ -11,7 +11,7 @@
     <?php
 $tables = [2007 => $table7, $table8, $table9, $table10, $table11];
 foreach ($tables as $k => $table): ?>
-    <table class="standings hidden" id=<?="tab$k"?>>
+    <table class="standings hidden table--odd-row__dark" id=<?="tab$k"?>>
         <thead class="background-row">
             <tr class="table-th">
                 <th colspan="2"><?=$k?>. god</th>
