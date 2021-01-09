@@ -355,6 +355,42 @@ class Home extends BaseController
         }
     }
 
+    public function passwordUpdate()
+    {
+        $data['title'] = 'LBŠ login';
+        echo view('header', $data);
+        echo view('login-update');
+        echo view('footer');
+    }
+
+    public function passwordChange()
+    {
+        $session = session();
+        $request = $this->request;
+        $newPass = $request->getVar('newPassword');
+        $passRepeat = $request->getVar('repeatPassword');
+        $query = $this->model->getUser(session()->role);
+        $password = ($query != null) ? $query->password : '';
+        $userID = ($query != null) ? $query->id : '';
+
+        if (!password_verify($newPass, $password)) {
+            $session->setTempdata('info', 'lozinka netačna', 1);
+        }
+        if ($newPass !== $passRepeat) {
+            $session->setTempdata('info', 'lozinka se ne podudara', 1);
+            return redirect()->to('/Home/passwordUpdate');
+        }
+        if ($newPass == '') {
+            $session->setTempdata('info', 'unesi lozinku', 1);
+            return redirect()->to('/Home/passwordUpdate');
+        }
+
+        $passHash = password_hash($newPass, PASSWORD_DEFAULT);
+        $this->model->updatePassword($userID, $passHash);
+        $session->setTempdata('info', 'lozinka je promjenjena', 1);
+        return redirect()->to('/Home/passwordUpdate');
+    }
+
     public function test()
     {
         echo view('test.html');

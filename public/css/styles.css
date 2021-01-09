@@ -246,30 +246,6 @@ a:hover {
     display: none;
 }
 
-.modalForm form {
-    width: 300px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--color1);
-}
-
-.modalForm input {
-    background: var(--color2);
-    color: white;
-    margin: 2px;
-}
-
-.modalForm input[type='submit'] {
-    background: var(--color3);
-}
-
-.modalForm input[type='submit']:hover {
-    cursor: pointer;
-    color: var(--color1);
-}
-
 .row--highlight:hover {
     background: var(--color1);
 }

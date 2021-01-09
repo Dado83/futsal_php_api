@@ -1,22 +1,9 @@
-<div id="mForm" class="modalForm">
-    <form action="/liga/passwordChange" method="post">
-        <fieldset>
-            <label for="user">Korisnik</label>
-            <input type="text" name="user"><br>
-            <label for="oldPassword">Šifra</label>
-            <input type="password" name="password"><br>
-            <label for="newPassword">Nova šifra</label>
-            <input type="password" name="newPassword"><br>
-            <input type="submit" value="Promijeni šifru">
-        </fieldset>
-    </form>
-</div>
 <div id="adminCards">
     <div class="adminCards"><a href="/Home/newsLetter"><img class="club-logo__fixed" src="/public/images/icons/newsletter.svg" style="width: 100%" />Bilten</a>
     </div>
     <div class="adminCards"><a href="/Home/metrics"><img class="club-logo__fixed" src="/public/images/icons/charts.svg" style="width: 100%" />Metrics</a>
     </div>
-    <div id="passwordChange" class="adminCards"><img class="club-logo__fixed" src="/public/images/icons/pass.svg" style="width: 100%" />Password
+    <div class="adminCards"><a href="/Home/passwordUpdate"><img class="club-logo__fixed" src="/public/images/icons/pass.svg" style="width: 100%" />Password</a>
     </div>
 </div>
 <table class="admin">
