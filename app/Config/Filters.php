@@ -41,6 +41,7 @@ class Filters extends BaseConfig
             '/Home/inputGame',
             '/Home/deleteGame',
             'Home/metrics',
+            '/Home/passwordUpdate',
             '/zavrsnica',
         ]],
     ];
