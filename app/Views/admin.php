@@ -43,20 +43,6 @@
     <?php endforeach?>
 </table>
 <script>
-document.querySelector('#passwordChange').addEventListener('mouseup', passwordChange)
-
-let modalForm = document.querySelector('#mForm')
-
-function passwordChange() {
-    modalForm.style.display = 'block'
-}
-
-window.addEventListener("click", function(e) {
-    if (e.target.id == modalForm.id) {
-        modalForm.style.display = 'none'
-    }
-})
-
 let oddRow = document.querySelectorAll('.oddResRow')
 for (el of oddRow) {
     if (el.innerText % 2 != 0) {
