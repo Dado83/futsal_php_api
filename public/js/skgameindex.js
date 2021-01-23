@@ -40,22 +40,26 @@ form.addEventListener('reset', (event) => {
 
 let tempList = []
 let jsonFileInitial = fetch('/public/resources/skTemp.json')
-jsonFileInitial.then((response) => response.json().then((data) => {
-    for (let i = 0; i < data.length; i++) {
-        tempList[i] = data[i]
-    }
-    createTable(tempList)
-    document.querySelector('#links').innerHTML += '... učitavam ostale linkove'
-}))
+jsonFileInitial
+    .then(response => response.json())
+    .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+            tempList[i] = data[i]
+        }
+        createTable(tempList)
+        document.querySelector('#links').innerHTML += '... učitavam ostale linkove'
+    })
 
 let gameList = [];
 let jsonFile = fetch('/public/resources/sk.json')
-jsonFile.then((response) => response.json().then((data) => {
-    for (let i = 0; i < data.length; i++) {
-        gameList[i] = data[i]
-    }
-    createTable(gameList)
-}))
+jsonFile
+    .then(response => response.json())
+    .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+            gameList[i] = data[i]
+        }
+        createTable(gameList)
+    })
 
 
 function createTable(list) {
