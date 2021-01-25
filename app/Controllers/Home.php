@@ -2,6 +2,7 @@
 
 class Home extends BaseController
 {
+
     public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
     {
         parent::initController($request, $response, $logger);
@@ -393,6 +394,7 @@ class Home extends BaseController
 
     public function test()
     {
-        echo view('test.html');
+        $t = [3, 6, 8, 0, 'procepilo poslje po dana mozakanja u praznoo'];
+        return $this->response->setJSON($t);
     }
 }

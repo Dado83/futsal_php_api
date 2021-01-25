@@ -45,6 +45,9 @@ $routes->get('/turnir', 'Home::createTournament');
 $routes->get('/login', 'Home::login');
 $routes->get('/test', 'Home::test');
 
+// REST Api routes
+$routes->get('/info', 'Rest::info');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
