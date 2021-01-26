@@ -41,7 +41,7 @@ class DBModel extends Model
         return ($query) ? $query->getResult() : array();
     }
 
-    public function getTeamByTablePos($table, $pos, $id = 11)
+    public function getTeamByTablePos($table, $pos, $id = 12)
     {
         $pos--;
         $sql = "SELECT teams.team_name AS team,
@@ -434,6 +434,7 @@ class DBModel extends Model
         $query = $this->db->query($sql);
         return $query->getRow();
     }
+
     public function getNumberOfMdaysPlayed()
     {
         $sql = "SELECT MAX(m_day) as mDay FROM results";
