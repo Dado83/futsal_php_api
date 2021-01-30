@@ -30,7 +30,7 @@
         </tr>
     </table>
     <?php else: ?>
-    <?php if ($lastMday != $maxMday): ?>
+    <?php if ($lastMday == $maxMday): ?>
     <section class="next-fixture">
         <table class="table table--odd-row__dark">
             <tr class="background-row">
