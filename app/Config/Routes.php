@@ -46,7 +46,7 @@ $routes->get('/login', 'Home::login');
 $routes->get('/test', 'Home::test');
 
 // REST Api routes
-$routes->get('/info', 'Rest::getTeams');
+//$routes->get('/info', 'Rest::getTeams');
 
 /**
  * --------------------------------------------------------------------

@@ -1,11 +1,13 @@
-//web scraper
+class Test {
+    constructor(name) {
+        this.name = name
+    }
 
-let game = 'lalalala'
-let message = 'i am from worker'
-onmessage = e => {
-    let mess = e.data
-    console.log(`from main: ${mess}`)
+    say(params) {
+        console.log(this.name)
+    }
 }
-postMessage(message)
 
+t = new Test
 
+t.say

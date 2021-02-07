@@ -64,8 +64,8 @@
         <a class="text-align__center" href="/zavrsnica">
             <h1>Završni turnir 2020/21</h1>
         </a>
-        <p class="text-align__center">?Subota, 7. mart 2020. g. - Žepče<br>(2007, 2008, 2010)</p>
-        <p class="text-align__center">?Nedjelja, 8. mart 2020. g. - Maglaj<br>(2006, 2009)</p>
+        <p class="text-align__center"></p>
+        <p class="text-align__center"></p>
     </section>
     <?php endif?>
     <section class="last-mday">
