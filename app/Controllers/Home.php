@@ -179,7 +179,10 @@ class Home extends BaseController
         $t7 = $this->model->getCombinedTable(7);
         $t8 = $this->model->getCombinedTable(8);
         $t9 = $this->model->getCombinedTable(9);
-        $total = array($t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9);
+        $t10 = $this->model->getCombinedTable(10);
+        $t11 = $this->model->getCombinedTable(11);
+
+        $total = array($t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11);
         usort($total, array($this, 'sortByPoints'));
 
         return $total;
