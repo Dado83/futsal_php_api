@@ -85,6 +85,19 @@ class DBModel extends Model
         return $query->getRow() ? true : false;
     }
 
+    public function getAllMatchPairs($id = 12)
+    {
+        $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
+        home.team_name AS home_club, away.team_name AS away_club
+        FROM matchpairs
+        JOIN teams AS home ON matchpairs.home_team = home.id
+        JOIN teams AS away ON matchpairs.away_team = away.id
+        WHERE NOT (matchpairs.home_team = $id XOR matchpairs.away_team = $id)";
+
+        $query = $this->db->query($sql);
+        return ($query) ? $query->getResult() : array();
+    }
+
     public function getMatchPairs($mday, $id = 12)
     {
         $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,

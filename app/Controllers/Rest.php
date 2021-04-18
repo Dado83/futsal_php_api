@@ -66,6 +66,12 @@ class Rest extends ResourceController
         return $this->respond($data);
     }
 
+    public function getAllMatchPairs($id = 12)
+    {
+        $data = $this->db->getAllMatchPairs($id);
+        return $this->respond($data);
+    }
+
     public function getMatchPairsByTeam($id, $mday = 0)
     {
         $data = $this->db->getMatchPairsByTeam($id, $mday);
