@@ -2,6 +2,19 @@
 require 'DB.php';
 
 $mDay = $_GET['mday'] ?? '';
+$clubID = $_GET['clubid'] ?? '';
+$maxMday = $_GET['maxmday'] ?? false;
+
+function getResultsByClub($db, $id)
+{
+    $sql = "SELECT * FROM results WHERE home_id = $id OR away_id = $id ORDER BY m_day";
+    $result = $db->query($sql);
+    $arr = [];
+    while ($row = $result->fetch_object()) {
+        $arr[] = $row;
+    }
+    echo json_encode($arr);
+}
 
 function getResultsByMday($db, $mday)
 {
@@ -21,8 +34,12 @@ function getMaxMday($db)
     echo json_encode($result->fetch_object()->mDay);
 }
 
-if (!isset($_GET['maxmday'])) {
-    getResultsByMday($db, $mDay);
-} else {
+if ($maxMday != false) {
     getMaxMday($db);
+}
+if ($clubID != '') {
+    getResultsByClub($db, $clubID);
+}
+if ($mDay != '') {
+    getResultsByMday($db, $mDay);
 }
