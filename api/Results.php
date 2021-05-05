@@ -1,11 +1,11 @@
 <?php
 require 'DB.php';
 
-$id = $_GET['id'];
+$mDay = $_GET['mday'] ?? '';
 
-function getResultsByID($id, $db)
+function getResultsByMday($db, $mday)
 {
-    $sql = "SELECT * FROM results WHERE home_id = $id OR away_id = $id ORDER BY m_day";
+    $sql = "SELECT * FROM results WHERE m_day = $mday";
     $result = $db->query($sql);
     $arr = [];
     while ($row = $result->fetch_object()) {
@@ -14,4 +14,15 @@ function getResultsByID($id, $db)
     echo json_encode($arr);
 }
 
-getResultsByID($id, $db);
+function getMaxMday($db)
+{
+    $sql = "SELECT MAX(m_day) as mDay FROM matchpairs";
+    $result = $db->query($sql);
+    echo json_encode($result->fetch_object()->mDay);
+}
+
+if (!isset($_GET['maxmday'])) {
+    getResultsByMday($db, $mDay);
+} else {
+    getMaxMday($db);
+}
