@@ -1,5 +1,5 @@
 <?php
-require 'DB.php';
+require 'db.php';
 
 $mDay = $_GET['mday'] ?? '';
 $clubID = $_GET['clubid'] ?? '';
