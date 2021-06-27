@@ -5,7 +5,7 @@ $year = $_GET['year'];
 
 function getArchive($year, $db)
 {
-    $sql = "SELECT * FROM $year";
+    $sql = "SELECT * FROM $year ORDER BY $year.points DESC";
     $result = $db->query($sql);
     $arr = [];
     while ($row = $result->fetch_object()) {
