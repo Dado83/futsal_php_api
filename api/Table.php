@@ -46,5 +46,5 @@ function getTable($db, $table, $isShortName, $placeHolder, $id1, $id2, $id3, $id
     }
     echo json_encode($arr);
 }
-echo $isShortName;
+
 getTable($db, $table, $isShortName, $placeHolder, $id1, $id2, $id3, $id4);

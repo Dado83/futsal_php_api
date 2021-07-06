@@ -197,47 +197,38 @@ function visitorListForCurrentYear($db)
     return $year;
 }
 
-function test()
+function test($db)
 {
-    echo $_SERVER['PHP_SELF'] . "\n";
-    echo $_SERVER['GATEWAY_INTERFACE'] . "\n";
-    echo $_SERVER['SERVER_ADDR'] . "\n";
-    echo $_SERVER['SERVER_NAME'] . "\n";
-    echo $_SERVER['SERVER_SOFTWARE'] . "\n";
-    echo $_SERVER['SERVER_PROTOCOL'] . "\n";
-    echo $_SERVER['REQUEST_METHOD'] . "\n";
-    echo $_SERVER['REQUEST_TIME'] . "\n";
-    echo $_SERVER['REQUEST_TIME_FLOAT'] . "\n";
-    echo $_SERVER['QUERY_STRING'] . "\n";
-    echo $_SERVER['DOCUMENT_ROOT'] . "\n";
-    echo $_SERVER['HTTP_ACCEPT'] . "\n";
-    echo $_SERVER['HTTP_ACCEPT_CHARSET'] . "\n";
-    echo $_SERVER['HTTP_ACCEPT_ENCODING'] . "\n";
-    echo $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "\n";
-    echo $_SERVER['HTTP_CONNECTION'] . "\n";
-    echo $_SERVER['HTTP_HOST'] . "\n";
-    echo $_SERVER['HTTP_REFERER'] . "\n";
-    echo $_SERVER['HTTP_USER_AGENT'] . "\n";
-    echo $_SERVER['HTTPS'] . "\n";
-    echo $_SERVER['REMOTE_ADDR'] . "\n";
-    echo $_SERVER['REMOTE_HOST'] . "\n";
-    echo $_SERVER['REMOTE_PORT'] . "\n";
-    echo $_SERVER['REMOTE_USER'] . "\n";
-    echo $_SERVER['REDIRECT_REMOTE_USER'] . "\n";
-    echo $_SERVER['SCRIPT_FILENAME'] . "\n";
-    echo $_SERVER['SERVER_ADMIN'] . "\n";
-    echo $_SERVER['SERVER_PORT'] . "\n";
-    echo $_SERVER['SERVER_SIGNATURE'] . "\n";
-    echo $_SERVER['PATH_TRANSLATED'] . "\n";
-    echo $_SERVER['SCRIPT_NAME'] . "\n";
-    echo $_SERVER['REQUEST_URI'] . "\n";
-    echo $_SERVER['PHP_AUTH_DIGEST'] . "\n";
-    echo $_SERVER['PHP_AUTH_USER'] . "\n";
-    echo $_SERVER['PHP_AUTH_PW'] . "\n";
-    echo $_SERVER['AUTH_TYPE'] . "\n";
-    echo $_SERVER['PATH_INFO'] . "\n";
-    echo $_SERVER['ORIG_PATH_INFO'] . "\n";
+    //session_start();
+    $role = 'admin';
+    $returnVisitor = 1;
+    $timestamp = $_SERVER['REQUEST_TIME'];
+    $date = date('d/m/y', $timestamp);
+    $time = date('H:i', $timestamp);
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $page = $_SERVER['REQUEST_URI'];
+
+    //echo $timestamp . ' | ' . $date . ' | ' . $time . ' | ' . $userAgent . ' | ' . $remoteIP . ' | ' . $uri;
+
+    $_SESSION['role'] = $role;
+    $_SESSION['timestamp'] = $timestamp;
+    $_SESSION['date'] = $date;
+    $_SESSION['time'] = $time;
+    $_SESSION['userAg'] = $agent;
+    $_SESSION['remoteIP'] = $ip;
+    $_SESSION['uri'] = $page;
+
+    foreach ($_SESSION as $el) {
+        echo "\n" . $el;
+    }
+
+    $sql = "INSERT INTO visitors (
+            role, return_visitor, ip,  agent, page, date, time, timestamp)
+        VALUES (
+            '$role', $returnVisitor, '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
+    $db->query($sql);
 
 }
 
-test();
+test($db);
