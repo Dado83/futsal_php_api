@@ -122,11 +122,139 @@ function drawDel($table, $home_id, $away_id, $goals_h, $goals_a, $db)
     $db->query($sql_a2);
 }
 
-function inputGame()
-{
+/* game input */
+function inputGame($db, $id,
+    $mday, $home, $home_id, $away, $away_id,
+    $goals_h7, $goals_a7,
+    $goals_h8, $goals_a8,
+    $goals_h9, $goals_a9,
+    $goals_h10, $goals_a10,
+    $goals_h11, $goals_a11) {
+
+    //????
+    /* $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
+    home.team_name AS home, away.team_name AS away, home.game_time, home.venue
+    FROM matchpairs
+    JOIN teams AS home ON matchpairs.home_team = home.id
+    JOIN teams AS away ON matchpairs.away_team = away.id
+    WHERE matchpairs.id = $id";
+
+    $query = $db->query($sql);
+    $fixture = $query->fetch_object(); */
+
+    //check if there is already result
+    /* $sqlGame = "SELECT * FROM results WHERE home_id = $fixture->home_team AND away_id = $fixture->away_team";
+    $query = $db->query($sqlGame);
+    $game = $query->fetch_object(); */
+
+    $sqlInput = "INSERT INTO results
+        (m_day, home_name, home_id, away_name, away_id,
+        goals_home7, goals_away7,
+        goals_home8, goals_away8,
+        goals_home9, goals_away9,
+        goals_home10, goals_away10,
+        goals_home11, goals_away11) VALUES
+        ($mday, '$home', $home_id, '$away', $away_id,
+        $goals_h7, $goals_a7,
+        $goals_h8, $goals_a8,
+        $goals_h9, $goals_a9,
+        $goals_h10, $goals_a10,
+        $goals_h11, $goals_a11)";
+
+    $db->query($sqlInput);
+
+    //7
+    if ($goals_h7 > $goals_a7) {
+        homeWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+    } elseif ($goals_a7 > $goals_h7) {
+        awayWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+    } elseif ($goals_a7 == $goals_h7 && $goals_a7 != -1) {
+        gameDraw('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+    }
+    //8
+    if ($goals_h8 > $goals_a8) {
+        homeWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+    } elseif ($goals_a8 > $goals_h8) {
+        awayWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+    } elseif ($goals_a8 == $goals_h8) {
+        gameDraw('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+    }
+    //9
+    if ($goals_h9 > $goals_a9) {
+        homeWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+    } elseif ($goals_a9 > $goals_h9) {
+        awayWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+    } elseif ($goals_a9 == $goals_h9) {
+        gameDraw('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+    }
+    //10
+    if ($goals_h10 > $goals_a10) {
+        homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+    } elseif ($goals_a10 > $goals_h10) {
+        awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+    } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
+        gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+    }
+    //6
+    if ($goals_h11 > $goals_a11) {
+        homeWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+    } elseif ($goals_a11 > $goals_h11) {
+        awayWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+    } elseif ($goals_a11 == $goals_h11 && $goals_a11 != -1) {
+        gameDraw('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+    }
+
+    $sqlPlayed = "UPDATE matchpairs SET is_played = TRUE WHERE id = $id";
+    $db->query($sqlPlayed);
 
 }
 
+function awayWin($table, $home_id, $away_id, $goals_h, $goals_a, $db)
+{
+    $sql_h1 = "UPDATE $table
+        SET games_played = games_played + 1, games_lost = games_lost + 1,
+        goals_scored = goals_scored + $goals_h, goals_conceded = goals_conceded + $goals_a
+        WHERE id = $home_id";
+    $db->query($sql_h1);
+
+    $sql_a1 = "UPDATE $table
+        SET games_played = games_played + 1, games_won = games_won + 1,
+        goals_scored = goals_scored + $goals_a, goals_conceded = goals_conceded + $goals_h, points = points + 3
+        WHERE id = $away_id";
+    $db->query($sql_a1);
+}
+
+function homeWin($table, $home_id, $away_id, $goals_h, $goals_a, $db)
+{
+    $sql_h = "UPDATE $table
+        SET games_played = games_played + 1, games_won = games_won + 1,
+        goals_scored = goals_scored + $goals_h, goals_conceded = goals_conceded + $goals_a, points = points + 3
+        WHERE id = $home_id";
+    $db->query($sql_h);
+
+    $sql_a = "UPDATE $table
+        SET games_played = games_played + 1, games_lost = games_lost + 1,
+        goals_scored = goals_scored + $goals_a, goals_conceded = goals_conceded + $goals_h
+        WHERE id = $away_id";
+    $db->query($sql_a);
+}
+
+function gameDraw($table, $home_id, $away_id, $goals_h, $goals_a, $db)
+{
+    $sql_h2 = "UPDATE $table
+        SET games_played = games_played + 1, games_drew = games_drew + 1,
+        goals_scored = goals_scored + $goals_h, goals_conceded = goals_conceded + $goals_a, points = points + 1
+        WHERE id = $home_id";
+    $db->query($sql_h2);
+
+    $sql_a2 = "UPDATE $table
+        SET games_played = games_played + 1, games_drew = games_drew + 1,
+        goals_scored = goals_scored + $goals_a, goals_conceded = goals_conceded + $goals_h, points = points + 1
+        WHERE id = $away_id";
+    $db->query($sql_a2);
+}
+
+/* check what to do */
 if ($game == 'delete') {
     deleteGame($db, $gameID);
 } elseif ($game == 'input') {
