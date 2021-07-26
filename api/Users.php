@@ -1,8 +1,10 @@
 <?php
 require 'db.php';
 
-$user = $_GET['user'] ?? '';
-$pass = $_GET['pass'] ?? '';
+$postRequest = file_get_contents('php://input');
+$reqObj = json_decode($postRequest);
+$user = $reqObj->user;
+$pass = $reqObj->pass;
 
 function checkLogin($user, $pass, $db)
 {
@@ -15,12 +17,11 @@ function checkLogin($user, $pass, $db)
             echo json_encode('not-admin');
         } else {
             echo json_encode('admin');
-
         }
     }
 }
 
-function getUsers($db)
+function getUsers($db) /* not needed for the time being... */
 {
     $sql = "SELECT * FROM users";
     $query = $db->query($sql);
@@ -28,8 +29,4 @@ function getUsers($db)
     echo json_encode($result);
 }
 
-if ($user != '') {
-    checkLogin($user, $pass, $db);
-} else {
-    getUsers($db);
-}
+checkLogin($user, $pass, $db);
