@@ -131,23 +131,15 @@ function inputGame($db, $id,
     $goals_h10, $goals_a10,
     $goals_h11, $goals_a11) {
 
-    //????
-    /* $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
-    home.team_name AS home, away.team_name AS away, home.game_time, home.venue
-    FROM matchpairs
-    JOIN teams AS home ON matchpairs.home_team = home.id
-    JOIN teams AS away ON matchpairs.away_team = away.id
-    WHERE matchpairs.id = $id";
-
-    $query = $db->query($sql);
-    $fixture = $query->fetch_object(); */
-
-    //check if there is already result
-    /* $sqlGame = "SELECT * FROM results WHERE home_id = $fixture->home_team AND away_id = $fixture->away_team";
+    //check if there is already the result
+    $sqlGame = "SELECT * FROM results WHERE home_id = $home_id AND away_id = $away_id";
     $query = $db->query($sqlGame);
-    $game = $query->fetch_object(); */
+    $game = $query->fetch_object();
 
-    $sqlInput = "INSERT INTO results
+    if ($game) {
+
+    } else {
+        $sqlInput = "INSERT INTO results
         (m_day, home_name, home_id, away_name, away_id,
         goals_home7, goals_away7,
         goals_home8, goals_away8,
@@ -161,52 +153,52 @@ function inputGame($db, $id,
         $goals_h10, $goals_a10,
         $goals_h11, $goals_a11)";
 
-    $db->query($sqlInput);
+        $db->query($sqlInput);
 
-    //7
-    if ($goals_h7 > $goals_a7) {
-        homeWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
-    } elseif ($goals_a7 > $goals_h7) {
-        awayWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
-    } elseif ($goals_a7 == $goals_h7 && $goals_a7 != -1) {
-        gameDraw('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
-    }
-    //8
-    if ($goals_h8 > $goals_a8) {
-        homeWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
-    } elseif ($goals_a8 > $goals_h8) {
-        awayWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
-    } elseif ($goals_a8 == $goals_h8) {
-        gameDraw('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
-    }
-    //9
-    if ($goals_h9 > $goals_a9) {
-        homeWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
-    } elseif ($goals_a9 > $goals_h9) {
-        awayWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
-    } elseif ($goals_a9 == $goals_h9) {
-        gameDraw('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
-    }
-    //10
-    if ($goals_h10 > $goals_a10) {
-        homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
-    } elseif ($goals_a10 > $goals_h10) {
-        awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
-    } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
-        gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
-    }
-    //6
-    if ($goals_h11 > $goals_a11) {
-        homeWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
-    } elseif ($goals_a11 > $goals_h11) {
-        awayWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
-    } elseif ($goals_a11 == $goals_h11 && $goals_a11 != -1) {
-        gameDraw('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
-    }
+        //7
+        if ($goals_h7 > $goals_a7) {
+            homeWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+        } elseif ($goals_a7 > $goals_h7) {
+            awayWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+        } elseif ($goals_a7 == $goals_h7 && $goals_a7 != -1) {
+            gameDraw('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+        }
+        //8
+        if ($goals_h8 > $goals_a8) {
+            homeWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+        } elseif ($goals_a8 > $goals_h8) {
+            awayWin('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+        } elseif ($goals_a8 == $goals_h8) {
+            gameDraw('table8', $home_id, $away_id, $goals_h8, $goals_a8, $db);
+        }
+        //9
+        if ($goals_h9 > $goals_a9) {
+            homeWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+        } elseif ($goals_a9 > $goals_h9) {
+            awayWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+        } elseif ($goals_a9 == $goals_h9) {
+            gameDraw('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
+        }
+        //10
+        if ($goals_h10 > $goals_a10) {
+            homeWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+        } elseif ($goals_a10 > $goals_h10) {
+            awayWin('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+        } elseif ($goals_a10 == $goals_h10 && $goals_a10 != -1) {
+            gameDraw('table10', $home_id, $away_id, $goals_h10, $goals_a10, $db);
+        }
+        //6
+        if ($goals_h11 > $goals_a11) {
+            homeWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+        } elseif ($goals_a11 > $goals_h11) {
+            awayWin('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+        } elseif ($goals_a11 == $goals_h11 && $goals_a11 != -1) {
+            gameDraw('table11', $home_id, $away_id, $goals_h11, $goals_a11, $db);
+        }
 
-    $sqlPlayed = "UPDATE matchpairs SET is_played = TRUE WHERE id = $id";
-    $db->query($sqlPlayed);
-
+        $sqlPlayed = "UPDATE matchpairs SET is_played = TRUE WHERE id = $id";
+        $db->query($sqlPlayed);
+    }
 }
 
 function awayWin($table, $home_id, $away_id, $goals_h, $goals_a, $db)
@@ -258,5 +250,30 @@ function gameDraw($table, $home_id, $away_id, $goals_h, $goals_a, $db)
 if ($game == 'delete') {
     deleteGame($db, $gameID);
 } elseif ($game == 'input') {
-
+    inputGame($db, $id,
+        $mday, $home, $home_id, $away, $away_id,
+        $goals_h7, $goals_a7,
+        $goals_h8, $goals_a8,
+        $goals_h9, $goals_a9,
+        $goals_h10, $goals_a10,
+        $goals_h11, $goals_a11);
 }
+
+$postObj = file_get_contents('php://input');
+$req = json_decode($postObj);
+$id = $req->id;
+$mday = $req->mday;
+$home = $req->home;
+$home_id = $req->homeID;
+$away = $req->away;
+$away_id = $req->awayID;
+$goals_h7 = $req->home7;
+$goals_a7 = $req->away7;
+$goals_h8 = $req->home8;
+$goals_a8 = $req->away8;
+$goals_h9 = $req->home9;
+$goals_a9 = $req->away9;
+$goals_h10 = $req->home10;
+$goals_a10 = $req->away10;
+$goals_h11 = $req->home11;
+$goals_a11 = $req->away11;
