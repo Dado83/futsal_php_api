@@ -1,8 +1,8 @@
 <?php
 require 'db.php';
 
-$game = $_GET['game'];
-$gameID = $_GET['gameID'];
+$game = $_GET['game'] ?? '';
+$gameID = $_GET['gameID'] ?? '';
 
 function deleteGame($db, $id)
 {
@@ -249,7 +249,27 @@ function gameDraw($table, $home_id, $away_id, $goals_h, $goals_a, $db)
 /* check what to do */
 if ($game == 'delete') {
     deleteGame($db, $gameID);
-} elseif ($game == 'input') {
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postObj = file_get_contents('php://input');
+    $req = json_decode($postObj);
+    $id = $req->id;
+    $mday = $req->mday;
+    $home = $req->home;
+    $home_id = $req->homeID;
+    $away = $req->away;
+    $away_id = $req->awayID;
+    $goals_h7 = $req->home7;
+    $goals_a7 = $req->away7;
+    $goals_h8 = $req->home8;
+    $goals_a8 = $req->away8;
+    $goals_h9 = $req->home9;
+    $goals_a9 = $req->away9;
+    $goals_h10 = $req->home10;
+    $goals_a10 = $req->away10;
+    $goals_h11 = $req->home11;
+    $goals_a11 = $req->away11;
+
     inputGame($db, $id,
         $mday, $home, $home_id, $away, $away_id,
         $goals_h7, $goals_a7,
@@ -257,23 +277,6 @@ if ($game == 'delete') {
         $goals_h9, $goals_a9,
         $goals_h10, $goals_a10,
         $goals_h11, $goals_a11);
-}
 
-$postObj = file_get_contents('php://input');
-$req = json_decode($postObj);
-$id = $req->id;
-$mday = $req->mday;
-$home = $req->home;
-$home_id = $req->homeID;
-$away = $req->away;
-$away_id = $req->awayID;
-$goals_h7 = $req->home7;
-$goals_a7 = $req->away7;
-$goals_h8 = $req->home8;
-$goals_a8 = $req->away8;
-$goals_h9 = $req->home9;
-$goals_a9 = $req->away9;
-$goals_h10 = $req->home10;
-$goals_a10 = $req->away10;
-$goals_h11 = $req->home11;
-$goals_a11 = $req->away11;
+    echo json_encode('ubacen rezultat');
+}
