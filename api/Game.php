@@ -137,7 +137,7 @@ function inputGame($db, $id,
     $game = $query->fetch_object();
 
     if ($game) {
-
+        echo json_encode('rezultat vec postoji');
     } else {
         $sqlInput = "INSERT INTO results
         (m_day, home_name, home_id, away_name, away_id,
@@ -153,7 +153,10 @@ function inputGame($db, $id,
         $goals_h10, $goals_a10,
         $goals_h11, $goals_a11)";
 
-        $db->query($sqlInput);
+        if (!$db->query($sqlInput)) {
+            echo json_encode('greska pri unosu rezultata: ', $db->error);
+            exit;
+        }
 
         //7
         if ($goals_h7 > $goals_a7) {
