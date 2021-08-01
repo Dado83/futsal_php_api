@@ -8,9 +8,14 @@ $pass = $reqObj->pass;
 
 function checkLogin($user, $pass, $db)
 {
-    $sql = "SELECT * FROM users WHERE role = '$user'";
-    $query = $db->query($sql);
-    $dbPass = $query->fetch_object();
+    //$sql = "SELECT * FROM users WHERE role = '$user'";
+    //$query = $db->query($sql);
+    //$dbPass = $query->fetch_object();
+    $stmt = $db->prepare("SELECT * FROM users WHERE role = ?");
+    $stmt->bind_param('s', $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $dbPass = $result->fetch_object();
 
     if (isset($dbPass)) {
         if (!password_verify($pass, $dbPass->password)) {

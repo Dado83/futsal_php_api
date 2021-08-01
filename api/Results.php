@@ -9,8 +9,13 @@ $nextFix = $_GET['nextfix'] ?? '';
 
 function getResultsByClub($db, $id)
 {
-    $sql = "SELECT * FROM results WHERE home_id = $id OR away_id = $id ORDER BY m_day";
-    $result = $db->query($sql);
+    //$sql = "SELECT * FROM results WHERE home_id = $id OR away_id = $id ORDER BY m_day";
+    //$result = $db->query($sql);
+    $stmt = $db->prepare("SELECT * FROM results WHERE home_id = ? OR away_id = ? ORDER BY m_day");
+    $stmt->bind_param('ii', $id, $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     $arr = [];
     while ($row = $result->fetch_object()) {
         $arr[] = $row;
@@ -20,8 +25,13 @@ function getResultsByClub($db, $id)
 
 function getResultsByMday($db, $mday)
 {
-    $sql = "SELECT * FROM results WHERE m_day = $mday";
-    $result = $db->query($sql);
+    //$sql = "SELECT * FROM results WHERE m_day = $mday";
+    //$result = $db->query($sql);
+    $stmt = $db->prepare("SELECT * FROM results WHERE m_day = ?");
+    $stmt->bind_param('i', $mday);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     $arr = [];
     while ($row = $result->fetch_object()) {
         $arr[] = $row;
