@@ -41,7 +41,7 @@ function getResultsByMday($db, $mday)
 
 function getMaxMday($db)
 {
-    $sql = "SELECT MAX(m_day) as mDay FROM matchpairs";
+    $sql = "SELECT MAX(m_day) as mDay FROM results";
     $result = $db->query($sql);
     echo json_encode($result->fetch_object()->mDay);
 }
