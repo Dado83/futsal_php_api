@@ -1,7 +1,7 @@
 <?php
 require 'db.php';
 
-$mDay = $_GET['mday'];
+$mDay = $_GET['mday'] ?? null;
 $notPlayed = $_GET['notPlayed'] ?? null;
 
 function getFixtures($db, $mDay, $id = 12)
@@ -20,14 +20,14 @@ function getFixtures($db, $mDay, $id = 12)
     echo json_encode($arr);
 }
 
-function getFixturesNotPlayed($db, $mDay, $id = 12)
+function getFixturesNotPlayed($db, $id = 12)
 {
     $sql = "SELECT matchpairs.id, matchpairs.m_day, matchpairs.home_team, matchpairs.away_team, matchpairs.game_date,
         home.team_name AS home, away.team_name AS away
         FROM matchpairs
         JOIN teams AS home ON matchpairs.home_team = home.id
         JOIN teams AS away ON matchpairs.away_team = away.id
-        WHERE m_day = $mDay AND matchpairs.is_played = FALSE AND NOT (matchpairs.home_team = $id XOR matchpairs.away_team = $id)";
+        WHERE matchpairs.is_played = FALSE AND NOT (matchpairs.home_team = $id XOR matchpairs.away_team = $id)";
     $result = $db->query($sql);
     $arr = [];
     while ($row = $result->fetch_object()) {
@@ -37,7 +37,7 @@ function getFixturesNotPlayed($db, $mDay, $id = 12)
 }
 
 if (isset($_GET['notPlayed'])) {
-    getFixturesNotPlayed($db, $mDay);
+    getFixturesNotPlayed($db);
 } else {
     getFixtures($db, $mDay);
 }
