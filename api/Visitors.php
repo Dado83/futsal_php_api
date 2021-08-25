@@ -197,7 +197,7 @@ function visitorListForCurrentYear($db)
     return $year;
 }
 
-function test($db)
+function saveVisit($db)
 {
     //session_start();
     $role = 'admin';
@@ -207,28 +207,68 @@ function test($db)
     $time = date('H:i', $timestamp);
     $agent = $_SERVER['HTTP_USER_AGENT'];
     $ip = $_SERVER['REMOTE_ADDR'];
-    $page = $_SERVER['REQUEST_URI'];
+    //$page = $_SERVER['REQUEST_URI'];
 
     //echo $timestamp . ' | ' . $date . ' | ' . $time . ' | ' . $userAgent . ' | ' . $remoteIP . ' | ' . $uri;
 
-    $_SESSION['role'] = $role;
+    /*$_SESSION['role'] = $role;
     $_SESSION['timestamp'] = $timestamp;
     $_SESSION['date'] = $date;
     $_SESSION['time'] = $time;
     $_SESSION['userAg'] = $agent;
-    $_SESSION['remoteIP'] = $ip;
-    $_SESSION['uri'] = $page;
+    $_SESSION['remoteIP'] = $ip; */
+    //$_SESSION['uri'] = $url;
 
     foreach ($_SESSION as $el) {
         echo "\n" . $el;
     }
 
     $sql = "INSERT INTO visitors (
+            role, return_visitor, ip,  agent, date, time, timestamp)
+        VALUES (
+            '$role', $returnVisitor, '$ip',  '$agent', '$date','$time', $timestamp)";
+    $db->query($sql);
+    //session_destroy();
+}
+
+function saveUrls($db, $url)
+{
+    //session_start();
+    $role = 'admin';
+    $returnVisitor = 1;
+    $timestamp = $_SERVER['REQUEST_TIME'];
+    $date = date('d/m/y', $timestamp);
+    $time = date('H:i', $timestamp);
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $page = $url;
+
+    //echo $timestamp . ' | ' . $date . ' | ' . $time . ' | ' . $userAgent . ' | ' . $remoteIP . ' | ' . $uri;
+
+    /* $_SESSION['role'] = $role;
+    $_SESSION['timestamp'] = $timestamp;
+    $_SESSION['date'] = $date;
+    $_SESSION['time'] = $time;
+    $_SESSION['userAg'] = $agent;
+    $_SESSION['remoteIP'] = $ip; */
+    //$_SESSION['uri'] = $url;
+
+    foreach ($_SESSION as $el) {
+        echo "\n" . $el;
+    }
+
+    $sql = "INSERT INTO urls (
             role, return_visitor, ip,  agent, page, date, time, timestamp)
         VALUES (
             '$role', $returnVisitor, '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
     $db->query($sql);
-
+    //session_destroy();
 }
 
-test($db);
+switch ($_GET['counter']) {
+    case 'visit':
+        saveVisit($db);
+    default:
+        $url = $_GET['counter'] ?? null;
+        saveUrls($db, $url);
+}
