@@ -1,30 +1,30 @@
 <?php
 require 'db.php';
 
-function setVisitor($session, $db)
+/* function setVisitor($session, $db)
 {
-    $role = $session->role;
-    $returnVisitor = $session->returnVisitor;
-    $ip = $session->ip;
-    $device = $session->device;
-    $browser = $session->browser;
-    $mobile = $session->mobile;
-    $platform = $session->platform;
-    $referral = $session->referral;
-    $agent = $session->agent;
-    $page = $session->page;
-    $date = $session->date;
-    $time = $session->time;
-    $timestamp = $session->timestamp;
+$role = $session->role;
+$returnVisitor = $session->returnVisitor;
+$ip = $session->ip;
+$device = $session->device;
+$browser = $session->browser;
+$mobile = $session->mobile;
+$platform = $session->platform;
+$referral = $session->referral;
+$agent = $session->agent;
+$page = $session->page;
+$date = $session->date;
+$time = $session->time;
+$timestamp = $session->timestamp;
 
-    $sql = "INSERT INTO visitors (
-            role, return_visitor, ip, device, browser,
-            mobile, platform, referral, agent, page, date, time, timestamp)
-        VALUES (
-            '$role', $returnVisitor, '$ip', '$device', '$browser',
-            '$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time', $timestamp)";
-    $db->query($sql);
-}
+$sql = "INSERT INTO visitors (
+role, return_visitor, ip, device, browser,
+mobile, platform, referral, agent, page, date, time, timestamp)
+VALUES (
+'$role', $returnVisitor, '$ip', '$device', '$browser',
+'$mobile', '$platform', '$referral', '$agent', '$page', '$date','$time', $timestamp)";
+$db->query($sql);
+} */
 
 /* function setSession()
 {
@@ -74,130 +74,111 @@ return $session;
 
 function getVisitors($type, $db)
 {
-    $last12hrs = time() - (60 * 60 * 12);
-    $last6hrs = time() - (60 * 60 * 6);
+    $last24hrs = time() - (60 * 60 * 24);
     $last2hrs = time() - (60 * 60 * 2);
     switch ($type) {
         case 'all':
             $sql = "SELECT COUNT(*) AS vis FROM visitors";
             break;
-        case 'allUnique':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors";
-            break;
-        case 'mobile':
-            $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE device='mobile'";
-            break;
-        case 'mobileUnique':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='mobile'";
-            break;
-        case 'desktop':
-            $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE device='desktop'";
-            break;
-        case 'desktopUnique':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE device='desktop'";
-            break;
-        case 'last12hrsViews':
-            $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last12hrs";
-            break;
-        case 'last12hrsVisitors':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last12hrs";
-            break;
-        case 'last6hrsViews':
-            $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last6hrs";
-            break;
-        case 'last6hrsVisitors':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last6hrs";
+        case 'last24hrsViews':
+            $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last24hrs";
             break;
         case 'last2hrsViews':
             $sql = "SELECT COUNT(*) AS vis FROM visitors WHERE timestamp>$last2hrs";
             break;
-        case 'last2hrsVisitors':
-            $sql = "SELECT COUNT(DISTINCT ip) AS vis FROM visitors WHERE timestamp>$last2hrs";
-            break;
     }
 
     $query = $db->query($sql);
-    return ($query) ? $query->getRow() : array();
+    $result = $query->fetch_object()->vis;
+    echo json_encode($result);
 }
 
-function visitorListForCurrentYear($db)
+function getHits($db)
 {
-    $sql = "SELECT * FROM visitors ORDER BY id DESC";
+    $sql = "SELECT COUNT(*) AS hits FROM urls";
     $query = $db->query($sql);
-    $result = ($query) ? $query->getResult() : array();
-
-    $visitors = [];
-    foreach ($result as $v) {
-        $visitors[] = (object) [
-            'id' => $v->id,
-            'role' => $v->role,
-            'returnVisitor' => $v->return_visitor,
-            'ip' => $v->ip,
-            'device' => $v->device,
-            'browser' => $v->browser,
-            'browserVersion' => $v->browser_ver,
-            'mobile' => $v->mobile,
-            'platform' => $v->platform,
-            'referral' => $v->referral,
-            'agent' => $v->agent,
-            'page' => $v->page,
-            'date' => $v->date,
-            'time' => $v->time,
-            'timestamp' => $v->timestamp,
-            'month' => date('M', $v->timestamp),
-            'year' => date('Y', $v->timestamp),
-        ];
-    }
-
-    $currentYear = date('Y', time());
-    $year = [];
-    //$vis = array_reverse($visitors);
-    foreach ($visitors as $v) {
-        if ($v->year == $currentYear) {
-            switch ($v->month) {
-                case 'Jan':
-                    $year['Januar'][] = $v;
-                    break;
-                case 'Feb':
-                    $year['Februar'][] = $v;
-                    break;
-                case 'Mar':
-                    $year['Mart'][] = $v;
-                    break;
-                case 'Apr':
-                    $year['April'][] = $v;
-                    break;
-                case 'May':
-                    $year['Maj'][] = $v;
-                    break;
-                case 'Jun':
-                    $year['Jun'][] = $v;
-                    break;
-                case 'Jul':
-                    $year['Jul'][] = $v;
-                    break;
-                case 'Aug':
-                    $year['Avgust'][] = $v;
-                    break;
-                case 'Sep':
-                    $year['Septembar'][] = $v;
-                    break;
-                case 'Oct':
-                    $year['Oktobar'][] = $v;
-                    break;
-                case 'Nov':
-                    $year['Novembar'][] = $v;
-                    break;
-                case 'Dec':
-                    $year['Decembar'][] = $v;
-                    break;
-            }
-        }
-    }
-    return $year;
+    $result = $query->fetch_object()->hits;
+    echo json_encode($result);
 }
 
-function saveVisit($db)
+/*function visitorListForCurrentYear($db)
+{
+$sql = "SELECT * FROM visitors ORDER BY id DESC";
+$query = $db->query($sql);
+$result = ($query) ? $query->getResult() : array();
+
+$visitors = [];
+foreach ($result as $v) {
+$visitors[] = (object) [
+'id' => $v->id,
+'role' => $v->role,
+'returnVisitor' => $v->return_visitor,
+'ip' => $v->ip,
+'device' => $v->device,
+'browser' => $v->browser,
+'browserVersion' => $v->browser_ver,
+'mobile' => $v->mobile,
+'platform' => $v->platform,
+'referral' => $v->referral,
+'agent' => $v->agent,
+'page' => $v->page,
+'date' => $v->date,
+'time' => $v->time,
+'timestamp' => $v->timestamp,
+'month' => date('M', $v->timestamp),
+'year' => date('Y', $v->timestamp),
+];
+}
+
+$currentYear = date('Y', time());
+$year = [];
+//$vis = array_reverse($visitors);
+foreach ($visitors as $v) {
+if ($v->year == $currentYear) {
+switch ($v->month) {
+case 'Jan':
+$year['Januar'][] = $v;
+break;
+case 'Feb':
+$year['Februar'][] = $v;
+break;
+case 'Mar':
+$year['Mart'][] = $v;
+break;
+case 'Apr':
+$year['April'][] = $v;
+break;
+case 'May':
+$year['Maj'][] = $v;
+break;
+case 'Jun':
+$year['Jun'][] = $v;
+break;
+case 'Jul':
+$year['Jul'][] = $v;
+break;
+case 'Aug':
+$year['Avgust'][] = $v;
+break;
+case 'Sep':
+$year['Septembar'][] = $v;
+break;
+case 'Oct':
+$year['Oktobar'][] = $v;
+break;
+case 'Nov':
+$year['Novembar'][] = $v;
+break;
+case 'Dec':
+$year['Decembar'][] = $v;
+break;
+}
+}
+}
+return $year;
+}*/
+
+function saveVisits($db)
 {
     //session_start();
     $role = 'admin';
@@ -219,9 +200,9 @@ function saveVisit($db)
     $_SESSION['remoteIP'] = $ip; */
     //$_SESSION['uri'] = $url;
 
-    foreach ($_SESSION as $el) {
-        echo "\n" . $el;
-    }
+    /* foreach ($_SESSION as $el) {
+    echo "\n" . $el;
+    } */
 
     $sql = "INSERT INTO visitors (
             role, return_visitor, ip,  agent, date, time, timestamp)
@@ -231,11 +212,10 @@ function saveVisit($db)
     //session_destroy();
 }
 
-function saveUrls($db, $url)
+function saveHits($db, $url)
 {
     //session_start();
     $role = 'admin';
-    $returnVisitor = 1;
     $timestamp = $_SERVER['REQUEST_TIME'];
     $date = date('d/m/y', $timestamp);
     $time = date('H:i', $timestamp);
@@ -253,22 +233,36 @@ function saveUrls($db, $url)
     $_SESSION['remoteIP'] = $ip; */
     //$_SESSION['uri'] = $url;
 
-    foreach ($_SESSION as $el) {
-        echo "\n" . $el;
-    }
+    /*  foreach ($_SESSION as $el) {
+    echo "\n" . $el;
+    } */
 
     $sql = "INSERT INTO urls (
-            role, return_visitor, ip,  agent, page, date, time, timestamp)
+            role, ip,  agent, page, date, time, timestamp)
         VALUES (
-            '$role', $returnVisitor, '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
+            '$role', '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
     $db->query($sql);
     //session_destroy();
 }
 
 switch ($_GET['counter']) {
+    case 'getvisits':
+        getVisitors('all', $db);
+        break;
+    case 'gethits':
+        getHits($db);
+        break;
+    case 'getday':
+        getVisitors('last24hrsViews', $db);
+        break;
+    case 'get2hrs':
+        getVisitors('last2hrsViews', $db);
+        break;
     case 'visit':
-        saveVisit($db);
+        saveVisits($db);
+        break;
     default:
         $url = $_GET['counter'] ?? null;
-        saveUrls($db, $url);
+        saveHits($db, $url);
+        break;
 }
