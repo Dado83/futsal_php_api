@@ -181,8 +181,7 @@ return $year;
 function saveVisits($db)
 {
     //session_start();
-    $role = 'admin';
-    $returnVisitor = 1;
+    $role = ''; //placeholder
     $timestamp = $_SERVER['REQUEST_TIME'];
     $date = date('d/m/y', $timestamp);
     $time = date('H:i', $timestamp);
@@ -205,17 +204,20 @@ function saveVisits($db)
     } */
 
     $sql = "INSERT INTO visitors (
-            role, return_visitor, ip,  agent, date, time, timestamp)
+            role, ip,  agent, date, time, timestamp)
         VALUES (
-            '$role', $returnVisitor, '$ip',  '$agent', '$date','$time', $timestamp)";
-    $db->query($sql);
+            '$role', '$ip',  '$agent', '$date','$time', $timestamp)";
+
+    if (isset($_COOKIE['deadpool'])) {
+        $db->query($sql);
+    }
     //session_destroy();
 }
 
 function saveHits($db, $url)
 {
     //session_start();
-    $role = 'admin';
+    $role = ''; //placeholder
     $timestamp = $_SERVER['REQUEST_TIME'];
     $date = date('d/m/y', $timestamp);
     $time = date('H:i', $timestamp);
@@ -241,7 +243,11 @@ function saveHits($db, $url)
             role, ip,  agent, page, date, time, timestamp)
         VALUES (
             '$role', '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
-    $db->query($sql);
+
+    if (isset($_COOKIE['deadpool'])) {
+        $db->query($sql);
+    }
+
     //session_destroy();
 }
 
