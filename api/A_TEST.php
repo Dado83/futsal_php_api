@@ -1,5 +1,5 @@
 <?php
-/* require 'db.php';
+require 'db.php';
 
 $name = 'deadpool';
 $value = 'admin';
@@ -12,4 +12,4 @@ echo 'ima kuki';
 
 if (isset($_COOKIE['deadpool'])) {
 echo 'cookie set';
-} */
+}
