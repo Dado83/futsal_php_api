@@ -26,19 +26,19 @@ function deleteGame($db, $id)
     $game = array(
         'id' => $res->id, 'm_day' => $res->m_day, 'home' => $res->home_name,
         'home_id' => $res->home_id, 'away' => $res->away_name, 'away_id' => $res->away_id,
-        'goals_h7' => $res->goals_home7, 'goals_a7' => $res->goals_away7,
+        'goals_h12' => $res->goals_home12, 'goals_a12' => $res->goals_away12,
         'goals_h8' => $res->goals_home8, 'goals_a8' => $res->goals_away8,
         'goals_h9' => $res->goals_home9, 'goals_a9' => $res->goals_away9,
         'goals_h10' => $res->goals_home10, 'goals_a10' => $res->goals_away10,
         'goals_h11' => $res->goals_home11, 'goals_a11' => $res->goals_away11,
     );
-//7
-    if ($game['goals_h7'] > $game['goals_a7']) {
-        homeWinDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7'], $db);
-    } elseif ($game['goals_a7'] > $game['goals_h7']) {
-        awayWinDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7'], $db);
-    } elseif ($game['goals_a7'] == $game['goals_h7'] && $game['goals_h7'] != -1) {
-        drawDel('table7', $game['home_id'], $game['away_id'], $game['goals_h7'], $game['goals_a7'], $db);
+//12
+    if ($game['goals_h12'] > $game['goals_a12']) {
+        homeWinDel('table12', $game['home_id'], $game['away_id'], $game['goals_h12'], $game['goals_a12'], $db);
+    } elseif ($game['goals_a12'] > $game['goals_h12']) {
+        awayWinDel('table12', $game['home_id'], $game['away_id'], $game['goals_h12'], $game['goals_a12'], $db);
+    } elseif ($game['goals_a12'] == $game['goals_h12'] && $game['goals_h12'] != -1) {
+        drawDel('table12', $game['home_id'], $game['away_id'], $game['goals_h12'], $game['goals_a12'], $db);
     }
 //8
     if ($game['goals_h8'] > $game['goals_a8']) {
@@ -125,7 +125,7 @@ function drawDel($table, $home_id, $away_id, $goals_h, $goals_a, $db)
 /* game input */
 function inputGame($db, $id,
     $mday, $home, $home_id, $away, $away_id,
-    $goals_h7, $goals_a7,
+    $goals_h12, $goals_a12,
     $goals_h8, $goals_a8,
     $goals_h9, $goals_a9,
     $goals_h10, $goals_a10,
@@ -141,13 +141,13 @@ function inputGame($db, $id,
     } else {
         $sqlInput = "INSERT INTO results
         (m_day, home_name, home_id, away_name, away_id,
-        goals_home7, goals_away7,
+        goals_home12, goals_away12,
         goals_home8, goals_away8,
         goals_home9, goals_away9,
         goals_home10, goals_away10,
         goals_home11, goals_away11) VALUES
         ($mday, '$home', $home_id, '$away', $away_id,
-        $goals_h7, $goals_a7,
+        $goals_h12, $goals_a12,
         $goals_h8, $goals_a8,
         $goals_h9, $goals_a9,
         $goals_h10, $goals_a10,
@@ -158,13 +158,13 @@ function inputGame($db, $id,
             exit;
         }
 
-        //7
-        if ($goals_h7 > $goals_a7) {
-            homeWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
-        } elseif ($goals_a7 > $goals_h7) {
-            awayWin('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
-        } elseif ($goals_a7 == $goals_h7 && $goals_a7 != -1) {
-            gameDraw('table7', $home_id, $away_id, $goals_h7, $goals_a7, $db);
+        //12
+        if ($goals_h12 > $goals_a12) {
+            homeWin('table12', $home_id, $away_id, $goals_h12, $goals_a12, $db);
+        } elseif ($goals_a12 > $goals_h12) {
+            awayWin('table12', $home_id, $away_id, $goals_h12, $goals_a12, $db);
+        } elseif ($goals_a12 == $goals_h12 && $goals_a12 != -1) {
+            gameDraw('table12', $home_id, $away_id, $goals_h12, $goals_a12, $db);
         }
         //8
         if ($goals_h8 > $goals_a8) {
@@ -262,8 +262,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $home_id = $req->homeID;
     $away = $req->away;
     $away_id = $req->awayID;
-    $goals_h7 = $req->home7;
-    $goals_a7 = $req->away7;
+    $goals_h12 = $req->home12;
+    $goals_a12 = $req->away12;
     $goals_h8 = $req->home8;
     $goals_a8 = $req->away8;
     $goals_h9 = $req->home9;
@@ -275,7 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     inputGame($db, $id,
         $mday, $home, $home_id, $away, $away_id,
-        $goals_h7, $goals_a7,
+        $goals_h12, $goals_a12,
         $goals_h8, $goals_a8,
         $goals_h9, $goals_a9,
         $goals_h10, $goals_a10,
