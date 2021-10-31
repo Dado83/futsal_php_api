@@ -208,7 +208,7 @@ function saveVisits($db)
         VALUES (
             '$role', '$ip',  '$agent', '$date','$time', $timestamp)";
 
-    if (isset($_COOKIE['deadpool'])) {
+    if (!isset($_COOKIE['deadpool'])) {
         $db->query($sql);
     }
     //session_destroy();
@@ -244,7 +244,7 @@ function saveHits($db, $url)
         VALUES (
             '$role', '$ip',  '$agent', '$page', '$date','$time', $timestamp)";
 
-    if (isset($_COOKIE['deadpool'])) {
+    if (!isset($_COOKIE['deadpool'])) {
         $db->query($sql);
     }
 
