@@ -7,9 +7,9 @@ $expiry = time() + (86400 * 30 * 12);
 setcookie($name, $value, $expiry);
 
 if (!isset($_COOKIE['deadpool'])) {
-echo 'ima kuki';
+    echo 'ima kuki';
 }
 
 if (isset($_COOKIE['deadpool'])) {
-echo 'cookie set';
+    echo 'cookie set';
 }

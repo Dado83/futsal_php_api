@@ -32,7 +32,7 @@ function deleteGame($db, $id)
         'goals_h10' => $res->goals_home10, 'goals_a10' => $res->goals_away10,
         'goals_h11' => $res->goals_home11, 'goals_a11' => $res->goals_away11,
     );
-//12
+    //12
     if ($game['goals_h12'] > $game['goals_a12']) {
         homeWinDel('table12', $game['home_id'], $game['away_id'], $game['goals_h12'], $game['goals_a12'], $db);
     } elseif ($game['goals_a12'] > $game['goals_h12']) {
@@ -40,7 +40,7 @@ function deleteGame($db, $id)
     } elseif ($game['goals_a12'] == $game['goals_h12'] && $game['goals_h12'] != -1) {
         drawDel('table12', $game['home_id'], $game['away_id'], $game['goals_h12'], $game['goals_a12'], $db);
     }
-//8
+    //8
     if ($game['goals_h8'] > $game['goals_a8']) {
         homeWinDel('table8', $game['home_id'], $game['away_id'], $game['goals_h8'], $game['goals_a8'], $db);
     } elseif ($game['goals_a8'] > $game['goals_h8']) {
@@ -48,28 +48,28 @@ function deleteGame($db, $id)
     } elseif ($game['goals_a8'] == $game['goals_h8']) {
         drawDel('table8', $game['home_id'], $game['away_id'], $game['goals_h8'], $game['goals_a8'], $db);
     }
-//9
+    //9
     if ($game['goals_h9'] > $game['goals_a9']) {
         homeWinDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9'], $db);
     } elseif ($game['goals_a9'] > $game['goals_h9']) {
         awayWinDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9'], $db);
-    } elseif ($game['goals_a9'] == $game['goals_h9']) {
+    } elseif ($game['goals_a9'] == $game['goals_h9'] && $game['goals_h9'] != -1) {
         drawDel('table9', $game['home_id'], $game['away_id'], $game['goals_h9'], $game['goals_a9'], $db);
     }
-//10
+    //10
     if ($game['goals_h10'] > $game['goals_a10']) {
         homeWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10'], $db);
     } elseif ($game['goals_a10'] > $game['goals_h10']) {
         awayWinDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10'], $db);
-    } elseif ($game['goals_a10'] == $game['goals_h10'] && $game['goals_h10'] != -1) {
+    } elseif ($game['goals_a10'] == $game['goals_h10']) {
         drawDel('table10', $game['home_id'], $game['away_id'], $game['goals_h10'], $game['goals_a10'], $db);
     }
-//11
+    //11
     if ($game['goals_h11'] > $game['goals_a11']) {
         homeWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11'], $db);
     } elseif ($game['goals_a11'] > $game['goals_h11']) {
         awayWinDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11'], $db);
-    } elseif ($game['goals_a11'] == $game['goals_h11'] && $game['goals_h11'] != -1) {
+    } elseif ($game['goals_a11'] == $game['goals_h11']) {
         drawDel('table11', $game['home_id'], $game['away_id'], $game['goals_h11'], $game['goals_a11'], $db);
     }
 
@@ -123,13 +123,25 @@ function drawDel($table, $home_id, $away_id, $goals_h, $goals_a, $db)
 }
 
 /* game input */
-function inputGame($db, $id,
-    $mday, $home, $home_id, $away, $away_id,
-    $goals_h12, $goals_a12,
-    $goals_h8, $goals_a8,
-    $goals_h9, $goals_a9,
-    $goals_h10, $goals_a10,
-    $goals_h11, $goals_a11) {
+function inputGame(
+    $db,
+    $id,
+    $mday,
+    $home,
+    $home_id,
+    $away,
+    $away_id,
+    $goals_h12,
+    $goals_a12,
+    $goals_h8,
+    $goals_a8,
+    $goals_h9,
+    $goals_a9,
+    $goals_h10,
+    $goals_a10,
+    $goals_h11,
+    $goals_a11
+) {
 
     //check if there is already the result
     $sqlGame = "SELECT * FROM results WHERE home_id = $home_id AND away_id = $away_id";
@@ -273,13 +285,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $goals_h11 = $req->home11;
     $goals_a11 = $req->away11;
 
-    inputGame($db, $id,
-        $mday, $home, $home_id, $away, $away_id,
-        $goals_h12, $goals_a12,
-        $goals_h8, $goals_a8,
-        $goals_h9, $goals_a9,
-        $goals_h10, $goals_a10,
-        $goals_h11, $goals_a11);
+    inputGame(
+        $db,
+        $id,
+        $mday,
+        $home,
+        $home_id,
+        $away,
+        $away_id,
+        $goals_h12,
+        $goals_a12,
+        $goals_h8,
+        $goals_a8,
+        $goals_h9,
+        $goals_a9,
+        $goals_h10,
+        $goals_a10,
+        $goals_h11,
+        $goals_a11
+    );
 
     echo json_encode('ubacen rezultat');
 }
