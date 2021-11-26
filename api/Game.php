@@ -191,7 +191,7 @@ function inputGame(
             homeWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
         } elseif ($goals_a9 > $goals_h9) {
             awayWin('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
-        } elseif ($goals_a9 == $goals_h9) {
+        } elseif ($goals_a9 == $goals_h9 && $goals_a9 != -1) {
             gameDraw('table9', $home_id, $away_id, $goals_h9, $goals_a9, $db);
         }
         //10
