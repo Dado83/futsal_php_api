@@ -17,8 +17,7 @@ function getFixtures($db, $mDay, $id = 12)
     while ($row = $result->fetch_object()) {
         $arr[] = $row;
     }
-    //echo json_encode($arr);
-    return $arr;
+    echo json_encode($arr);
 }
 
 function getFixturesNotPlayed($db, $id = 12)
@@ -40,9 +39,5 @@ function getFixturesNotPlayed($db, $id = 12)
 if (isset($_GET['notPlayed'])) {
     getFixturesNotPlayed($db);
 } else {
-    $arr = [];
-    for ($i = 1; $i <= 7; $i++) {
-        $arr[$i] = getFixtures($db, $i);
-    }
-    echo json_encode($arr);
+    getFixtures($db, $mDay);
 }
