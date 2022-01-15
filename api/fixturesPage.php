@@ -1,7 +1,6 @@
 <?php
 require 'db.php';
 
-$mDay = $_GET['mday'] ?? null;
 $fixtureNum = 7;
 
 function getFixtures($db, $mDay, $id = 12)
